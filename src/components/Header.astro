@@ -1,17 +1,21 @@
 <header>
-  <div class="cabecera">
-    <a href="#SobreMi"><span>Sobre mi</span></a>
+  <section class="cabecera">
+    <div class="pre-cabecera">
+      <a href="#SobreMi"><span>Sobre mi</span></a>
+      <img title="Avatar" src="/imgs/avatar.webp" alt="Imagen de mi avatar" />
+    </div>
     <div class="sub-cabecera">
       <a href="#SobreMi"><span>Experiencia</span></a>
       <a href="#SobreMi"><span>Proyectos</span></a>
+      <a href="#SobreMi"><span>Certificaciones</span></a>
       <a href="#SobreMi"><span>Contáctame</span></a>
     </div>
-  </div>
+  </section>
 </header>
 
 <style>
   header {
-    font-size: 30px;
+    font-size: 24px;
 
     position: sticky;
     top: 0;
@@ -20,12 +24,21 @@
 
     animation: enhance-header linear both;
     animation-timeline: scroll(root);
-    animation-range: 0 150px;
+    animation-range: 0 200px;
+  }
+  img {
+    border-radius: 50%;
+    height: 50px;
+    opacity: 0;
+
+    animation: enhance-img linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 450px;
   }
   .cabecera {
     margin: auto;
     padding: 1rem;
-    width: 800px;
+    width: 900px;
     max-width: calc(100% - 2rem);
 
     display: flex;
@@ -37,13 +50,45 @@
     display: flex;
     gap: 32px;
     flex-wrap: wrap;
+    margin-left: -5px;
+  }
+  .pre-cabecera {
+    display: flex;
+    gap: 16px;
+    margin-left: -5px;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    padding-top: 6px;
   }
   @keyframes enhance-header {
     to {
       background: rgba(48, 48, 48, 0.7);
       backdrop-filter: blur(15px);
-      font-size: 20px;
+      font-size: 16px;
       color: black;
     }
+  }
+  @keyframes enhance-img {
+    99% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .sub-cabecera {
+      display: none;
+    }
+    img {
+      animation-range: 0 650px;
+    }
+    header {
+      animation-range: 0 350px;
+    }    
   }
 </style>
