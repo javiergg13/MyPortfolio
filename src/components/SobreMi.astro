@@ -36,7 +36,6 @@ import LinkedIn from "../icons/LinkedIn.astro";
   </div>
   <img
     title="Avatar"
-    class="avatar-img"
     src="../../public/imgs/avatar.webp"
     alt="Imagen de mi avatar"
   />
@@ -87,10 +86,11 @@ import LinkedIn from "../icons/LinkedIn.astro";
 
     margin: 100px 0;
   }
-  .avatar-img {
+  img {
     height: 200px;
     width: auto;
     border-radius: 50%;
+    box-shadow: 0 0 40px rgb(0, 0, 0);
   }
   .text-gradient {
     background-image: linear-gradient(
