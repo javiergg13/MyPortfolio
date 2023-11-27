@@ -34,11 +34,13 @@ import LinkedIn from "../icons/LinkedIn.astro";
       >
     </section>
   </div>
-  <img
+  <div class='img-container'>
+    <img
     title="Avatar"
     src="../../public/imgs/avatar.webp"
     alt="Imagen de mi avatar"
   />
+  </div>
 </section>
 
 <style>
@@ -99,5 +101,20 @@ import LinkedIn from "../icons/LinkedIn.astro";
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+  @media (max-width: 540px) {
+    #SobreMi {
+      flex-wrap: wrap;
+      padding-top: 120px;
+    }
+    img {
+      height: 150px;
+    }
+    .img-container {
+      display: grid;
+      width: 100%;
+      margin-top: 50px;
+      place-items: center;
+    }
   }
 </style>
