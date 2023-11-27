@@ -1,0 +1,103 @@
+---
+import Drive from "../icons/Drive.astro";
+import GitHub from "../icons/GitHub.astro";
+import LinkedIn from "../icons/LinkedIn.astro";
+---
+
+<section id="SobreMi">
+  <div>
+    <h1>
+      ¡Hola! soy <span class="text-gradient">Javier Guerrero</span>
+    </h1>
+    <p class="subtitle">
+      <strong>Desarrollador Web</strong> con <strong>+1</strong> año de
+      exeperincia. En mis desarrollos priorizo la <strong
+        >exeperincia de usuario</strong
+      >, el <strong>diseño</strong> y el <strong>rendimiento</strong> del sitio.
+      También me gusta crear <strong>APIs</strong> para nutrir de datos estos
+      desarrollos.
+    </p>
+    <section class="socials">
+      <a
+        target="_blank"
+        href="https://www.linkedin.com/in/javier-guerrero-gallo-3989b9228/"
+        ><LinkedIn /></a
+      >
+      <a class="github" target="_blank" href="https://github.com/javiergg13"
+        ><GitHub /></a
+      >
+      <a
+        class="drive"
+        target="_blank"
+        href="https://drive.google.com/file/d/1-dL63MY1Hp_ZtjR8aTFoV46pqRCNB3lw/view?usp=sharing"
+        ><Drive /><span> Mi Curriculum</span></a
+      >
+    </section>
+  </div>
+  <img
+    title="Avatar"
+    class="avatar-img"
+    src="../../public/imgs/avatar.webp"
+    alt="Imagen de mi avatar"
+  />
+</section>
+
+<style>
+  h1 {
+    font-size: 40px;
+    margin: 0;
+  }
+  .socials {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    margin-left: -5px;
+  }
+  .socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .github {
+    padding: 0 5px;
+  }
+  .drive {
+    padding: 0 5px;
+  }
+  .subtitle {
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgb(164, 164, 164);
+  }
+  .subtitle strong {
+    background-image: linear-gradient(
+      rgb(72, 5, 255, 0.6),
+      rgb(0, 183, 255, 0.6)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  #SobreMi {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: no-wrap;
+    align-items: center;
+    text-wrap: balance;
+
+    margin: 100px 0;
+  }
+  .avatar-img {
+    height: 200px;
+    width: auto;
+    border-radius: 50%;
+  }
+  .text-gradient {
+    background-image: linear-gradient(
+      rgb(72, 5, 255, 0.6),
+      rgb(0, 183, 255, 0.6)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

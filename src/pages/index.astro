@@ -1,42 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-
-import LinkedIn from "../icons/LinkedIn.astro";
-import GitHub from "../icons/GitHub.astro";
-import Download from "../icons/Download.astro";
+import SobreMi from "../components/SobreMi.astro";
 ---
 
 <Layout title="Mi portfolio">
 	<main>
-		<section class="about-me">
-			<div>
-				<h1>
-					¡Hola! soy <span class="text-gradient">Javier Guerrero</span>
-				</h1>
-				<p class="subtitle">
-					<strong>Desarrollador Web</strong> con <strong>+1</strong> año de
-					exeperincia. En mis desarrollos priorizo la <strong
-						>exeperincia de usuario</strong
-					>, el <strong>diseño</strong> y el <strong>rendimiento</strong> del
-					sitio. También me gusta crear <strong>APIs</strong> para nutrir de
-					datos estos desarrollos.
-				</p>
-				<section class="socials">
-					<a href="https://www.linkedin.com/in/javier-guerrero-gallo-3989b9228/"
-						><LinkedIn />LinkedIn</a
-					>
-					<a href="https://github.com/javiergg13"><GitHub /> GitHub</a>
-					<button><Download /> Descargar CV</button>
-				</section>
-			</div>
-			<img
-				title="Avatar"
-				class="avatar-img"
-				src="../../public/imgs/avatar.webp"
-				alt="Imagen de mi avatar"
-			/>
-		</section>
+		<SobreMi />
 
 		<p class="instructions">
 			To get started, open the directory <code>src/pages</code> in your project.<br
@@ -95,78 +65,11 @@ import Download from "../icons/Download.astro";
 		padding: 1rem;
 		width: 800px;
 		max-width: calc(100% - 2rem);
-		color: white;
 	}
 	h1 {
 		font-size: 36px;
 		margin-bottom: 8px;
 		margin-top: 0;
-	}
-	.socials {
-		display: flex;
-		gap: 16px;
-		margin-top: 32px;
-	}
-	section a {
-		padding: 5px 10px 10px 10px;
-		border-radius: 5px;
-		border: 1px solid rgba(0, 0, 0, 0.7);
-		background-color: rgb(0, 55, 255);
-		color: white;
-		text-decoration: none;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 6px;
-	}
-	section button {
-		padding: 5px 10px 10px 10px;
-		border-radius: 5px;
-		border: 1px solid rgba(0, 0, 0, 0.7);
-		background-color: rgb(0, 55, 255);
-		color: white;
-		text-decoration: none;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 4px;
-	}
-	.subtitle {
-		font-size: 16px;
-		line-height: 1.4;
-		color: rgb(164, 164, 164);
-	}
-	.subtitle strong {
-		background-image: linear-gradient(
-			rgb(72, 5, 255, 0.6),
-			rgb(0, 183, 255, 0.6)
-		);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-	.about-me {
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: no-wrap;
-		align-items: center;
-		text-wrap: balance;
-
-		margin: 100px 0;
-	}
-	.avatar-img {
-		height: 200px;
-		width: auto;
-		border-radius: 50%;
-	}
-	.text-gradient {
-		background-image: linear-gradient(
-			rgb(72, 5, 255, 0.6),
-			rgb(0, 183, 255, 0.6)
-		);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
 	}
 	.instructions {
 		margin-bottom: 2rem;

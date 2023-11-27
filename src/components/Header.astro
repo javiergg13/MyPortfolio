@@ -1,31 +1,47 @@
 <header>
-  <span>Esto es el header</span>
+  <div class="cabecera">
+    <a href="#SobreMi"><span>Sobre mi</span></a>
+    <div class="sub-cabecera">
+      <a href="#SobreMi"><span>Experiencia</span></a>
+      <a href="#SobreMi"><span>Proyectos</span></a>
+      <a href="#SobreMi"><span>Contáctame</span></a>
+    </div>
+  </div>
 </header>
 
 <style>
   header {
-    text-align: center;
-    font-size: 36px;
-    padding: 16px;
+    font-size: 30px;
 
     position: sticky;
     top: 0;
     width: 100%;
     z-index: 10;
 
-    color: aliceblue;
-    background: black;
-
     animation: enhance-header linear both;
     animation-timeline: scroll(root);
     animation-range: 0 150px;
   }
+  .cabecera {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
 
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .sub-cabecera {
+    display: flex;
+    gap: 32px;
+  }
   @keyframes enhance-header {
     to {
-      background: rgb(255, 255, 255, 0.4);
-      backdrop-filter: blur(5px);
-      font-size: 18px;
+      background: rgba(48, 48, 48, 0.7);
+      backdrop-filter: blur(15px);
+      font-size: 20px;
       color: black;
     }
   }
