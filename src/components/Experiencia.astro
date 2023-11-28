@@ -1,37 +1,47 @@
 ---
 import Job from "../icons/Job.astro";
+import Point from "../icons/Point.astro";
 ---
 
 <section id="Experiencia">
-  <h1>Experiencia &nbsp;&nbsp;<Job /></h1>
-  <aside class="cgi">
-    <h2>Grupo CGI (Desarrollador Web)</h2>
-    <h3>Febrero 2023 - Actualidad</h3>
-    <ul>
-      <li>
-        Desarrollo nuevas aplicaciones para uso interno utilizando Angular o
-        React y Spring Boot o Nodejs según el tipo de aplicación y proyecto.
-      </li>
-      <li>
-        Mantengo y actualizo proyectos ya existentes desarrollados en las
-        tecnologías anteriores.
-      </li>
-      <li>
-        Modificar algunas tablas en BBDD para añadir información que se necesite
-        en distintos proyectos.
-      </li>
-    </ul>
-  </aside>
-  <aside class="capgemini">
-    <h2>Capgemini (Técnico en prácticas)</h2>
-    <h3>Marzo 2022 - Junio 2022</h3>
-    <ul>
-      <li>
-        Desarrollos utilizando Angular para trabajos reales de corrección de
-        incidencias y nuevos desarrollos.
-      </li>
-    </ul>
-  </aside>
+  <h1>Experiencia &nbsp;<Job /></h1>
+  <div class="experiencia-body">
+    <aside class="cgi">
+      <h2><Point /> Grupo CGI (Desarrollador Web)</h2>
+      <h3>Febrero 2023 - Actualidad</h3>
+      <ul>
+        <li>
+          Desarrollo nuevas aplicaciones para uso interno utilizando <strong
+            >Angular</strong
+          > o
+          <strong>React</strong> y <strong>Spring Boot</strong> o <strong
+            >Nodejs</strong
+          > según el tipo de aplicación y proyecto.
+        </li>
+        <li>
+          <strong>Mantengo</strong> y <strong>actualizo</strong>actualizo
+          proyectos ya existentes desarrollados en las tecnologías anteriores.
+        </li>
+        <li>
+          Modificar algunas <strong>tablas</strong> en <strong>BBDD</strong>
+           para añadir información que se necesite en distintos proyectos.
+        </li>
+      </ul>
+    </aside>
+    <aside class="capgemini">
+      <h2><Point /> Capgemini (Técnico en prácticas)</h2>
+      <h3>Marzo 2022 - Junio 2022</h3>
+      <ul>
+        <li>
+          Desarrollos utilizando <strong>Angular</strong> para <strong
+            >trabajos reales</strong
+          > de <strong>corrección de incidencias</strong> y <strong
+            >nuevos desarrollos</strong
+          >.
+        </li>
+      </ul>
+    </aside>
+  </div>
 </section>
 
 <style>
@@ -41,21 +51,34 @@ import Job from "../icons/Job.astro";
 
     padding-top: 100px;
   }
-  ul {
-    text-wrap: balance;
-  }
   li {
+    text-wrap: balance;
     margin-bottom: 16px;
+    margin-left: 40px;
+    font-size: 16px;
+    line-height: 1.3;
+    color: rgb(164, 164, 164);
+  }
+  strong {
+    color: rgb(190, 190, 190);
+  }
+  .experiencia-body {
+    border-left: 1px solid white;
+    margin-left: 25px;
+    margin-top: 25px;
+  }
+  aside {
+    padding-left: 25px;
+  }
+  h2 {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  h3 {
+    margin-left: 35px;
   }
   .cgi {
-    max-width: 50%;
-    border-right: 1px solid white;
-  }
-  .capgemini {
-    max-width: 50%;
-    border-left: 1px solid white;
-    align-self: flex-end;
-
-    padding-left: 16px;
+    margin-bottom: 60px;
   }
 </style>
