@@ -1,26 +1,24 @@
 ---
 import HalfStar from "../icons/HalfStar.astro";
-
-
 ---
 
 <section id="Proyectos">
   <h1>Proyectos &nbsp;<HalfStar /></h1>
-  <div class='proyectos-body'>
+  <div class="proyectos-body">
     <div>
-      <h2>Prueba</h2>
+      <h2>Prueba 1</h2>
     </div>
     <div>
-      <h2>Prueba</h2>
+      <h2>Prueba 2</h2>
     </div>
     <div>
-      <h2>Prueba</h2>
+      <h2>Prueba 3</h2>
     </div>
     <div>
-      <h2>Prueba</h2>
+      <h2>Prueba 4</h2>
     </div>
     <div>
-      <h2>Prueba</h2>
+      <h2>Prueba 5</h2>
     </div>
   </div>
 </section>
@@ -37,12 +35,15 @@ import HalfStar from "../icons/HalfStar.astro";
     margin-top: 35px;
   }
   .proyectos-body div {
+    display: grid;
+    place-content: center;
+
     border: 2px solid black;
     border-radius: 5px;
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 0 20px black;
 
     transition-property: scale;
-		transition-duration: 0.3s;
+    transition-duration: 0.3s;
 
     height: 150px;
   }
