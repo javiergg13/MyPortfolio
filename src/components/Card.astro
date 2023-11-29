@@ -1,0 +1,80 @@
+---
+import Code from "../icons/Code.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  gitHubUrl: string | undefined;
+  tecnologies: { name: string; url: string }[] | undefined;
+  image: string;
+  height: number | undefined;
+}
+
+const {
+  title,
+  description,
+  gitHubUrl = "https://github.com/javiergg13",
+  tecnologies,
+  image,
+  height = 150,
+} = Astro.props;
+---
+
+<div class="card-body" style=`height: ${height}px;`>
+  <header>
+    <h2>{title}</h2>
+    <a target="_blank" title="Ver código en GitHub" href={gitHubUrl}><Code /></a
+    >
+  </header>
+  <span>{description}</span>
+  <footer>
+    {tecnologies?.map((tecnology) => <span>{tecnology.name}</span>)}
+  </footer>
+</div>
+
+<style>
+  .card-body {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 20px black;
+    background-color: rgba(110, 110, 110, 0.5);
+
+    transition-property: scale;
+    transition-duration: 0.3s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-body:hover {
+    scale: 1.05;
+  }
+  a {
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    transition-property: scale, background-color;
+    transition-duration: 0.3s;
+    cursor: pointer;
+  }
+  a:hover {
+    scale: 1.15;
+    background-color: rgba(50, 50, 50, 0.5);
+  }
+  h2 {
+    margin: 0;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  span {
+    text-wrap: balance;
+  }
+</style>

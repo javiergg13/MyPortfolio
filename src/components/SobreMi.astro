@@ -35,7 +35,11 @@ import LinkedIn from "../icons/LinkedIn.astro";
     </section>
   </div>
   <div class="img-container">
-    <img title="Javier Guerrero" src="/imgs/yo.webp" alt="Mi imagen de perfil" />
+    <img
+      title="Javier Guerrero"
+      src="/imgs/yo.webp"
+      alt="Mi imagen de perfil"
+    />
   </div>
 </section>
 
@@ -65,10 +69,7 @@ import LinkedIn from "../icons/LinkedIn.astro";
     color: rgb(164, 164, 164);
   }
   .subtitle strong {
-    background-image: linear-gradient(
-    rgb(70, 31, 101),
-      rgb(178, 127, 192)
-    );
+    background-image: linear-gradient(rgb(70, 31, 101), rgb(178, 127, 192));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -90,26 +91,16 @@ import LinkedIn from "../icons/LinkedIn.astro";
     color: rgb(164, 164, 164);
   }
   .text-gradient {
-    background-image: linear-gradient(
-      rgb(70, 31, 101),
-      rgb(178, 127, 192)
-    );
+    background-image: linear-gradient(rgb(70, 31, 101), rgb(178, 127, 192));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  @media (max-width: 540px) {
-    #SobreMi {
-      flex-wrap: wrap;
-      padding-top: 50px;
-    }
+  @media (max-width: 725px) {
     img {
-      height: 150px;
+      display: none;
     }
-    .img-container {
-      display: grid;
-      width: 100%;
-      margin-top: 50px;
-      place-items: center;
+    #SobreMi {
+      padding-top: 50px;
     }
   }
 </style>

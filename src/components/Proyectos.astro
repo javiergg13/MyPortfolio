@@ -1,25 +1,72 @@
 ---
 import HalfStar from "../icons/HalfStar.astro";
+import Card from "./Card.astro";
+
+const projects = [
+  {
+    title: "Spotify Clone",
+    description:
+      "Un clon de la página web de spotify, utilizando Astro con React y Svelte para darle interactividad y Tailwind para los estilos.",
+    tecnologies: [
+      {
+        name: "Astro",
+        url: "url",
+      },
+      {
+        name: "React",
+        url: "url",
+      },
+      {
+        name: "Svelte",
+        url: "url",
+      },
+      {
+        name: "Tailwind",
+        url: "url",
+      },
+    ],
+    image: "hrl",
+    gitHubUrl: "https://github.com/javiergg13/spotify-clone",
+    height: 250,
+  },
+  {
+    title: "Prueba 2",
+    description: "description",
+    image: "hrl",
+  },
+  {
+    title: "Prueba 3",
+    description: "description",
+    image: "hrl",
+  },
+  {
+    title: "Prueba 4",
+    description: "description",
+    image: "hrl",
+  },
+  {
+    title: "Prueba 5",
+    description: "description",
+    image: "hrl",
+  },
+];
 ---
 
 <section id="Proyectos">
   <h1>Proyectos &nbsp;<HalfStar /></h1>
   <div class="proyectos-body">
-    <div>
-      <h2>Prueba 1</h2>
-    </div>
-    <div>
-      <h2>Prueba 2</h2>
-    </div>
-    <div>
-      <h2>Prueba 3</h2>
-    </div>
-    <div>
-      <h2>Prueba 4</h2>
-    </div>
-    <div>
-      <h2>Prueba 5</h2>
-    </div>
+    {
+      projects.map((project) => (
+        <Card
+          gitHubUrl={project.gitHubUrl}
+          title={project.title}
+          description={project.description}
+          tecnologies={project.tecnologies}
+          height={project?.height}
+          image={project.image}
+        />
+      ))
+    }
   </div>
 </section>
 

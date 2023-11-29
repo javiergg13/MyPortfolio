@@ -9,49 +9,15 @@ import Phone from "../icons/Phone.astro";
   <form action="/" method="post">
     <fieldset>
       <legend>Información personal</legend>
-      <label
-        >Nombre:
-        <input
-          type="text"
-          name="name"
-          placeholder="Javier Guerrero Gallo"
-          required
-        />
-      </label>
-      <label
-        >Email:
-        <input
-          type="email"
-          name="email"
-          placeholder="guerrerogallojavier@gmail.com"
-          required
-        />
-      </label>
+      <label> Nombre: Javier Guerrero Gallo</label>
+      <label> Fecha de Nacimiento: Abril del 2000</label>
+      <label> Email: guerrerogallojavier@gmail.com</label>
     </fieldset>
 
     <fieldset>
       <legend>Información adicional</legend>
-      <label
-        >Teléfono:
-        <input
-          type="tel"
-          name="phone"
-          placeholder="677888999"
-          required
-          pattern="[0-9]{9}"
-        />
-      </label>
-
-      <datalist id="langueages">
-        <option value="JavaScirpt"></option>
-        <option value="Phyton"></option>
-        <option value="Java"></option>
-        <option value="C#"></option>
-      </datalist>
-      <label
-        >¿Con qué lenguaje quieres que te ayude?
-        <input name="langueages" list="langueages" />
-      </label>
+      <label> Teléfono de contacto: +34 674 774 983</label>
+      <label> Dirección: Pola de Laviana, Asturias, España</label>
     </fieldset>
     <div class="actions">
       <a href="mailto:guerrerogallojavier@gmail.com"
@@ -59,8 +25,6 @@ import Phone from "../icons/Phone.astro";
       >
       <a href="tel:+34674774983">Llámame <Phone /></a>
     </div>
-
-    <input type="submit" value="Enviar contacto" />
   </form>
 </section>
 
@@ -98,5 +62,10 @@ import Phone from "../icons/Phone.astro";
     display: flex;
     justify-content: center;
     gap: 32px;
+  }
+  @media (max-width: 725px) {
+    form {
+      padding-left: 0;
+    }
   }
 </style>
