@@ -8,16 +8,16 @@ import Phone from "../icons/Phone.astro";
   <h1>Contacto &nbsp;<Mail /></h1>
   <form action="/" method="post">
     <fieldset>
-      <legend>Información personal</legend>
-      <label> Nombre: Javier Guerrero Gallo</label>
-      <label> Fecha de Nacimiento: Abril del 2000</label>
-      <label> Email: guerrerogallojavier@gmail.com</label>
+      <legend>&nbsp;Información personal&nbsp;</legend>
+      <label>Nombre: Javier Guerrero Gallo</label>
+      <label>Fecha de Nacimiento: Abril del 2000</label>
+      <label>Email: guerrerogallojavier@gmail.com</label>
     </fieldset>
 
     <fieldset>
-      <legend>Información adicional</legend>
-      <label> Teléfono de contacto: +34 674 774 983</label>
-      <label> Dirección: Pola de Laviana, Asturias, España</label>
+      <legend>&nbsp;Información adicional&nbsp;</legend>
+      <label>Teléfono de contacto: +34 674 774 983</label>
+      <label>Dirección: Pola de Laviana, Asturias, España</label>
     </fieldset>
     <div class="actions">
       <a href="mailto:guerrerogallojavier@gmail.com"
@@ -50,20 +50,17 @@ import Phone from "../icons/Phone.astro";
   label {
     margin: 10px;
   }
-  a:hover {
-    scale: 1;
-    box-shadow: none;
-  }
   a {
+    padding: 5px 10px;
     display: flex;
     gap: 8px;
   }
   .actions {
     display: flex;
     justify-content: center;
-    gap: 32px;
+    gap: 16px;
   }
-  @media (max-width: 725px) {
+  @media (max-width: 800px) {
     form {
       padding-left: 0;
     }

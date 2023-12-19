@@ -60,13 +60,14 @@ const { title } = Astro.props;
 	a {
 		color: rgb(171, 156, 182);
 		text-decoration: none;
-		transition-property: scale, box-shadow;
+		transition-property: scale, background-color, color;
 		transition-duration: 0.3s;
-		border-radius: 5px;
+		border-radius: 50px;
 	}
 	a:hover {
-		scale: 1.15;
-		box-shadow: 0 0 10px rgb(69, 69, 69);
+		background-color: #3d3d3d;
+    color: rgb(232 199 255);
+		scale: 1.1;
 	}
 	h1 {
     font-size: 40px;

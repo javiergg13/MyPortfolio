@@ -1,13 +1,13 @@
 <header>
   <section class="cabecera">
     <div class="pre-cabecera">
-      <a href="#SobreMi"><span>Sobre mi</span></a>
+      <a href="#SobreMi"><span><strong>Sobre mi</strong></span></a>
       <img title="Javier Guerrero" src="/imgs/yo.webp" alt="Mi imagen de perfil" />
     </div>
     <div class="sub-cabecera">
-      <a href="#Experiencia"><span>Experiencia</span></a>
-      <a href="#Proyectos"><span>Proyectos</span></a>
-      <a href="#Contacto"><span>Contáctame</span></a>
+      <a href="#Experiencia"><span><strong>Experiencia</strong></span></a>
+      <a href="#Proyectos"><span><strong>Proyectos</strong></span></a>
+      <a href="#Contacto"><span><strong>Contáctame</strong></span></a>
     </div>
   </section>
 </header>
@@ -44,31 +44,28 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 32px;
   }
   .sub-cabecera {
     display: flex;
     gap: 32px;
     flex-wrap: wrap;
-    margin-right: -8px;
+    margin-right: -14px;
   }
   .pre-cabecera {
     display: flex;
     gap: 16px;
-    margin-left: -5px;
+    margin-left: -14px;
   }
   a {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    padding-top: 6px;
+    padding: 8px 14px;
   }
   @keyframes enhance-header {
     to {
-      background: rgba(48, 48, 48, 0.7);
+      background: rgba(48, 48, 48, 0.25);
       backdrop-filter: blur(15px);
       font-size: 18px;
       color: black;
+      
     }
   }
   @keyframes enhance-img {
