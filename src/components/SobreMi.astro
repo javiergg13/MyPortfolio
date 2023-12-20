@@ -55,9 +55,11 @@ import LinkedIn from "../icons/LinkedIn.astro";
     align-items: center;
     justify-content: center;
     gap: 6px;
+    color: rgb(185, 182, 182);
   }
   .socials a:hover {
-    background-color: #24252a;
+    background-color: #13151a;
+    color: rgb(185, 182, 182);
   }
   .github {
     padding: 0 5px;
@@ -69,10 +71,10 @@ import LinkedIn from "../icons/LinkedIn.astro";
     font-size: 18px;
     text-wrap: balance;
     line-height: 1.4;
-    color: rgb(164, 164, 164);
+    color: rgb(185, 182, 182);
   }
   .subtitle strong {
-    background-image: linear-gradient(rgb(70, 31, 101), rgb(178, 127, 192));
+    background-image: linear-gradient(rgb(159, 79, 224), rgb(212, 165, 225));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -88,12 +90,14 @@ import LinkedIn from "../icons/LinkedIn.astro";
     height: 200px;
     width: auto;
     border-radius: 50%;
-    box-shadow: 0 0 40px rgb(0, 0, 0);
+    box-shadow: 0 0 50px rgb(75, 75, 75);
   }
   .text-gradient {
-    background-image: linear-gradient(rgb(70, 31, 101), rgb(178, 127, 192));
+    background-image: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
   }
   @media (max-width: 725px) {
     img {
