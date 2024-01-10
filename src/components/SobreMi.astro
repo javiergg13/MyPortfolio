@@ -10,21 +10,21 @@ import LinkedIn from "../icons/LinkedIn.astro";
       ¡Hola! soy <span class="text-gradient">Javier Guerrero</span>
     </h1>
     <p class="subtitle">
-      <strong>Desarrollador Web</strong> con <strong>+1</strong> año de
-      exeperincia. En mis desarrollos priorizo la <strong
-        >exeperincia de usuario</strong
-      >, el <strong>diseño</strong> y el <strong>rendimiento</strong> del sitio.
-      También me gusta crear <strong>APIs</strong> para nutrir de datos estos
-      desarrollos.
+      <strong>Desarrollador Web</strong> con <strong>+1</strong> año de exeperincia.
+      En mis desarrollos priorizo la <strong>exeperincia de usuario</strong>, el <strong
+        >diseño</strong
+      > y el <strong>rendimiento</strong> del sitio. También me gusta crear <strong
+        >APIs</strong
+      > para nutrir de datos estos desarrollos.
     </p>
     <section class="socials">
       <a
         target="_blank"
         href="https://www.linkedin.com/in/javier-guerrero-gallo-3989b9228/"
-        ><LinkedIn /></a
+        ><LinkedIn /><span> LinkedIn</span></a
       >
       <a class="github" target="_blank" href="https://github.com/javiergg13"
-        ><GitHub /></a
+        ><GitHub /><span> GitHub</span></a
       >
       <a
         class="drive"
@@ -46,35 +46,26 @@ import LinkedIn from "../icons/LinkedIn.astro";
 <style>
   .socials {
     display: flex;
-    gap: 24px;
+    gap: 40px;
     margin-top: 32px;
     margin-left: -5px;
   }
   .socials a {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
-    color: rgb(185, 182, 182);
-  }
-  .socials a:hover {
-    background-color: #13151a;
-    color: rgb(185, 182, 182);
-  }
-  .github {
-    padding: 0 5px;
-  }
-  .drive {
-    padding: 0 5px;
+    gap: 10px;
   }
   .subtitle {
     font-size: 18px;
-    text-wrap: balance;
+    text-wrap: pretty;
     line-height: 1.4;
-    color: rgb(185, 182, 182);
+    opacity: 0.85;
+  }
+  a span {
+    opacity: 0.85;
   }
   .subtitle strong {
-    background-image: linear-gradient(rgb(159, 79, 224), rgb(212, 165, 225));
+    background-image: linear-gradient(rgb(255, 238, 0), rgb(252, 246, 119));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -83,7 +74,7 @@ import LinkedIn from "../icons/LinkedIn.astro";
     justify-content: space-between;
     flex-wrap: no-wrap;
     align-items: center;
-
+    gap: 58px;
     padding-top: 100px;
   }
   img {
@@ -91,13 +82,12 @@ import LinkedIn from "../icons/LinkedIn.astro";
     width: auto;
     border-radius: 50%;
     box-shadow: 0 0 50px rgb(0, 0, 0);
+    margin-left: 15px;
   }
   .text-gradient {
-    background-image: var(--accent-gradient);
+    background-image: linear-gradient(rgb(255, 136, 0), rgb(251, 255, 145));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
   }
   @media (max-width: 725px) {
     img {

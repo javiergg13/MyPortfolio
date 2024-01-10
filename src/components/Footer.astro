@@ -1,12 +1,21 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
 <footer>
+  <span class="position">© {currentYear}</span>
   <span>El portfolio de Javier Guerrero hecho con mucho 💖</span>
 </footer>
 
 <style>
   footer {
-    display: flex;
-    justify-content: center;
     margin: 100px 0 30px 0;
-    color: rgb(164, 164, 164);
+    opacity: 0.85;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .position {
+    position: relative;
+    top: 2.5px;
   }
 </style>

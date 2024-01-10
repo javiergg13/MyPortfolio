@@ -1,20 +1,20 @@
 ---
 import Header from "../components/Header.astro";
+// Supports weights 100-900
+import "@fontsource-variable/onest";
 interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props;
+const { description, title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta
-			name="description"
-			content="El portfolio de Javier Guerrero Gallo, un desarrollador web."
-		/>
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
@@ -26,55 +26,41 @@ const { title } = Astro.props;
 	</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		color: rgb(196, 166, 213);
+		font-family: "Onest Variable", system-ui, sans-serif;
+		background: #0e0e0e;
+		color: rgb(235, 235, 235);
 		scroll-behavior: smooth;
 		color-scheme: dark light;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+		background-image: radial-gradient(
+			circle at 50% 200px,
+			#2d2d2d,
+			transparent
+		);
 	}
 	body {
 		margin: 0;
 	}
 	a {
-		color: rgb(171, 156, 182);
+		color: rgb(235, 235, 235);
 		text-decoration: none;
 		transition-property: scale, background-color, color;
 		transition-duration: 0.3s;
 		border-radius: 50px;
 	}
 	a:hover {
-		background-color: #24252a;
-    color: rgb(232 199 255);
 		scale: 1.1;
 	}
 	a:active {
-		scale: 0.8;
+		scale: 0.7;
+	}
+	h2 {
+		display: flex;
+		align-items: center;
+		gap: 12px;
 	}
 	h1 {
-    font-size: 40px;
-    margin: 0;
-  }
+		font-size: 40px;
+		margin: 0;
+	}
 </style>
