@@ -37,6 +37,7 @@ const { description, title } = Astro.props;
 			#2d2d2d,
 			transparent
 		);
+		min-width: 400px;
 	}
 	body {
 		margin: 0;
@@ -62,5 +63,10 @@ const { description, title } = Astro.props;
 	h1 {
 		font-size: 40px;
 		margin: 0;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
 	}
 </style>

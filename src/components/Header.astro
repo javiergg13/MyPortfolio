@@ -74,13 +74,63 @@
     }
     header {
       animation-range: 0 350px;
-      font-size: 18px
+      font-size: 18px;
+    }
+    @keyframes enhance-header {
+      to {
+        background: rgba(48, 48, 48, 0.25);
+        backdrop-filter: blur(15px);
+        font-size: 14px;
+      }
     }
   }
   @media (max-width: 850px) {
     img {
       left: 16px;
       top: 10px;
+    }
+  }
+  @media (max-width: 700px) {
+    img {
+      position: relative;
+      top: 0px;
+      left: 0;
+    }
+    .cabecera {
+      justify-content: space-between;
+    }
+  }
+  @media (max-width: 645px) {
+    .cabecera {
+      font-size: 18px;
+      gap: 0;
+    }
+  }
+  @media (max-width: 582px) {
+    .cabecera {
+      font-size: 16px;
+      gap: 0;
+    }
+    @keyframes enhance-header {
+      to {
+        background: rgba(48, 48, 48, 0.25);
+        backdrop-filter: blur(15px);
+        font-size: 14px;
+      }
+    }
+  }
+  @media (max-width: 540px) {
+    .cabecera {
+      font-size: 14px;
+      gap: 0;
+    }
+  }
+  @media (max-width: 500px) {
+    .cabecera {
+      font-size: 12px;
+    }
+    a {
+      padding: 8px 0px;
     }
   }
 </style>

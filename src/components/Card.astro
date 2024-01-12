@@ -38,13 +38,13 @@ const {
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 0 20px black;
-    background-color: rgba(31, 41, 55, 0.8);
+    background-color: rgba(50, 50, 50, 0.8);
 
     transition-property: scale;
     transition-duration: 0.3s;
 
     display: flex;
-    
+
     flex-direction: column;
     justify-content: space-between;
   }
@@ -58,10 +58,13 @@ const {
     cursor: pointer;
   }
   a:hover {
-    background-color: rgba(50, 50, 50, 0.5);
+    background-color: rgba(40, 40, 40, 0.8);
   }
   h2 {
     margin: 0;
+    background-image: linear-gradient(rgb(255, 136, 0), rgb(251, 255, 145));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   header {
     display: flex;
@@ -70,7 +73,7 @@ const {
   }
   footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   span {
     text-wrap: balance;

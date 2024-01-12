@@ -5,7 +5,7 @@ import Job from "../icons/Job.astro";
 <section id="Experiencia">
   <h2><Job /> Experiencia laboral</h2>
   <ul>
-    <li style="--accent-color:#1f3456">
+    <li style="--accent-color:#143e82">
       <div class="date">Febrero 2023 - Actualidad</div>
       <h3>Grupo CGI (Desarrollador Web)</h3>
       <div class="descr">
@@ -28,7 +28,7 @@ import Job from "../icons/Job.astro";
         </p>
       </div>
     </li>
-    <li style="--accent-color:#e9ac00;padding-top: 125px;">
+    <li style="--accent-color:#7600af;padding-top: 125px;">
       <div class="date">Marzo 2022 - Junio 2022</div>
       <h3>Capgemini (Técnico en prácticas)</h3>
       <div class="descr">
@@ -36,7 +36,7 @@ import Job from "../icons/Job.astro";
           Desarrollos utilizando <strong>Angular</strong> para <strong
             >trabajos reales</strong
           > de <strong>corrección de incidencias</strong> y <strong
-            >nuevos desarrollos</strong
+            >nuevos desarrollos.</strong
           >
         </p>
       </div>
@@ -56,7 +56,10 @@ import Job from "../icons/Job.astro";
       h3 {
         padding: 25px 0 10px 25px;
         margin: 0;
-        font-size: 1.15em;
+        font-size: 1.08em;
+        background-image: linear-gradient(rgb(255, 136, 0), rgb(251, 255, 145));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       .cgi {
         margin-bottom: 60px;
@@ -153,6 +156,11 @@ import Job from "../icons/Job.astro";
         background: var(--bgColor);
         position: relative;
         padding-inline: 1.5rem;
+      }
+      ul li .descr strong {
+        background-image: linear-gradient(rgb(255, 238, 0), rgb(252, 246, 119));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       ul li .title {
         overflow: hidden;
