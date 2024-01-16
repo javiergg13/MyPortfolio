@@ -2,20 +2,20 @@
 import Drive from "../icons/Drive.astro";
 import GitHub from "../icons/GitHub.astro";
 import LinkedIn from "../icons/LinkedIn.astro";
+
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <section id="SobreMi">
   <div>
     <h1>
-      ¡Hola! soy <span class="text-gradient">Javier Guerrero</span>
+      {i18n.ABOUT_ME_TITLE}<span class="text-gradient">{i18n.ABOUT_ME_TITLE_2}</span>
     </h1>
-    <p class="subtitle">
-      <strong>Desarrollador Web</strong> con <strong>+1</strong> año de exeperincia.
-      En mis desarrollos priorizo la <strong>exeperincia de usuario</strong>, el <strong
-        >diseño</strong
-      > y el <strong>rendimiento</strong> del sitio. También me gusta crear <strong
-        >APIs</strong
-      > para nutrir de datos estos desarrollos.
+    <p class="subtitle" >
+      <strong>{i18n.ABOUT_ME_DESCRIPTION_1}</strong>{i18n.ABOUT_ME_DESCRIPTION_2}<strong>{i18n.ABOUT_ME_DESCRIPTION_3}</strong>{i18n.ABOUT_ME_DESCRIPTION_4}<strong>{i18n.ABOUT_ME_DESCRIPTION_5}</strong>{i18n.ABOUT_ME_DESCRIPTION_6}<strong>{i18n.ABOUT_ME_DESCRIPTION_7}</strong>{i18n.ABOUT_ME_DESCRIPTION_8}<strong>{i18n.ABOUT_ME_DESCRIPTION_9}</strong>{i18n.ABOUT_ME_DESCRIPTION_10}<strong>{i18n.ABOUT_ME_DESCRIPTION_11}</strong>{i18n.ABOUT_ME_DESCRIPTION_12}
     </p>
     <section class="socials">
       <a
@@ -30,7 +30,7 @@ import LinkedIn from "../icons/LinkedIn.astro";
         class="drive"
         target="_blank"
         href="https://drive.google.com/file/d/1-dL63MY1Hp_ZtjR8aTFoV46pqRCNB3lw/view?usp=sharing"
-        ><Drive /><span> Mi Curriculum</span></a
+        ><Drive /><span> {i18n.ABOUT_ME_CV}</span></a
       >
     </section>
   </div>
@@ -38,7 +38,7 @@ import LinkedIn from "../icons/LinkedIn.astro";
     <img
       title="Javier Guerrero"
       src="/imgs/yo.webp"
-      alt="Mi imagen de perfil"
+      alt={i18n.ABOUT_ME_IMAGE_DESCRIPTION}
     />
   </div>
 </section>

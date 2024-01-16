@@ -1,20 +1,29 @@
+---
+import { getI18N } from "../i18n/index";
+import LenguagesSelector from './LenguagesSelector.astro';
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
 <header>
   <section class="cabecera">
     <img
       title="Javier Guerrero"
       src="/imgs/yo.webp"
-      alt="Mi imagen de perfil"
+      alt={i18n.ABOUT_ME_IMAGE_DESCRIPTION}
     />
-    <a href="#SobreMi"><span><strong>Sobre mi</strong></span></a>
-    <a href="#Experiencia"><span><strong>Experiencia</strong></span></a>
-    <a href="#Proyectos"><span><strong>Proyectos</strong></span></a>
-    <a href="#Contacto"><span><strong>Contáctame</strong></span></a>
+    <a href="#SobreMi"><span><strong>{i18n.HEADER_TITLE_1}</strong></span></a>
+    <a href="#Experiencia"><span><strong>{i18n.HEADER_TITLE_2}</strong></span></a>
+    <a href="#Proyectos"><span><strong>{i18n.HEADER_TITLE_3}</strong></span></a>
+    <a href="#Contacto"><span><strong>{i18n.HEADER_TITLE_4}</strong></span></a>
+    <LenguagesSelector />
   </section>
 </header>
 
 <style>
   header {
-    font-size: 24px;
+    font-size: 22px;
 
     position: sticky;
     top: 0;

@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SobreMi from "../components/SobreMi.astro";
+import Experiencia from "../components/Experiencia.astro";
+import Proyectos from "../components/Proyectos.astro";
+import Contacto from "../components/Contacto.astro";
+import Footer from "../components/Footer.astro";
+
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<Layout
+  title={i18n.SEO_TITLE}
+  description={i18n.SEO_DESCRIPTION}
+>
+  <main>
+    <SobreMi />
+    <Experiencia />
+    <Proyectos />
+    <Contacto />
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+  }
+  h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+    margin-top: 0;
+  }
+</style>

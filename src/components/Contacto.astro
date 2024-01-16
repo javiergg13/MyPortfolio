@@ -2,28 +2,33 @@
 import Mail from "../icons/Mail.astro";
 import MailForward from "../icons/MailForward.astro";
 import Phone from "../icons/Phone.astro";
+
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <section id="Contacto">
-  <h2><Mail /> Contacto</h2>
+  <h2><Mail /> {i18n.CONTACT_TITLE}</h2>
   <form action="/" method="post">
     <fieldset>
-      <legend>&nbsp;Información personal&nbsp;</legend>
+      <legend>&nbsp;{i18n.CONTACT_FIELDSET_TITLE_1}&nbsp;</legend>
       <label>Nombre: Javier Guerrero Gallo</label>
       <label>Fecha de Nacimiento: 13 de Abril del 2000</label>
       <label>Email: guerrerogallojavier@gmail.com</label>
     </fieldset>
 
     <fieldset>
-      <legend>&nbsp;Información adicional&nbsp;</legend>
+      <legend>&nbsp;{i18n.CONTACT_FIELDSET_TITLE_2}&nbsp;</legend>
       <label>Teléfono de contacto: +34 674 774 983</label>
       <label>Dirección: Pola de Laviana, Asturias, España</label>
     </fieldset>
     <div class="actions">
       <a href="mailto:guerrerogallojavier@gmail.com"
-        >Envíame un correo <MailForward /></a
+        >{i18n.CONTACT_ACTIONS_TITLE_1} <MailForward /></a
       >
-      <a href="tel:+34674774983">Llámame <Phone /></a>
+      <a href="tel:+34674774983">{i18n.CONTACT_ACTIONS_TITLE_2} <Phone /></a>
     </div>
   </form>
 </section>

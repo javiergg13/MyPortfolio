@@ -18,12 +18,17 @@ const {
   image,
   height = 150,
 } = Astro.props;
+
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <div class="card-body" style=`height: ${height}px;`>
   <header>
     <h2>{title}</h2>
-    <a target="_blank" title="Ver código en GitHub" href={gitHubUrl}><Code /></a
+    <a target="_blank" title={i18n.CARD_LINK_TITLE} href={gitHubUrl}><Code /></a
     >
   </header>
   <span>{description}</span>

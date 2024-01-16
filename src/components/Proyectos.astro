@@ -2,11 +2,15 @@
 import Code from "../icons/Code.astro";
 import Card from "./Card.astro";
 
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
 const PROJETCS = [
   {
-    title: "Spotify Clone",
-    description:
-      "Un clon de la página web de spotify, utilizando Astro con React y Svelte para darle interactividad y Tailwind para los estilos.",
+    title: i18n.MY_PROJECTS_TITLE_1,
+    description: i18n.MY_PROJECTS_DESCRIPTION_1,
     tecnologies: [
       {
         name: "Astro",
@@ -30,30 +34,30 @@ const PROJETCS = [
     height: 250,
   },
   {
-    title: "Prueba 2",
-    description: "description",
+    title: i18n.MY_PROJECTS_TITLE_2,
+    description: i18n.MY_PROJECTS_DESCRIPTION_2,
     image: "hrl",
   },
   {
-    title: "Prueba 3",
-    description: "description",
+    title: i18n.MY_PROJECTS_TITLE_3,
+    description: i18n.MY_PROJECTS_DESCRIPTION_3,
     image: "hrl",
   },
   {
-    title: "Prueba 4",
-    description: "description",
+    title: i18n.MY_PROJECTS_TITLE_4,
+    description: i18n.MY_PROJECTS_DESCRIPTION_4,
     image: "hrl",
   },
   {
-    title: "Prueba 5",
-    description: "description",
+    title: i18n.MY_PROJECTS_TITLE_5,
+    description: i18n.MY_PROJECTS_DESCRIPTION_5,
     image: "hrl",
   },
 ];
 ---
 
 <section id="Proyectos">
-  <h2><Code />Proyectos</h2>
+  <h2><Code />{i18n.PROJECTS_TITLE}</h2>
   <div class="proyectos-body">
     {
       PROJETCS.map((project) => (

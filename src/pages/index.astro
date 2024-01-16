@@ -1,35 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import SobreMi from "../components/SobreMi.astro";
-import Experiencia from "../components/Experiencia.astro";
-import Proyectos from "../components/Proyectos.astro";
-import Contacto from "../components/Contacto.astro";
-import Footer from "../components/Footer.astro";
+import App from "../components/App.astro";
 ---
 
-<Layout
-	title="Portfolio de Javier Guerrero - Desarrollador y Programador Web con +1 año de experiencia."
-	description="Puedes contratarme para crear tu aplicación web y móvil. Buscando siempre el mejor balance entre la eficiencia, experiencia de usuario y diseño."
->
-	<main>
-		<SobreMi />
-		<Experiencia />
-		<Proyectos />
-		<Contacto />
-		<Footer />
-	</main>
-</Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-	}
-	h1 {
-		font-size: 36px;
-		margin-bottom: 8px;
-		margin-top: 0;
-	}
-</style>
+<App />

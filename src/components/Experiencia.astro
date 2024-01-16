@@ -1,43 +1,36 @@
 ---
 import Job from "../icons/Job.astro";
+
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <section id="Experiencia">
-  <h2><Job /> Experiencia laboral</h2>
+  <h2><Job /> {i18n.EXPERIENCIE_TITLE}</h2>
   <ul>
     <li style="--accent-color:#143e82">
-      <div class="date">Febrero 2023 - Actualidad</div>
-      <h3>Grupo CGI (Desarrollador Web)</h3>
+      <div class="date">{i18n.EXPERIENCIE_TITLE_1}</div>
+      <h3>{i18n.EXPERIENCIE_SUBTITLE_1}</h3>
       <div class="descr">
         <p>
-          Desarrollo nuevas aplicaciones para uso interno utilizando <strong
-            >React</strong
-          > o
-          <strong>Angular</strong> y <strong>Spring Boot</strong> o <strong
-            >Node.js</strong
-          > según el tipo de aplicación y proyecto.
-        </p>
-
-        <p>
-          <strong>Mantengo</strong> y <strong>actualizo</strong>
-          proyectos ya existentes desarrollados en las tecnologías mencionadas anteriormente.
+          {i18n.EXPERIENCIE_DESCRIPTION_1_1}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_2}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_3}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_4}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_5}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_6}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_7}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_8}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_9}
         </p>
         <p>
-          Modifico <strong>tablas</strong> en <strong>BBDD</strong>
-          para añadir información que se necesite en distintos proyectos.
+          <strong>{i18n.EXPERIENCIE_DESCRIPTION_1_10}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_11}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_12}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_13}
+        </p>
+        <p>
+          {i18n.EXPERIENCIE_DESCRIPTION_1_14}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_15}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_16}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_17}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_18}
         </p>
       </div>
     </li>
     <li style="--accent-color:#7600af;padding-top: 125px;">
-      <div class="date">Marzo 2022 - Junio 2022</div>
-      <h3>Capgemini (Técnico en prácticas)</h3>
+      <div class="date">{i18n.EXPERIENCIE_TITLE_2}</div>
+      <h3>{i18n.EXPERIENCIE_SUBTITLE_2}</h3>
       <div class="descr">
         <p>
-          Desarrollos utilizando <strong>Angular</strong> para <strong
-            >trabajos reales</strong
-          > de <strong>corrección de incidencias</strong> y <strong
-            >nuevos desarrollos.</strong
-          >
+          {i18n.EXPERIENCIE_DESCRIPTION_2_1}<strong>{i18n.EXPERIENCIE_DESCRIPTION_2_2}</strong>{i18n.EXPERIENCIE_DESCRIPTION_2_3}<strong>{i18n.EXPERIENCIE_DESCRIPTION_2_4}</strong>{i18n.EXPERIENCIE_DESCRIPTION_2_5}<strong>{i18n.EXPERIENCIE_DESCRIPTION_2_6}</strong>{i18n.EXPERIENCIE_DESCRIPTION_2_7}<strong>{i18n.EXPERIENCIE_DESCRIPTION_2_8}</strong>{i18n.EXPERIENCIE_DESCRIPTION_2_9}
         </p>
       </div>
     </li>

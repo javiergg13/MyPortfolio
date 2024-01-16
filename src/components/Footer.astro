@@ -1,10 +1,15 @@
 ---
 const currentYear = new Date().getFullYear();
+
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <footer>
   <span class="position">© {currentYear}</span>
-  <span>El portfolio de Javier Guerrero hecho con mucho 💖</span>
+  <span>{i18n.FOOTER_DESCRIPTION}</span>
 </footer>
 
 <style>
