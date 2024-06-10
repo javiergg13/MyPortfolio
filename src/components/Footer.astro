@@ -23,4 +23,14 @@ const i18n = getI18N({ currentLocale });
     position: relative;
     top: 2.5px;
   }
+
+  @media (max-width: 540px) {
+    footer {
+      font-size: 13px;
+      margin-top: 80px;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
 </style>

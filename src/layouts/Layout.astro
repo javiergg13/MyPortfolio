@@ -3,8 +3,8 @@ import Header from "../components/Header.astro";
 // Supports weights 100-900
 import "@fontsource-variable/onest";
 interface Props {
-	title: string;
-	description: string;
+  title: string;
+  description: string;
 }
 
 const { description, title } = Astro.props;
@@ -13,60 +13,60 @@ const { currentLocale } = Astro;
 
 <!doctype html>
 <html lang={currentLocale}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
-	</head>
-	<body>
-		<Header />
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+  </body>
 </html>
 <style is:global>
-	html {
-		font-family: "Onest Variable", system-ui, sans-serif;
-		background: #0e0e0e;
-		color: rgb(235, 235, 235);
-		scroll-behavior: smooth;
-		color-scheme: dark light;
-		background-image: radial-gradient(
-			circle at 50% 200px,
-			#2d2d2d,
-			transparent
-		);
-		min-width: 400px;
-	}
-	body {
-		margin: 0;
-	}
-	a {
-		color: rgb(235, 235, 235);
-		text-decoration: none;
-		transition-property: scale, background-color, color;
-		transition-duration: 0.3s;
-		border-radius: 50px;
-	}
-	a:hover {
-		scale: 1.1;
-	}
-	a:active {
-		scale: 0.7;
-	}
-	h2 {
-		display: flex;
-		align-items: center;
-		gap: 12px;
-	}
-	h1 {
-		font-size: 40px;
-		margin: 0;
-	}
-	@media (prefers-reduced-motion: reduce) {
-		html {
-			scroll-behavior: auto;
-		}
-	}
+  html {
+    font-family: "Onest Variable", system-ui, sans-serif;
+    background: #0e0e0e;
+    color: rgb(235, 235, 235);
+    scroll-behavior: smooth;
+    color-scheme: dark light;
+    background-image: radial-gradient(
+      circle at 50% 200px,
+      #2d2d2d,
+      transparent
+    );
+    min-width: 515px;
+  }
+  body {
+    margin: 0;
+  }
+  a {
+    color: rgb(235, 235, 235);
+    text-decoration: none;
+    transition-property: scale, background-color, color;
+    transition-duration: 0.3s;
+    border-radius: 50px;
+  }
+  a:hover {
+    scale: 1.1;
+  }
+  a:active {
+    scale: 0.7;
+  }
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  h1 {
+    font-size: 40px;
+    margin: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 </style>

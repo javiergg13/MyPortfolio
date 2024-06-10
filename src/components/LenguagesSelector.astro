@@ -36,12 +36,12 @@ const LOCALES: Record<
 
 const currentLocaleData = LOCALES[currentLocale];
 const otherLocales = Object.values(LOCALES).filter(
-  (locale) => locale.code !== currentLocale,
+  (locale) => locale.code !== currentLocale
 );
 const currentPath = url.pathname.replace(currentLocaleData.href, "");
 ---
 
-<div class="relative inline-block text-left">
+<div class="relative inline-block text-left xs:pt-4">
   <div
     class="group text-white rounded-md text-xs font-semibold bg-black/30 hover:bg-black/70 transition-all"
   >

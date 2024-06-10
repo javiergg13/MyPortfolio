@@ -1,6 +1,6 @@
 ---
 import { getI18N } from "../i18n/index";
-import LenguagesSelector from './LenguagesSelector.astro';
+import LenguagesSelector from "./LenguagesSelector.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -14,9 +14,12 @@ const i18n = getI18N({ currentLocale });
       alt={i18n.ABOUT_ME_IMAGE_DESCRIPTION}
     />
     <a href="#SobreMi"><span><strong>{i18n.HEADER_TITLE_1}</strong></span></a>
-    <a href="#Experiencia"><span><strong>{i18n.HEADER_TITLE_2}</strong></span></a>
+    <a href="#Experiencia"
+      ><span><strong>{i18n.HEADER_TITLE_2}</strong></span></a
+    >
     <a href="#Proyectos"><span><strong>{i18n.HEADER_TITLE_3}</strong></span></a>
     <a href="#Contacto"><span><strong>{i18n.HEADER_TITLE_4}</strong></span></a>
+    <LenguagesSelector />
   </section>
 </header>
 
@@ -108,13 +111,13 @@ const i18n = getI18N({ currentLocale });
       justify-content: space-between;
     }
   }
-  @media (max-width: 645px) {
+  @media (max-width: 654px) {
     .cabecera {
       font-size: 18px;
       gap: 0;
     }
   }
-  @media (max-width: 582px) {
+  @media (max-width: 590px) {
     .cabecera {
       font-size: 16px;
       gap: 0;
@@ -127,18 +130,10 @@ const i18n = getI18N({ currentLocale });
       }
     }
   }
-  @media (max-width: 540px) {
+  @media (max-width: 552px) {
     .cabecera {
       font-size: 14px;
       gap: 0;
-    }
-  }
-  @media (max-width: 500px) {
-    .cabecera {
-      font-size: 12px;
-    }
-    a {
-      padding: 8px 0px;
     }
   }
 </style>

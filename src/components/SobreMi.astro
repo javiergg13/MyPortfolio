@@ -12,10 +12,24 @@ const i18n = getI18N({ currentLocale });
 <section id="SobreMi">
   <div>
     <h1>
-      {i18n.ABOUT_ME_TITLE}<span class="text-gradient">{i18n.ABOUT_ME_TITLE_2}</span>
+      {i18n.ABOUT_ME_TITLE}<span class="text-gradient"
+        >{i18n.ABOUT_ME_TITLE_2}</span
+      >
     </h1>
-    <p class="subtitle" >
-      <strong>{i18n.ABOUT_ME_DESCRIPTION_1}</strong>{i18n.ABOUT_ME_DESCRIPTION_2}<strong>{i18n.ABOUT_ME_DESCRIPTION_3}</strong>{i18n.ABOUT_ME_DESCRIPTION_4}<strong>{i18n.ABOUT_ME_DESCRIPTION_5}</strong>{i18n.ABOUT_ME_DESCRIPTION_6}<strong>{i18n.ABOUT_ME_DESCRIPTION_7}</strong>{i18n.ABOUT_ME_DESCRIPTION_8}<strong>{i18n.ABOUT_ME_DESCRIPTION_9}</strong>{i18n.ABOUT_ME_DESCRIPTION_10}<strong>{i18n.ABOUT_ME_DESCRIPTION_11}</strong>{i18n.ABOUT_ME_DESCRIPTION_12}
+    <p class="subtitle">
+      <strong>{i18n.ABOUT_ME_DESCRIPTION_1}</strong>{
+        i18n.ABOUT_ME_DESCRIPTION_2
+      }<strong>{i18n.ABOUT_ME_DESCRIPTION_3}</strong>{
+        i18n.ABOUT_ME_DESCRIPTION_4
+      }<strong>{i18n.ABOUT_ME_DESCRIPTION_5}</strong>{
+        i18n.ABOUT_ME_DESCRIPTION_6
+      }<strong>{i18n.ABOUT_ME_DESCRIPTION_7}</strong>{
+        i18n.ABOUT_ME_DESCRIPTION_8
+      }<strong>{i18n.ABOUT_ME_DESCRIPTION_9}</strong>{
+        i18n.ABOUT_ME_DESCRIPTION_10
+      }<strong>{i18n.ABOUT_ME_DESCRIPTION_11}</strong>{
+        i18n.ABOUT_ME_DESCRIPTION_12
+      }
     </p>
     <section class="socials">
       <a
@@ -83,6 +97,7 @@ const i18n = getI18N({ currentLocale });
     border-radius: 50%;
     box-shadow: 0 0 50px rgb(0, 0, 0);
     margin-left: 15px;
+    max-width: fit-content;
   }
   .text-gradient {
     background-image: linear-gradient(rgb(255, 136, 0), rgb(251, 255, 145));
@@ -95,6 +110,11 @@ const i18n = getI18N({ currentLocale });
     }
     #SobreMi {
       padding-top: 50px;
+
+      display: block;
+    }
+    .socials {
+      font-size: 13px;
     }
   }
 </style>

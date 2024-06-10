@@ -15,13 +15,29 @@ const i18n = getI18N({ currentLocale });
       <h3>{i18n.EXPERIENCIE_SUBTITLE_1}</h3>
       <div class="descr">
         <p>
-          {i18n.EXPERIENCIE_DESCRIPTION_1_1}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_2}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_3}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_4}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_5}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_6}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_7}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_8}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_9}
+          {i18n.EXPERIENCIE_DESCRIPTION_1_1}<strong
+            >{i18n.EXPERIENCIE_DESCRIPTION_1_2}</strong
+          >{i18n.EXPERIENCIE_DESCRIPTION_1_3}<strong
+            >{i18n.EXPERIENCIE_DESCRIPTION_1_4}</strong
+          >{i18n.EXPERIENCIE_DESCRIPTION_1_5}<strong
+            >{i18n.EXPERIENCIE_DESCRIPTION_1_6}</strong
+          >{i18n.EXPERIENCIE_DESCRIPTION_1_7}<strong
+            >{i18n.EXPERIENCIE_DESCRIPTION_1_8}</strong
+          >{i18n.EXPERIENCIE_DESCRIPTION_1_9}
         </p>
         <p>
-          <strong>{i18n.EXPERIENCIE_DESCRIPTION_1_10}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_11}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_12}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_13}
+          <strong>{i18n.EXPERIENCIE_DESCRIPTION_1_10}</strong>{
+            i18n.EXPERIENCIE_DESCRIPTION_1_11
+          }<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_12}</strong>{
+            i18n.EXPERIENCIE_DESCRIPTION_1_13
+          }
         </p>
         <p>
-          {i18n.EXPERIENCIE_DESCRIPTION_1_14}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_15}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_16}<strong>{i18n.EXPERIENCIE_DESCRIPTION_1_17}</strong>{i18n.EXPERIENCIE_DESCRIPTION_1_18}
+          {i18n.EXPERIENCIE_DESCRIPTION_1_14}<strong
+            >{i18n.EXPERIENCIE_DESCRIPTION_1_15}</strong
+          >{i18n.EXPERIENCIE_DESCRIPTION_1_16}<strong
+            >{i18n.EXPERIENCIE_DESCRIPTION_1_17}</strong
+          >{i18n.EXPERIENCIE_DESCRIPTION_1_18}
         </p>
       </div>
     </li>
@@ -30,7 +46,15 @@ const i18n = getI18N({ currentLocale });
       <h3>{i18n.EXPERIENCIE_SUBTITLE_2}</h3>
       <div class="descr">
         <p>
-          {i18n.EXPERIENCIE_DESCRIPTION_2_1}<strong>{i18n.EXPERIENCIE_DESCRIPTION_2_2}</strong>{i18n.EXPERIENCIE_DESCRIPTION_2_3}<strong>{i18n.EXPERIENCIE_DESCRIPTION_2_4}</strong>{i18n.EXPERIENCIE_DESCRIPTION_2_5}<strong>{i18n.EXPERIENCIE_DESCRIPTION_2_6}</strong>{i18n.EXPERIENCIE_DESCRIPTION_2_7}<strong>{i18n.EXPERIENCIE_DESCRIPTION_2_8}</strong>{i18n.EXPERIENCIE_DESCRIPTION_2_9}
+          {i18n.EXPERIENCIE_DESCRIPTION_2_1}<strong
+            >{i18n.EXPERIENCIE_DESCRIPTION_2_2}</strong
+          >{i18n.EXPERIENCIE_DESCRIPTION_2_3}<strong
+            >{i18n.EXPERIENCIE_DESCRIPTION_2_4}</strong
+          >{i18n.EXPERIENCIE_DESCRIPTION_2_5}<strong
+            >{i18n.EXPERIENCIE_DESCRIPTION_2_6}</strong
+          >{i18n.EXPERIENCIE_DESCRIPTION_2_7}<strong
+            >{i18n.EXPERIENCIE_DESCRIPTION_2_8}</strong
+          >{i18n.EXPERIENCIE_DESCRIPTION_2_9}
         </p>
       </div>
     </li>
@@ -202,7 +226,6 @@ const i18n = getI18N({ currentLocale });
         ul li:nth-child(even) {
           grid-column: 3;
         }
-
         /* start second card */
         ul li:nth-child(2) {
           grid-row: 2/4;
@@ -219,6 +242,16 @@ const i18n = getI18N({ currentLocale });
         }
         ul li:nth-child(odd) .date {
           border-radius: 0 calc(var(--dateH) / 2) calc(var(--dateH) / 2) 0;
+        }
+      }
+      @media (max-width: 540px) {
+        h3 {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+
+        .descr {
+          padding-inline: 0 !important;
         }
       }
     </style>

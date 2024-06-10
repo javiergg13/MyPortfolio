@@ -14,15 +14,19 @@ const i18n = getI18N({ currentLocale });
   <form action="/" method="post">
     <fieldset>
       <legend>&nbsp;{i18n.CONTACT_FIELDSET_TITLE_1}&nbsp;</legend>
-      <label>Nombre: Javier Guerrero Gallo</label>
-      <label>Fecha de Nacimiento: 13 de Abril del 2000</label>
-      <label>Email: guerrerogallojavier@gmail.com</label>
+      <label>{i18n.CONTACT_FIELDSET_LABEL_1}Javier Guerrero Gallo</label>
+      <label>{i18n.CONTACT_FIELDSET_LABEL_2}13 de Abril del 2000</label>
+      <label>{i18n.CONTACT_FIELDSET_LABEL_3}guerrerogallojavier@gmail.com</label
+      >
     </fieldset>
 
     <fieldset>
       <legend>&nbsp;{i18n.CONTACT_FIELDSET_TITLE_2}&nbsp;</legend>
-      <label>Teléfono de contacto: +34 674 774 983</label>
-      <label>Dirección: Pola de Laviana, Asturias, España</label>
+      <label>{i18n.CONTACT_FIELDSET_ADITIONAL_LABEL_1}+34 674 774 983</label>
+      <label
+        >{i18n.CONTACT_FIELDSET_ADITIONAL_LABEL_2}Pola de Laviana, Asturias,
+        España</label
+      >
     </fieldset>
     <div class="actions">
       <a href="mailto:guerrerogallojavier@gmail.com"
@@ -51,6 +55,8 @@ const i18n = getI18N({ currentLocale });
     display: flex;
     flex-direction: column;
     border-radius: 5px;
+
+    border-width: medium;
   }
   label {
     margin: 10px;

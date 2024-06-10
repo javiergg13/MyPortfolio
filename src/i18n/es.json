@@ -68,7 +68,13 @@
   "CARD_LINK_TITLE": "Ver código en GitHub",
   "CONTACT_TITLE": "Contacto",
   "CONTACT_FIELDSET_TITLE_1": "Información personal",
+  "CONTACT_FIELDSET_LABEL_1": "Nombre: ",
+  "CONTACT_FIELDSET_LABEL_2": "Fecha de nacimiento: ",
+  "CONTACT_FIELDSET_LABEL_3": "Email: ",
   "CONTACT_FIELDSET_TITLE_2": "Información adicional",
+  "CONTACT_FIELDSET_ADITIONAL_LABEL_1": "Teléfono de contacto: ",
+  "CONTACT_FIELDSET_ADITIONAL_LABEL_2": "Dirección: ",
   "CONTACT_ACTIONS_TITLE_1": "Enviame un correo",
   "CONTACT_ACTIONS_TITLE_2": "Llámame"
+
 }
