@@ -19,7 +19,7 @@
   "ABOUT_ME_IMAGE_DESCRIPTION": "My profile picture",
   "PROJECTS_TITLE": "Projects",
   "MY_PROJECTS_TITLE_1": "Spotify Clone",
-  "MY_PROJECTS_DESCRIPTION_1": "A clone of the Spotify website, using Astro with React and Svelte for interactivity and Tailwind for styles.",
+  "MY_PROJECTS_DESCRIPTION_1": "A clone of the Spotify website, using Astro with React and Svelte for interactivity, Tailwind for styles and the View Transitions API.",
   "MY_PROJECTS_TITLE_2": "Title 2",
   "MY_PROJECTS_DESCRIPTION_2": "Description",
   "MY_PROJECTS_TITLE_3": "Title 3",

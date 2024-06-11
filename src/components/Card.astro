@@ -25,20 +25,29 @@ const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
-<div class="card-body" style=`height: ${height}px;`>
+<div class="card" style=`height: ${height}px;`>
   <header>
     <h2>{title}</h2>
     <a target="_blank" title={i18n.CARD_LINK_TITLE} href={gitHubUrl}><Code /></a
     >
   </header>
-  <span>{description}</span>
+  <div class="card-body">
+    <span class="description">{description}</span>
+    <img
+      id="image"
+      title="Spotify Clone"
+      src={image}
+      alt="Spotify Clone"
+      onclick=""
+    />
+  </div>
   <footer>
     {tecnologies?.map((tecnology) => <span>{tecnology.name}</span>)}
   </footer>
 </div>
 
 <style>
-  .card-body {
+  .card {
     border: 2px solid black;
     border-radius: 10px;
     padding: 10px;
@@ -53,8 +62,22 @@ const i18n = getI18N({ currentLocale });
     flex-direction: column;
     justify-content: space-between;
   }
-  .card-body:hover {
+  img:hover {
     scale: 1.05;
+  }
+  img {
+    width: 40%;
+    border-radius: 5px;
+
+    transition-property: all;
+    transition-duration: 0.3s;
+
+    cursor: pointer;
+  }
+  .card-body {
+    display: flex;
+    align-items: center;
+    opacity: 0.8;
   }
   a {
     border-radius: 50%;
@@ -80,7 +103,39 @@ const i18n = getI18N({ currentLocale });
     display: flex;
     justify-content: space-around;
   }
-  span {
+  .description {
     text-wrap: balance;
+    padding-left: 15px;
+  }
+  @media (max-width: 730px) {
+    .card-body {
+      max-width: 80%;
+      flex-direction: column;
+    }
+  }
+  .fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    object-fit: contain;
+    background-color: black;
+    padding: 10%;
+  }
+  .fullscreen:hover {
+    scale: 1;
   }
 </style>
+
+<script>
+  // Find all buttons with the `alert` class on the page.
+  const image = document.getElementById("image");
+
+  // Handle clicks on each button.
+
+  image?.addEventListener("click", () => {
+    image.classList.toggle("fullscreen");
+  });
+</script>
