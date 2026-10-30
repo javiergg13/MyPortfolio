@@ -36,7 +36,12 @@ const i18n = getI18N({ currentLocale });
     z-index: 10;
     min-height: 71.2px;
 
-    animation: enhance-header linear both;
+    /* Longhands: Lightning CSS no debe fusionar animation-timeline en el
+       shorthand de animation, porque Chrome no lo interpreta. */
+    animation-name: enhance-header;
+    animation-duration: auto;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
     animation-timeline: scroll(root);
     animation-range: 0 300px;
   }
@@ -46,7 +51,10 @@ const i18n = getI18N({ currentLocale });
     opacity: 0;
     box-shadow: 0 0 10px black;
 
-    animation: enhance-img linear both;
+    animation-name: enhance-img;
+    animation-duration: auto;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
     animation-timeline: scroll(root);
     animation-range: 0 450px;
     position: absolute;
