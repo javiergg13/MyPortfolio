@@ -1,15 +1,16 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import Header from "../components/Header.astro";
+import { ClientRouter } from "astro:transitions"
+import Header from "../components/Header.astro"
+import "../styles/global.css"
 // Supports weights 100-900
-import "@fontsource-variable/onest";
+import "@fontsource-variable/onest"
 interface Props {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
-const { description, title } = Astro.props;
-const { currentLocale } = Astro;
+const { description, title } = Astro.props
+const { currentLocale } = Astro
 ---
 
 <!doctype html>
@@ -20,7 +21,7 @@ const { currentLocale } = Astro;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    <ViewTransitions fallback="none" />
+    <ClientRouter fallback="none" />
   </head>
   <body>
     <Header />
