@@ -2,43 +2,33 @@
 import SpainFlag from "../flags/Spain.astro";
 import EnglandFlag from "../flags/England.astro";
 import ChevronIcon from "../icons/Chevron.astro";
+import { getLocale, getLocalePath, type Locale } from "../i18n/index";
 
 const { currentLocale = "es", url } = Astro;
-
-const pathname = url.pathname;
-
-let restUrl;
-
-if (pathname.startsWith("/en")) {
-  const segments = pathname.split("/").slice(2);
-  restUrl = "/" + segments.join("/").replace(/\/+$/, "");
-} else {
-  restUrl = pathname.replace(/\/+$/, "");
-}
+const locale = getLocale(currentLocale);
 
 const LOCALES: Record<
-  string,
-  { code: string; name: string; href: string; flag: typeof SpainFlag }
+  Locale,
+  { code: Locale; name: string; href: string; flag: typeof SpainFlag }
 > = {
   en: {
     code: "en",
-    href: `/en${restUrl}`,
+    href: getLocalePath("en", url.pathname),
     name: "English",
     flag: EnglandFlag,
   },
   es: {
     code: "es",
-    href: restUrl,
+    href: getLocalePath("es", url.pathname),
     name: "Español",
     flag: SpainFlag,
   },
 };
 
-const currentLocaleData = LOCALES[currentLocale];
+const currentLocaleData = LOCALES[locale];
 const otherLocales = Object.values(LOCALES).filter(
-  (locale) => locale.code !== currentLocale
+  (localeData) => localeData.code !== locale
 );
-const currentPath = url.pathname.replace(currentLocaleData.href, "");
 ---
 
 <div class="relative inline-block text-left xs:pt-4">
@@ -59,14 +49,16 @@ const currentPath = url.pathname.replace(currentLocaleData.href, "");
       class="group-hover:block hidden pt-0.5 absolute w-full"
     >
       {
-        otherLocales.map((locale) => (
+        otherLocales.map((localeData) => (
           <li class="">
             <a
               class="rounded-md bg-black/30 hover:bg-black/70 whitespace-nowrap inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
-              href={`${locale.href}${currentPath}`}
+              href={localeData.href}
+              hreflang={localeData.code}
+              lang={localeData.code}
             >
-              <locale.flag />
-              {locale.name}
+              <localeData.flag />
+              {localeData.name}
             </a>
           </li>
         ))

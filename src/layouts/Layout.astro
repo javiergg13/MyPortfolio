@@ -1,25 +1,78 @@
 ---
 import { ClientRouter } from "astro:transitions"
 import Header from "../components/Header.astro"
+import StructuredData from "../components/StructuredData.astro"
+import { getI18N, getLocale, getLocalePath } from "../i18n/index"
+import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "../consts"
 import "../styles/global.css"
 
 interface Props {
   title: string
   description: string
+  image?: string
 }
 
-const { description, title } = Astro.props
 const { currentLocale } = Astro
+const locale = getLocale(currentLocale)
+const i18n = getI18N({ currentLocale })
+const defaultImage =
+  locale === "en" ? "/imgs/og-image-en.jpg" : "/imgs/og-image.jpg"
+const { description, title, image = defaultImage } = Astro.props
+
+const canonicalPath = getLocalePath(locale, Astro.url.pathname)
+const canonical = new URL(canonicalPath, SITE_URL).href
+const spanishUrl = new URL(
+  getLocalePath("es", Astro.url.pathname),
+  SITE_URL
+).href
+const englishUrl = new URL(
+  getLocalePath("en", Astro.url.pathname),
+  SITE_URL
+).href
+const ogImage = new URL(image, SITE_URL).href
+const ogLocale = locale === "en" ? "en_US" : "es_ES"
+const ogLocaleAlternate = locale === "en" ? "es_ES" : "en_US"
 ---
 
 <!doctype html>
-<html lang={currentLocale}>
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={AUTHOR_NAME} />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={spanishUrl} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="x-default" href={spanishUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0e0e0e" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={i18n.OG_IMAGE_ALT} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogLocaleAlternate} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={i18n.OG_IMAGE_ALT} />
+
+    <StructuredData canonical={canonical} />
     <ClientRouter fallback="none" />
   </head>
   <body>

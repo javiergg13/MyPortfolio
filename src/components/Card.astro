@@ -4,10 +4,13 @@ import Code from "../icons/Code.astro";
 interface Props {
   title: string;
   description: string;
-  gitHubUrl: string | undefined;
-  tecnologies: { name: string; url: string }[] | undefined;
+  gitHubUrl?: string;
+  tecnologies?: { name: string; url: string }[];
   image: string;
-  height: number | undefined;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  height?: number;
 }
 
 const {
@@ -16,6 +19,9 @@ const {
   gitHubUrl = "https://github.com/javiergg13",
   tecnologies,
   image,
+  imageAlt = title,
+  imageWidth = 800,
+  imageHeight = 384,
   height = 150,
 } = Astro.props;
 
@@ -27,18 +33,26 @@ const i18n = getI18N({ currentLocale });
 
 <div class="card" style=`height: ${height}px;`>
   <header>
-    <h2>{title}</h2>
-    <a target="_blank" title={i18n.CARD_LINK_TITLE} href={gitHubUrl}><Code /></a
+    <h3>{title}</h3>
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={i18n.CARD_LINK_TITLE}
+      title={i18n.CARD_LINK_TITLE}
+      href={gitHubUrl}
+      ><Code /><span class="sr-only">{i18n.CARD_LINK_TITLE}</span></a
     >
   </header>
   <div class="card-body">
     <span class="description">{description}</span>
     <img
-      id="image"
-      title="Spotify Clone"
+      class="project-image"
       src={image}
-      alt="Spotify Clone"
-      onclick=""
+      alt={imageAlt}
+      width={imageWidth}
+      height={imageHeight}
+      loading="lazy"
+      decoding="async"
     />
   </div>
   <footer>
@@ -62,11 +76,12 @@ const i18n = getI18N({ currentLocale });
     flex-direction: column;
     justify-content: space-between;
   }
-  img:hover {
+  .project-image:hover {
     scale: 1.05;
   }
-  img {
+  .project-image {
     width: 40%;
+    height: auto;
     border-radius: 5px;
 
     transition-property: all;
@@ -88,7 +103,7 @@ const i18n = getI18N({ currentLocale });
   a:hover {
     background-color: rgba(40, 40, 40, 0.8);
   }
-  h2 {
+  h3 {
     margin: 0;
     background-image: linear-gradient(rgb(255, 136, 0), rgb(251, 255, 145));
     -webkit-background-clip: text;
@@ -130,12 +145,11 @@ const i18n = getI18N({ currentLocale });
 </style>
 
 <script>
-  // Find all buttons with the `alert` class on the page.
-  const image = document.getElementById("image");
+  const images = document.querySelectorAll<HTMLImageElement>(".project-image");
 
-  // Handle clicks on each button.
-
-  image?.addEventListener("click", () => {
-    image.classList.toggle("fullscreen");
+  images.forEach((image) => {
+    image.addEventListener("click", () => {
+      image.classList.toggle("fullscreen");
+    });
   });
 </script>

@@ -34,15 +34,21 @@ const i18n = getI18N({ currentLocale });
     <section class="socials">
       <a
         target="_blank"
+        rel="noopener noreferrer"
         href="https://www.linkedin.com/in/javier-guerrero-gallo-3989b9228/"
         ><LinkedIn /><span> LinkedIn</span></a
       >
-      <a class="github" target="_blank" href="https://github.com/javiergg13"
+      <a
+        class="github"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/javiergg13"
         ><GitHub /><span> GitHub</span></a
       >
       <a
         class="drive"
         target="_blank"
+        rel="noopener noreferrer"
         href="https://drive.google.com/file/d/1-dL63MY1Hp_ZtjR8aTFoV46pqRCNB3lw/view?usp=sharing"
         ><Drive /><span> {i18n.ABOUT_ME_CV}</span></a
       >
@@ -50,9 +56,13 @@ const i18n = getI18N({ currentLocale });
   </div>
   <div class="img-container">
     <img
-      title="Javier Guerrero"
-      src="/imgs/javiGuerrero.jpg"
+      src="/imgs/javier-guerrero.webp"
       alt={i18n.ABOUT_ME_IMAGE_DESCRIPTION}
+      width="500"
+      height="502"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
     />
   </div>
 </section>

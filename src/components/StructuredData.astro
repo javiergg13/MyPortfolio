@@ -1,0 +1,102 @@
+---
+import { getI18N, getLocale } from "../i18n/index";
+import {
+  AUTHOR_ALTERNATE_NAME,
+  AUTHOR_NAME,
+  SITE_NAME,
+  SITE_URL,
+  SOCIAL_PROFILES,
+} from "../consts";
+
+interface Props {
+  canonical: string;
+}
+
+const { canonical } = Astro.props;
+const { currentLocale } = Astro;
+const locale = getLocale(currentLocale);
+const i18n = getI18N({ currentLocale });
+
+const siteRoot = new URL("/", SITE_URL).href;
+const personId = `${siteRoot}#person`;
+const websiteId = `${siteRoot}#website`;
+const language = locale === "en" ? "en-US" : "es-ES";
+const image = new URL("/imgs/javier-guerrero.webp", SITE_URL).href;
+
+const knowsAbout =
+  locale === "en"
+    ? [
+        "Web development",
+        "Full stack development",
+        "React",
+        "Angular",
+        "Astro",
+        "Node.js",
+        "Spring Boot",
+        "REST APIs",
+      ]
+    : [
+        "Desarrollo web",
+        "Desarrollo full stack",
+        "React",
+        "Angular",
+        "Astro",
+        "Node.js",
+        "Spring Boot",
+        "APIs REST",
+      ];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: siteRoot,
+      name: SITE_NAME,
+      inLanguage: language,
+      publisher: { "@id": personId },
+    },
+    {
+      "@type": "Person",
+      "@id": personId,
+      name: AUTHOR_NAME,
+      alternateName: AUTHOR_ALTERNATE_NAME,
+      url: siteRoot,
+      image,
+      jobTitle: i18n.ABOUT_ME_DESCRIPTION_1,
+      description: i18n.SEO_DESCRIPTION,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Pola de Laviana",
+        addressRegion: "Asturias",
+        addressCountry: "ES",
+      },
+      worksFor: {
+        "@type": "Organization",
+        name: "Grupo CGI",
+      },
+      knowsLanguage: ["es", "en"],
+      knowsAbout,
+      sameAs: SOCIAL_PROFILES,
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${canonical}#profilepage`,
+      url: canonical,
+      name: i18n.SEO_TITLE,
+      description: i18n.SEO_DESCRIPTION,
+      inLanguage: language,
+      isPartOf: { "@id": websiteId },
+      about: { "@id": personId },
+      mainEntity: { "@id": personId },
+    },
+  ],
+};
+---
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(structuredData)}
+></script>

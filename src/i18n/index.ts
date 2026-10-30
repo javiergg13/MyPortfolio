@@ -4,6 +4,24 @@ import spanish from './es.json'
 const LANGUAGES = {
   ENGLISH: 'en',
   SPANISH: 'es'
+} as const
+
+export type Locale = (typeof LANGUAGES)[keyof typeof LANGUAGES]
+
+export const getLocale = (currentLocale: string | undefined): Locale =>
+  currentLocale === LANGUAGES.ENGLISH ? LANGUAGES.ENGLISH : LANGUAGES.SPANISH
+
+export const getLocalePath = (locale: Locale, pathname: string): string => {
+  const pathWithoutLocale = pathname.replace(/^\/en(?=\/|$)/, '') || '/'
+  const normalizedPath = pathWithoutLocale.endsWith('/')
+    ? pathWithoutLocale
+    : `${pathWithoutLocale}/`
+
+  if (locale === LANGUAGES.ENGLISH) {
+    return normalizedPath === '/' ? '/en/' : `/en${normalizedPath}`
+  }
+
+  return normalizedPath
 }
 
 export const getI18N = ({

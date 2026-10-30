@@ -29,7 +29,10 @@ const PROJETCS = [
         url: "url",
       },
     ],
-    image: "/imgs/spotify-clone.png",
+    image: "/imgs/spotify-clone-card.webp",
+    imageAlt: i18n.MY_PROJECTS_IMAGE_ALT_1,
+    imageWidth: 800,
+    imageHeight: 384,
     gitHubUrl: "https://github.com/javiergg13/spotify-clone",
     height: 250,
   },
@@ -68,6 +71,9 @@ const PROJETCS = [
           tecnologies={project.tecnologies}
           height={project?.height}
           image={project.image}
+          imageAlt={project.imageAlt}
+          imageWidth={project.imageWidth}
+          imageHeight={project.imageHeight}
         />
       ))
     }
