@@ -13,7 +13,7 @@ Sitio estático, bilingüe (ES / EN), con tema claro y oscuro, rápido, accesibl
 
 🔗 **[Ver el portafolio en vivo](https://javierguerrero-pf.netlify.app)**
 
-![Vista previa del portafolio](./public/imgs/og-image.jpg)
+![Vista previa del portfolio](./public/imgs/og-image.jpg)
 
 </div>
 
