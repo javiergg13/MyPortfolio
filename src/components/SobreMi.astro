@@ -157,24 +157,22 @@ const locale = getLocale(currentLocale);
       .replace("{size}", `<b>${size}</b>`);
   };
 
-  const measure = () => {
+  // Bytes transferidos por los recursos que empezaron a descargarse desde `from`.
+  const bytesSince = (from: number) =>
+    (performance.getEntriesByType("resource") as PerformanceResourceTiming[])
+      .filter((r) => r.startTime >= from)
+      .reduce((sum, r) => sum + (r.transferSize ?? 0), 0);
+
+  let frame = 0;
+
+  const show = (loadMs: number, bytes: number) => {
     const el = document.querySelector<HTMLElement>(".perf");
     if (!el) return;
-
-    const [nav] = performance.getEntriesByType(
-      "navigation"
-    ) as PerformanceNavigationTiming[];
-    if (!nav || nav.loadEventEnd <= 0) return;
+    cancelAnimationFrame(frame);
 
     const locale = el.dataset.locale ?? "es";
-    const resources = performance.getEntriesByType(
-      "resource"
-    ) as PerformanceResourceTiming[];
-    const bytes =
-      (nav.transferSize ?? 0) +
-      resources.reduce((sum, r) => sum + (r.transferSize ?? 0), 0);
-    const loadMs = nav.loadEventEnd;
-    const cached = bytes === 0;
+    // Por debajo de 1 KB solo viajan cabeceras: el contenido salió de la caché.
+    const cached = bytes < 1024;
     const template = (cached ? el.dataset.textCached : el.dataset.text) ?? "";
 
     el.hidden = false;
@@ -199,14 +197,37 @@ const locale = getLocale(currentLocale);
         formatTime(loadMs * eased, locale),
         formatSize(bytes * eased, locale)
       );
-      if (t < 1) requestAnimationFrame(tick);
+      if (t < 1) frame = requestAnimationFrame(tick);
     };
-    requestAnimationFrame(tick);
+    frame = requestAnimationFrame(tick);
   };
 
+  // Carga completa: el documento más los recursos de esta carga.
   // loadEventEnd solo existe cuando el evento load ha terminado.
-  const run = () => setTimeout(measure, 0);
-  if (document.readyState === "complete") run();
-  else window.addEventListener("load", run, { once: true });
-  document.addEventListener("astro:after-swap", run);
+  const measureFullLoad = () => {
+    const [nav] = performance.getEntriesByType(
+      "navigation"
+    ) as PerformanceNavigationTiming[];
+    if (!nav || nav.loadEventEnd <= 0) return;
+    show(nav.loadEventEnd, (nav.transferSize ?? 0) + bytesSince(0));
+  };
+
+  if (document.readyState === "complete") setTimeout(measureFullLoad, 0);
+  else
+    window.addEventListener("load", () => setTimeout(measureFullLoad, 0), {
+      once: true,
+    });
+
+  // Navegaciones de ClientRouter (p. ej. cambiar de idioma): la página no se
+  // recarga, así que solo se mide lo descargado desde que empezó la navegación.
+  let softStart: number | null = null;
+  document.addEventListener("astro:before-preparation", () => {
+    softStart = performance.now();
+  });
+  document.addEventListener("astro:page-load", () => {
+    if (softStart === null) return;
+    const from = softStart;
+    softStart = null;
+    show(performance.now() - from, bytesSince(from));
+  });
 </script>
