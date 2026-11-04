@@ -2,129 +2,211 @@
 import Drive from "../icons/Drive.astro";
 import GitHub from "../icons/GitHub.astro";
 import LinkedIn from "../icons/LinkedIn.astro";
-
-import { getI18N } from "../i18n/index";
+import { getI18N, getLocale } from "../i18n/index";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+const locale = getLocale(currentLocale);
 ---
 
-<section id="SobreMi">
-  <div>
-    <h1>
-      {i18n.ABOUT_ME_TITLE}<span class="text-gradient"
-        >{i18n.ABOUT_ME_TITLE_2}</span
-      >
-    </h1>
-    <p class="subtitle">
+<section id="SobreMi" class="hero">
+  <img
+    class="portrait"
+    src="/imgs/javier-guerrero-cv.webp"
+    alt={i18n.ABOUT_ME_IMAGE_DESCRIPTION}
+    width="500"
+    height="500"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+  />
+  <div class="intro">
+    <h1>{i18n.ABOUT_ME_TITLE_2}</h1>
+    <p class="lead">
       <strong>{i18n.ABOUT_ME_DESCRIPTION_1}</strong>{
         i18n.ABOUT_ME_DESCRIPTION_2
-      }<strong>{i18n.ABOUT_ME_DESCRIPTION_3}</strong>{
-        i18n.ABOUT_ME_DESCRIPTION_4
-      }<strong>{i18n.ABOUT_ME_DESCRIPTION_5}</strong>{
-        i18n.ABOUT_ME_DESCRIPTION_6
-      }<strong>{i18n.ABOUT_ME_DESCRIPTION_7}</strong>{
+      }{i18n.ABOUT_ME_DESCRIPTION_3}{i18n.ABOUT_ME_DESCRIPTION_4}{
+        i18n.ABOUT_ME_DESCRIPTION_5
+      }{i18n.ABOUT_ME_DESCRIPTION_6}{i18n.ABOUT_ME_DESCRIPTION_7}{
         i18n.ABOUT_ME_DESCRIPTION_8
-      }<strong>{i18n.ABOUT_ME_DESCRIPTION_9}</strong>{
-        i18n.ABOUT_ME_DESCRIPTION_10
-      }<strong>{i18n.ABOUT_ME_DESCRIPTION_11}</strong>{
-        i18n.ABOUT_ME_DESCRIPTION_12
-      }
+      }{i18n.ABOUT_ME_DESCRIPTION_9}{i18n.ABOUT_ME_DESCRIPTION_10}{
+        i18n.ABOUT_ME_DESCRIPTION_11
+      }{i18n.ABOUT_ME_DESCRIPTION_12}
     </p>
-    <section class="socials">
+    <div class="links">
       <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.linkedin.com/in/javier-guerrero-gallo-3989b9228/"
-        ><LinkedIn /><span> LinkedIn</span></a
-      >
-      <a
-        class="github"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://github.com/javiergg13"
-        ><GitHub /><span> GitHub</span></a
-      >
-      <a
-        class="drive"
+        class="button button-primary"
         target="_blank"
         rel="noopener noreferrer"
         href="https://drive.google.com/file/d/1-dL63MY1Hp_ZtjR8aTFoV46pqRCNB3lw/view?usp=sharing"
-        ><Drive /><span> {i18n.ABOUT_ME_CV}</span></a
+        ><Drive /> {i18n.ABOUT_ME_CV}</a
       >
-    </section>
+      <a
+        class="button button-secondary"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.linkedin.com/in/javier-guerrero-gallo-3989b9228/"
+        ><LinkedIn /> LinkedIn</a
+      >
+      <a
+        class="button button-secondary"
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/javiergg13"><GitHub /> GitHub</a
+      >
+    </div>
   </div>
-  <div class="img-container">
-    <img
-      src="/imgs/javier-guerrero-cv.webp"
-      alt={i18n.ABOUT_ME_IMAGE_DESCRIPTION}
-      width="500"
-      height="500"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-    />
-  </div>
+
+  <!-- Rendimiento real de esta visita, medido con la Performance API. -->
+  <p
+    class="perf"
+    hidden
+    data-locale={locale}
+    data-text={i18n.PERF_TEXT}
+    data-text-cached={i18n.PERF_TEXT_CACHED}
+  >
+  </p>
 </section>
 
 <style>
-  .socials {
-    display: flex;
-    gap: 40px;
-    margin-top: 32px;
-    margin-left: -5px;
+  .hero {
+    width: min(var(--page), 100% - 2 * var(--gutter));
+    margin-inline: auto;
+    padding-top: 5rem;
+    display: grid;
+    grid-template-columns: 168px 1fr;
+    column-gap: 2.5rem;
+    row-gap: 2.5rem;
+    align-items: start;
   }
-  .socials a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .subtitle {
-    font-size: 18px;
-    text-wrap: pretty;
-    line-height: 1.4;
-    opacity: 0.85;
-  }
-  a span {
-    opacity: 0.85;
-  }
-  .subtitle strong {
-    background-image: linear-gradient(rgb(255, 238, 0), rgb(252, 246, 119));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  #SobreMi {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: no-wrap;
-    align-items: center;
-    gap: 58px;
-    padding-top: 100px;
-  }
-  img {
-    height: 200px;
-    width: auto;
+  .portrait {
+    width: 168px;
+    height: 168px;
     border-radius: 50%;
-    box-shadow: 0 0 50px rgb(0, 0, 0);
-    margin-left: 15px;
-    max-width: fit-content;
+    object-fit: cover;
+    background: var(--line);
   }
-  .text-gradient {
-    background-image: linear-gradient(rgb(255, 136, 0), rgb(251, 255, 145));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  h1 {
+    font-size: clamp(2.75rem, 7vw, 4rem); /* 44–64px */
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
   }
-  @media (max-width: 725px) {
-    img {
-      display: none;
-    }
-    #SobreMi {
-      padding-top: 50px;
+  .lead {
+    margin-top: 1.25rem;
+    font-size: 1.1875rem; /* 19px */
+    line-height: 1.55;
+    color: var(--muted);
+  }
+  .lead strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .links {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
 
-      display: block;
+  /* El elemento distintivo: el comprobante de esta visita. */
+  .perf {
+    grid-column: 1 / -1;
+    max-width: none;
+    padding: 0.9rem 1.1rem;
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+  .perf :global(b) {
+    color: var(--ink);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding-top: 2.5rem;
+      grid-template-columns: 1fr;
+      row-gap: 1.75rem;
     }
-    .socials {
-      font-size: 13px;
+    .portrait {
+      width: 112px;
+      height: 112px;
+    }
+    .lead {
+      font-size: 1.0625rem;
     }
   }
 </style>
+
+<script>
+  const formatTime = (ms: number, locale: string) =>
+    ms < 1000
+      ? `${Math.round(ms)} ms`
+      : `${new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(ms / 1000)} s`;
+
+  const formatSize = (bytes: number, locale: string) =>
+    `${new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(bytes / 1024)} KB`;
+
+  const render = (el: HTMLElement, template: string, time: string, size = "") => {
+    el.innerHTML = template
+      .replace("{time}", `<b>${time}</b>`)
+      .replace("{size}", `<b>${size}</b>`);
+  };
+
+  const measure = () => {
+    const el = document.querySelector<HTMLElement>(".perf");
+    if (!el) return;
+
+    const [nav] = performance.getEntriesByType(
+      "navigation"
+    ) as PerformanceNavigationTiming[];
+    if (!nav || nav.loadEventEnd <= 0) return;
+
+    const locale = el.dataset.locale ?? "es";
+    const resources = performance.getEntriesByType(
+      "resource"
+    ) as PerformanceResourceTiming[];
+    const bytes =
+      (nav.transferSize ?? 0) +
+      resources.reduce((sum, r) => sum + (r.transferSize ?? 0), 0);
+    const loadMs = nav.loadEventEnd;
+    const cached = bytes === 0;
+    const template = (cached ? el.dataset.textCached : el.dataset.text) ?? "";
+
+    el.hidden = false;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduceMotion) {
+      render(el, template, formatTime(loadMs, locale), formatSize(bytes, locale));
+      return;
+    }
+
+    // Una única animación en la página: las cifras cuentan hasta su valor.
+    const duration = 700;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      render(
+        el,
+        template,
+        formatTime(loadMs * eased, locale),
+        formatSize(bytes * eased, locale)
+      );
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  // loadEventEnd solo existe cuando el evento load ha terminado.
+  const run = () => setTimeout(measure, 0);
+  if (document.readyState === "complete") run();
+  else window.addEventListener("load", run, { once: true });
+  document.addEventListener("astro:after-swap", run);
+</script>

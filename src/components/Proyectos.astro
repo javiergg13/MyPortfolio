@@ -7,104 +7,30 @@ import { getI18N } from "../i18n/index";
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 
-const PROJETCS = [
+const PROJECTS = [
   {
     title: i18n.MY_PROJECTS_TITLE_1,
     description: i18n.MY_PROJECTS_DESCRIPTION_1,
-    tecnologies: [
-      {
-        name: "Astro",
-        url: "url",
-      },
-      {
-        name: "React",
-        url: "url",
-      },
-      {
-        name: "Svelte",
-        url: "url",
-      },
-      {
-        name: "Tailwind",
-        url: "url",
-      },
-    ],
+    tecnologies: ["Astro", "React", "Svelte", "Tailwind"],
     image: "/imgs/spotify-clone-card.webp",
     imageAlt: i18n.MY_PROJECTS_IMAGE_ALT_1,
     imageWidth: 800,
     imageHeight: 384,
     gitHubUrl: "https://github.com/javiergg13/spotify-clone",
-    height: 250,
   },
-  /*{
-    title: i18n.MY_PROJECTS_TITLE_2,
-    description: i18n.MY_PROJECTS_DESCRIPTION_2,
-    image: "hrl",
-  },
-  {
-    title: i18n.MY_PROJECTS_TITLE_3,
-    description: i18n.MY_PROJECTS_DESCRIPTION_3,
-    image: "hrl",
-  },
-  {
-    title: i18n.MY_PROJECTS_TITLE_4,
-    description: i18n.MY_PROJECTS_DESCRIPTION_4,
-    image: "hrl",
-  },
-  {
-    title: i18n.MY_PROJECTS_TITLE_5,
-    description: i18n.MY_PROJECTS_DESCRIPTION_5,
-    image: "hrl",
-  },*/
 ];
 ---
 
-<section id="Proyectos">
-  <h2><Code />{i18n.PROJECTS_TITLE}</h2>
-  <div class="proyectos-body">
-    {
-      PROJETCS.map((project) => (
-        <Card
-          gitHubUrl={project.gitHubUrl}
-          title={project.title}
-          description={project.description}
-          tecnologies={project.tecnologies}
-          height={project?.height}
-          image={project.image}
-          imageAlt={project.imageAlt}
-          imageWidth={project.imageWidth}
-          imageHeight={project.imageHeight}
-        />
-      ))
-    }
+<section id="Proyectos" class="section">
+  <h2 class="section-title"><Code /> {i18n.PROJECTS_TITLE}</h2>
+  <div class="list">
+    {PROJECTS.map((project) => <Card {...project} />)}
   </div>
 </section>
 
 <style>
-  #Proyectos {
-    padding-top: 100px;
-  }
-  .proyectos-body {
+  .list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 2rem;
-    padding: 0;
-    margin-top: 35px;
-  }
-  .proyectos-body div {
-    display: grid;
-    place-content: center;
-
-    border: 2px solid black;
-    border-radius: 5px;
-    box-shadow: 0 0 20px black;
-
-    transition-property: scale;
-    transition-duration: 0.3s;
-
-    height: 150px;
-  }
-  .proyectos-body div:hover {
-    scale: 1.05;
+    gap: 3.5rem;
   }
 </style>

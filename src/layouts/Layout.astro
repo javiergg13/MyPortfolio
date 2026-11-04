@@ -53,7 +53,8 @@ const ogLocaleAlternate = locale === "en" ? "es_ES" : "en_US"
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#0e0e0e" />
+    <meta name="theme-color" content="#e9ece9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#141a17" media="(prefers-color-scheme: dark)" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE_NAME} />
@@ -78,51 +79,22 @@ const ogLocaleAlternate = locale === "en" ? "es_ES" : "en_US"
     <ClientRouter fallback="none" />
   </head>
   <body>
+    <a class="skip-link" href="#main">{i18n.SKIP_LINK}</a>
     <Header />
     <slot />
     <style is:global>
-      html {
-        font-family: "Onest Variable", system-ui, sans-serif;
-        background: #0e0e0e;
-        color: rgb(235, 235, 235);
-        scroll-behavior: smooth;
-        color-scheme: dark light;
-        background-image: radial-gradient(
-          circle at 50% 200px,
-          #2d2d2d,
-          transparent
-        );
-        min-width: 515px;
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: -100px;
+        z-index: 100;
+        padding: 0.5rem 1rem;
+        background: var(--accent);
+        color: var(--accent-ink);
+        border-radius: 6px;
       }
-      body {
-        margin: 0;
-      }
-      a {
-        color: rgb(235, 235, 235);
-        text-decoration: none;
-        transition-property: scale, background-color, color;
-        transition-duration: 0.3s;
-        border-radius: 50px;
-      }
-      a:hover {
-        scale: 1.1;
-      }
-      a:active {
-        scale: 0.7;
-      }
-      h2 {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-      h1 {
-        font-size: 40px;
-        margin: 0;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
+      .skip-link:focus {
+        top: 0.75rem;
       }
     </style>
   </body>

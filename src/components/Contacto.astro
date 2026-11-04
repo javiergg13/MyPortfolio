@@ -2,78 +2,71 @@
 import Mail from "../icons/Mail.astro";
 import MailForward from "../icons/MailForward.astro";
 import Phone from "../icons/Phone.astro";
-
 import { getI18N } from "../i18n/index";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
-<section id="Contacto">
-  <h2><Mail /> {i18n.CONTACT_TITLE}</h2>
-  <form action="/" method="post">
-    <fieldset>
-      <legend>&nbsp;{i18n.CONTACT_FIELDSET_TITLE_1}&nbsp;</legend>
-      <label>{i18n.CONTACT_FIELDSET_LABEL_1}Javier Guerrero Gallo</label>
-      <label>{i18n.CONTACT_FIELDSET_LABEL_2}</label>
-      <label>{i18n.CONTACT_FIELDSET_LABEL_3}guerrerogallojavier@gmail.com</label
-      >
-    </fieldset>
-
-    <fieldset>
-      <legend>&nbsp;{i18n.CONTACT_FIELDSET_TITLE_2}&nbsp;</legend>
-      <label>{i18n.CONTACT_FIELDSET_ADITIONAL_LABEL_1}+34 674 774 983</label>
-      <label
-        >{i18n.CONTACT_FIELDSET_ADITIONAL_LABEL_2}Pola de Laviana, Asturias,
-        España</label
-      >
-    </fieldset>
-    <div class="actions">
-      <a href="mailto:guerrerogallojavier@gmail.com"
-        >{i18n.CONTACT_ACTIONS_TITLE_1} <MailForward /></a
-      >
-      <a href="tel:+34674774983">{i18n.CONTACT_ACTIONS_TITLE_2} <Phone /></a>
+<section id="Contacto" class="section">
+  <h2 class="section-title"><Mail /> {i18n.CONTACT_TITLE}</h2>
+  <dl>
+    <div>
+      <dt>{i18n.CONTACT_EMAIL}</dt>
+      <dd>
+        <a href="mailto:guerrerogallojavier@gmail.com"
+          >guerrerogallojavier@gmail.com</a
+        >
+      </dd>
     </div>
-  </form>
+    <div>
+      <dt>{i18n.CONTACT_PHONE}</dt>
+      <dd><a href="tel:+34674774983">+34 674 774 983</a></dd>
+    </div>
+    <div>
+      <dt>{i18n.CONTACT_LOCATION}</dt>
+      <dd>Pola de Laviana, Asturias</dd>
+    </div>
+    <div>
+      <dt>{i18n.CONTACT_BIRTH}</dt>
+      <dd>{i18n.CONTACT_BIRTH_VALUE}</dd>
+    </div>
+  </dl>
+  <div class="actions">
+    <a class="button button-primary" href="mailto:guerrerogallojavier@gmail.com"
+      ><MailForward /> {i18n.CONTACT_ACTIONS_TITLE_1}</a
+    >
+    <a class="button button-secondary" href="tel:+34674774983"
+      ><Phone /> {i18n.CONTACT_ACTIONS_TITLE_2}</a
+    >
+  </div>
 </section>
 
 <style>
-  #Contacto {
-    padding-top: 100px;
+  dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
   }
-  form {
-    padding-left: 30px;
-    padding-top: 20px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    opacity: 0.85;
+  dt {
+    font-size: 0.875rem;
+    color: var(--muted);
   }
-  fieldset {
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-
-    border-width: medium;
-  }
-  label {
-    margin: 10px;
-  }
-  a {
-    padding: 5px 10px;
-    display: flex;
-    gap: 8px;
+  dd {
+    margin: 0.15rem 0 0;
+    font-weight: 600;
+    overflow-wrap: anywhere;
   }
   .actions {
+    margin-top: 2.25rem;
     display: flex;
-    justify-content: center;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
-  @media (max-width: 800px) {
-    form {
-      padding-left: 0;
+  @media (max-width: 520px) {
+    dl {
+      grid-template-columns: 1fr;
     }
   }
 </style>

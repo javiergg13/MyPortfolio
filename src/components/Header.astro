@@ -7,144 +7,131 @@ const i18n = getI18N({ currentLocale });
 ---
 
 <header>
-  <section class="cabecera">
-    <img
-      src="/imgs/yo-header-cv.webp"
-      alt=""
-      width="50"
-      height="50"
-      loading="eager"
-      decoding="async"
-    />
-    <a href="#SobreMi"><span><strong>{i18n.HEADER_TITLE_1}</strong></span></a>
-    <a href="#Experiencia"
-      ><span><strong>{i18n.HEADER_TITLE_2}</strong></span></a
-    >
-    <a href="#Proyectos"><span><strong>{i18n.HEADER_TITLE_3}</strong></span></a>
-    <a href="#Contacto"><span><strong>{i18n.HEADER_TITLE_4}</strong></span></a>
+  <div class="bar">
+    <a class="home" href="#SobreMi" aria-label={i18n.HEADER_HOME}>
+      <img
+        src="/imgs/yo-header-cv.webp"
+        alt=""
+        width="36"
+        height="36"
+        loading="eager"
+        decoding="async"
+      />
+      <span>Javier Guerrero</span>
+    </a>
+    <nav aria-label={i18n.HEADER_NAV}>
+      <a href="#Experiencia">{i18n.HEADER_TITLE_2}</a>
+      <a href="#Proyectos">{i18n.HEADER_TITLE_3}</a>
+      <a href="#Contacto">{i18n.HEADER_TITLE_4}</a>
+    </nav>
     <LenguagesSelector />
-  </section>
+  </div>
 </header>
 
 <style>
   header {
-    font-size: 22px;
-
     position: sticky;
     top: 0;
-    width: 100%;
     z-index: 10;
-    min-height: 71.2px;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
 
     /* Longhands: Lightning CSS no debe fusionar animation-timeline en el
        shorthand de animation, porque Chrome no lo interpreta. */
-    animation-name: enhance-header;
+    animation-name: reveal-line;
     animation-duration: auto;
     animation-timing-function: linear;
     animation-fill-mode: both;
     animation-timeline: scroll(root);
-    animation-range: 0 300px;
+    animation-range: 0 120px;
   }
-  img {
-    border-radius: 50%;
-    height: 50px;
-    opacity: 0;
-    box-shadow: 0 0 10px black;
-
-    animation-name: enhance-img;
-    animation-duration: auto;
-    animation-timing-function: linear;
-    animation-fill-mode: both;
-    animation-timeline: scroll(root);
-    animation-range: 0 450px;
-    position: absolute;
-    left: calc((100% - 800px) / 2);
-  }
-  .cabecera {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-
+  .bar {
+    width: min(var(--page), 100% - 2 * var(--gutter));
+    margin-inline: auto;
+    height: var(--header-h);
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 1.5rem;
   }
   a {
-    padding: 8px 14px;
+    color: var(--ink);
+    text-decoration: none;
   }
-  @keyframes enhance-header {
+  .home {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-right: auto;
+  }
+  /* El avatar y el nombre aparecen al dejar atrás la portada. */
+  .home img,
+  .home span {
+    animation-name: appear;
+    animation-duration: auto;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root);
+    animation-range: 200px 360px;
+  }
+  .home img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+  }
+  nav {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.9375rem;
+  }
+  nav a {
+    color: var(--muted);
+    padding-block: 0.25rem;
+  }
+  nav a:hover {
+    color: var(--ink);
+  }
+  @keyframes reveal-line {
     to {
-      background: rgba(48, 48, 48, 0.25);
-      backdrop-filter: blur(15px);
-      font-size: 18px;
+      border-bottom-color: var(--line);
     }
   }
-  @keyframes enhance-img {
-    70% {
+  @keyframes appear {
+    from {
       opacity: 0;
+      translate: 0 4px;
     }
-    100% {
+    to {
       opacity: 1;
+      translate: 0 0;
     }
   }
-  @media (max-width: 725px) {
-    img {
-      animation-range: 0 0;
+  @media (max-width: 600px) {
+    .bar {
+      gap: 0.9rem;
     }
-    header {
-      animation-range: 0 350px;
-      font-size: 18px;
+    .home span {
+      display: none;
     }
-    @keyframes enhance-header {
-      to {
-        background: rgba(48, 48, 48, 0.25);
-        backdrop-filter: blur(15px);
-        font-size: 14px;
-      }
+    nav {
+      gap: 0.9rem;
+      font-size: 0.875rem;
     }
   }
-  @media (max-width: 850px) {
-    img {
-      left: 16px;
-      top: 10px;
+  @media (max-width: 400px) {
+    .home {
+      display: none;
     }
-  }
-  @media (max-width: 700px) {
-    img {
-      position: relative;
-      top: 0px;
-      left: 0;
-    }
-    .cabecera {
+    .bar {
       justify-content: space-between;
     }
   }
-  @media (max-width: 654px) {
-    .cabecera {
-      font-size: 18px;
-      gap: 0;
-    }
-  }
-  @media (max-width: 590px) {
-    .cabecera {
-      font-size: 16px;
-      gap: 0;
-    }
-    @keyframes enhance-header {
-      to {
-        background: rgba(48, 48, 48, 0.25);
-        backdrop-filter: blur(15px);
-        font-size: 14px;
-      }
-    }
-  }
-  @media (max-width: 552px) {
-    .cabecera {
-      font-size: 14px;
-      gap: 0;
+  @media (prefers-reduced-motion: reduce) {
+    .home img,
+    .home span {
+      animation: none;
     }
   }
 </style>

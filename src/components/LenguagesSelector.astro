@@ -1,88 +1,41 @@
 ---
 import SpainFlag from "../flags/Spain.astro";
 import EnglandFlag from "../flags/England.astro";
-import ChevronIcon from "../icons/Chevron.astro";
-import { getLocale, getLocalePath, type Locale } from "../i18n/index";
+import { getI18N, getLocale, getLocalePath } from "../i18n/index";
 
 const { currentLocale = "es", url } = Astro;
 const locale = getLocale(currentLocale);
+const i18n = getI18N({ currentLocale });
 
-const LOCALES: Record<
-  Locale,
-  { code: Locale; name: string; href: string; flag: typeof SpainFlag }
-> = {
-  en: {
-    code: "en",
-    href: getLocalePath("en", url.pathname),
-    name: "English",
-    flag: EnglandFlag,
-  },
-  es: {
-    code: "es",
-    href: getLocalePath("es", url.pathname),
-    name: "Español",
-    flag: SpainFlag,
-  },
-};
-
-const currentLocaleData = LOCALES[locale];
-const otherLocales = Object.values(LOCALES).filter(
-  (localeData) => localeData.code !== locale
-);
+// Con dos idiomas, un enlace directo al otro es más rápido que un desplegable.
+const other =
+  locale === "es"
+    ? { code: "en", name: "English", Flag: EnglandFlag, href: getLocalePath("en", url.pathname) }
+    : { code: "es", name: "Español", Flag: SpainFlag, href: getLocalePath("es", url.pathname) };
 ---
 
-<div class="relative inline-block text-left xs:pt-4">
-  <div
-    class="group text-white rounded-md text-xs font-semibold bg-black/30 hover:bg-black/70 transition-all"
-  >
-    <button
-      type="button"
-      class="inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
-      aria-expanded="true"
-      aria-haspopup="true"
-    >
-      <currentLocaleData.flag />
-      {currentLocaleData.name}
-      <ChevronIcon />
-    </button>
-    <ul
-      class="group-hover:block hidden pt-0.5 absolute w-full"
-    >
-      {
-        otherLocales.map((localeData) => (
-          <li class="">
-            <a
-              class="rounded-md bg-black/30 hover:bg-black/70 whitespace-nowrap inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
-              href={localeData.href}
-              hreflang={localeData.code}
-              lang={localeData.code}
-            >
-              <localeData.flag />
-              {localeData.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</div>
+<a
+  href={other.href}
+  hreflang={other.code}
+  lang={other.code}
+  aria-label={i18n.LANG_SWITCH_LABEL}><other.Flag /> {other.name}</a
+>
 
 <style>
-  .custom-container {
-    position: relative;
-    display: inline-block;
-    text-align: left;
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    white-space: nowrap;
   }
-  button {
-    font: inherit;
-    color: inherit;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-  }
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  a:hover {
+    border-color: var(--muted);
   }
 </style>

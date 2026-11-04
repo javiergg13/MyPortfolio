@@ -1,52 +1,39 @@
 ---
-import Code from "../icons/Code.astro";
+import GitHub from "../icons/GitHub.astro";
+import { getI18N, getLocale } from "../i18n/index";
 
 interface Props {
   title: string;
   description: string;
   gitHubUrl?: string;
-  tecnologies?: { name: string; url: string }[];
+  tecnologies?: string[];
   image: string;
   imageAlt?: string;
   imageWidth?: number;
   imageHeight?: number;
-  height?: number;
 }
 
 const {
   title,
   description,
   gitHubUrl = "https://github.com/javiergg13",
-  tecnologies,
+  tecnologies = [],
   image,
   imageAlt = title,
   imageWidth = 800,
   imageHeight = 384,
-  height = 150,
 } = Astro.props;
-
-import { getI18N } from "../i18n/index";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+const stack = new Intl.ListFormat(getLocale(currentLocale), {
+  type: "conjunction",
+}).format(tecnologies);
 ---
 
-<div class="card" style=`height: ${height}px;`>
-  <header>
-    <h3>{title}</h3>
-    <a
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={i18n.CARD_LINK_TITLE}
-      title={i18n.CARD_LINK_TITLE}
-      href={gitHubUrl}
-      ><Code /><span class="sr-only">{i18n.CARD_LINK_TITLE}</span></a
-    >
-  </header>
-  <div class="card-body">
-    <span class="description">{description}</span>
+<article class="project">
+  <figure class="shot">
     <img
-      class="project-image"
       src={image}
       alt={imageAlt}
       width={imageWidth}
@@ -54,102 +41,43 @@ const i18n = getI18N({ currentLocale });
       loading="lazy"
       decoding="async"
     />
+  </figure>
+  <div class="body">
+    <h3>{title}</h3>
+    <p>{description}</p>
+    {stack && <p class="stack">{i18n.PROJECT_STACK} {stack}</p>}
+    <a class="button button-secondary" href={gitHubUrl} target="_blank" rel="noopener noreferrer">
+      <GitHub /> {i18n.CARD_LINK_TITLE}
+    </a>
   </div>
-  <footer>
-    {tecnologies?.map((tecnology) => <span>{tecnology.name}</span>)}
-  </footer>
-</div>
+</article>
 
 <style>
-  .card {
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0 0 20px black;
-    background-color: rgba(50, 50, 50, 0.8);
-
-    transition-property: scale;
-    transition-duration: 0.3s;
-
-    display: flex;
-
-    flex-direction: column;
-    justify-content: space-between;
+  .project {
+    display: grid;
+    gap: 1.5rem;
   }
-  .project-image:hover {
-    scale: 1.05;
+  .shot {
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
   }
-  .project-image {
-    width: 40%;
-    height: auto;
-    border-radius: 5px;
-
-    transition-property: all;
-    transition-duration: 0.3s;
-
-    cursor: pointer;
-  }
-  .card-body {
-    display: flex;
-    align-items: center;
-    opacity: 0.8;
-  }
-  a {
-    border-radius: 50%;
-    height: 24px;
-    width: 24px;
-    cursor: pointer;
-  }
-  a:hover {
-    background-color: rgba(40, 40, 40, 0.8);
+  .shot img {
+    display: block;
+    width: 100%;
   }
   h3 {
-    margin: 0;
-    background-image: linear-gradient(rgb(255, 136, 0), rgb(251, 255, 145));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 1.3125rem; /* 21px */
+    margin-bottom: 0.5rem;
   }
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .stack {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
   }
-  footer {
-    display: flex;
-    justify-content: space-around;
-  }
-  .description {
-    text-wrap: balance;
-    padding-left: 15px;
-  }
-  @media (max-width: 730px) {
-    .card-body {
-      max-width: 80%;
-      flex-direction: column;
-    }
-  }
-  .fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000;
-    object-fit: contain;
-    background-color: black;
-    padding: 8%;
-  }
-  .fullscreen:hover {
-    scale: 1;
+  .button {
+    margin-top: 1.25rem;
   }
 </style>
-
-<script>
-  const images = document.querySelectorAll<HTMLImageElement>(".project-image");
-
-  images.forEach((image) => {
-    image.addEventListener("click", () => {
-      image.classList.toggle("fullscreen");
-    });
-  });
-</script>

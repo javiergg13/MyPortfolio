@@ -8,29 +8,21 @@ const i18n = getI18N({ currentLocale });
 ---
 
 <footer>
-  <span class="position">© {currentYear}</span>
-  <span>{i18n.FOOTER_DESCRIPTION}</span>
+  <p>{i18n.FOOTER_DESCRIPTION}</p>
+  <p>© {currentYear}</p>
 </footer>
 
 <style>
   footer {
-    margin: 100px 0 30px 0;
-    opacity: 0.85;
+    width: min(var(--page), 100% - 2 * var(--gutter));
+    margin: 6rem auto 0;
+    padding-block: 1.5rem 2.5rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.875rem;
+    color: var(--muted);
     display: flex;
-    justify-content: space-evenly;
-  }
-  .position {
-    position: relative;
-    top: 2.5px;
-  }
-
-  @media (max-width: 540px) {
-    footer {
-      font-size: 13px;
-      margin-top: 80px;
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-    }
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
   }
 </style>
