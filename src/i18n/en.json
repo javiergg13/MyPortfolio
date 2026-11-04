@@ -1,20 +1,8 @@
 {
-  "SEO_TITLE": "Javier Guerrero | Full Stack Web Developer",
-  "SEO_DESCRIPTION": "Javier Guerrero's portfolio. Full stack web developer with 3+ years of experience building web and mobile apps with React, Angular, Astro and Node.js.",
+  "SEO_TITLE": "Javier Guerrero | Full Stack & AI Developer",
+  "SEO_DESCRIPTION": "Javier Guerrero's portfolio. Full stack developer specializing in AI (MCP servers and agent skills), with 3+ years of experience in React, Angular, Node.js and Spring Boot.",
   "OG_IMAGE_ALT": "Javier Guerrero, full stack web developer",
   "ABOUT_ME_TITLE_2": "Javier Guerrero",
-  "ABOUT_ME_DESCRIPTION_1": "Full Stack Web Developer",
-  "ABOUT_ME_DESCRIPTION_2": " with ",
-  "ABOUT_ME_DESCRIPTION_3": "+3",
-  "ABOUT_ME_DESCRIPTION_4": " years of experience. In my developments I prioritize ",
-  "ABOUT_ME_DESCRIPTION_5": "user experience",
-  "ABOUT_ME_DESCRIPTION_6": ", ",
-  "ABOUT_ME_DESCRIPTION_7": "design",
-  "ABOUT_ME_DESCRIPTION_8": " and site ",
-  "ABOUT_ME_DESCRIPTION_9": "performance",
-  "ABOUT_ME_DESCRIPTION_10": ". I also like to create ",
-  "ABOUT_ME_DESCRIPTION_11": "APIs",
-  "ABOUT_ME_DESCRIPTION_12": " to feed these developments with data.",
   "ABOUT_ME_CV": "My resume",
   "ABOUT_ME_IMAGE_DESCRIPTION": "Portrait of Javier Guerrero wearing a navy blazer and light blue shirt",
   "PROJECTS_TITLE": "Projects",
@@ -34,37 +22,6 @@
   "HEADER_TITLE_4": "Contact",
   "FOOTER_DESCRIPTION": "Javier Guerrero's portfolio, made with a lot of 💖",
   "EXPERIENCIE_TITLE": "Experience",
-  "EXPERIENCIE_TITLE_1": "February 2023 - Present",
-  "EXPERIENCIE_SUBTITLE_1": "Grupo CGI (Web Developer)",
-  "EXPERIENCIE_DESCRIPTION_1_1": "I develop and maintain applications for internal use using",
-  "EXPERIENCIE_DESCRIPTION_1_2": " React ",
-  "EXPERIENCIE_DESCRIPTION_1_3": "or",
-  "EXPERIENCIE_DESCRIPTION_1_4": " Angular ",
-  "EXPERIENCIE_DESCRIPTION_1_5": "and",
-  "EXPERIENCIE_DESCRIPTION_1_6": " Spring Boot ",
-  "EXPERIENCIE_DESCRIPTION_1_7": "or",
-  "EXPERIENCIE_DESCRIPTION_1_8": " Node.js ",
-  "EXPERIENCIE_DESCRIPTION_1_9": "depending on the type of application and project.",
-  "EXPERIENCIE_DESCRIPTION_1_10": "I maintain",
-  "EXPERIENCIE_DESCRIPTION_1_11": " and ",
-  "EXPERIENCIE_DESCRIPTION_1_12": "update",
-  "EXPERIENCIE_DESCRIPTION_1_13": " existing projects developed with the technologies mentioned above.",
-  "EXPERIENCIE_DESCRIPTION_1_14": "I modify ",
-  "EXPERIENCIE_DESCRIPTION_1_15": "tables",
-  "EXPERIENCIE_DESCRIPTION_1_16": " in the ",
-  "EXPERIENCIE_DESCRIPTION_1_17": "database",
-  "EXPERIENCIE_DESCRIPTION_1_18": " to add information needed across different projects.",
-  "EXPERIENCIE_TITLE_2": "March 2022 - June 2022",
-  "EXPERIENCIE_SUBTITLE_2": "Capgemini (Intern Technician)",
-  "EXPERIENCIE_DESCRIPTION_2_1": "I developed features using ",
-  "EXPERIENCIE_DESCRIPTION_2_2": "Angular",
-  "EXPERIENCIE_DESCRIPTION_2_3": " for ",
-  "EXPERIENCIE_DESCRIPTION_2_4": "real projects",
-  "EXPERIENCIE_DESCRIPTION_2_5": " to ",
-  "EXPERIENCIE_DESCRIPTION_2_6": "fix bugs",
-  "EXPERIENCIE_DESCRIPTION_2_7": " and ",
-  "EXPERIENCIE_DESCRIPTION_2_8": "build new features",
-  "EXPERIENCIE_DESCRIPTION_2_9": ".",
   "CARD_LINK_TITLE": "View code on GitHub",
   "CONTACT_TITLE": "Contact",
   "CONTACT_ACTIONS_TITLE_1": "Send me an email",
@@ -80,5 +37,34 @@
   "CONTACT_PHONE": "Phone",
   "CONTACT_LOCATION": "Location",
   "CONTACT_BIRTH": "Date of birth",
-  "CONTACT_BIRTH_VALUE": "April 13, 2000"
+  "CONTACT_BIRTH_VALUE": "April 13, 2000",
+  "ABOUT_ME_ROLE": "Full stack developer specializing in AI",
+  "ABOUT_ME_DESCRIPTION": "<strong>Full stack developer</strong> with 3+ years of experience building web applications with React, Angular, Node.js and Spring Boot. I currently specialize in <strong>AI development</strong>: I build MCP servers and agent skills that connect AI models to real tools and data. I care about user experience, design and performance, and I automate delivery with GitHub Actions and Docker.",
+  "EXPERIENCE": [
+    {
+      "date": "March 2026 - Present",
+      "title": "Grupo CGI (AI Developer)",
+      "paragraphs": [
+        "I design and build <strong>MCP servers</strong> (Model Context Protocol) that let AI assistants query data and take actions on internal tools in a controlled way.",
+        "I create <strong>agent skills</strong>: reusable instructions and scripts that teach AI agents to complete specific tasks reliably and consistently.",
+        "I automate testing, builds and deployments with <strong>GitHub Actions</strong> and package services as <strong>Docker</strong> containers."
+      ]
+    },
+    {
+      "date": "February 2023 - February 2026",
+      "title": "Grupo CGI (Full Stack Web Developer)",
+      "paragraphs": [
+        "Built and maintained internal applications end to end, using <strong>React</strong> or <strong>Angular</strong> on the frontend and <strong>Spring Boot</strong> or <strong>Node.js</strong> on the backend, choosing the stack to fit each project.",
+        "Evolved existing applications with new features and improvements while keeping them stable in production.",
+        "Extended data models across projects, modifying database tables to support new requirements."
+      ]
+    },
+    {
+      "date": "March 2022 - June 2022",
+      "title": "Capgemini (Technical Intern)",
+      "paragraphs": [
+        "Worked within a development team on real projects, using <strong>Angular</strong> to fix bugs and implement new features."
+      ]
+    }
+  ]
 }

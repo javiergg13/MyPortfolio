@@ -22,17 +22,7 @@ const locale = getLocale(currentLocale);
   />
   <div class="intro">
     <h1>{i18n.ABOUT_ME_TITLE_2}</h1>
-    <p class="lead">
-      <strong>{i18n.ABOUT_ME_DESCRIPTION_1}</strong>{
-        i18n.ABOUT_ME_DESCRIPTION_2
-      }{i18n.ABOUT_ME_DESCRIPTION_3}{i18n.ABOUT_ME_DESCRIPTION_4}{
-        i18n.ABOUT_ME_DESCRIPTION_5
-      }{i18n.ABOUT_ME_DESCRIPTION_6}{i18n.ABOUT_ME_DESCRIPTION_7}{
-        i18n.ABOUT_ME_DESCRIPTION_8
-      }{i18n.ABOUT_ME_DESCRIPTION_9}{i18n.ABOUT_ME_DESCRIPTION_10}{
-        i18n.ABOUT_ME_DESCRIPTION_11
-      }{i18n.ABOUT_ME_DESCRIPTION_12}
-    </p>
+    <p class="lead" set:html={i18n.ABOUT_ME_DESCRIPTION} />
     <div class="links">
       <a
         class="button button-primary"
@@ -98,7 +88,7 @@ const locale = getLocale(currentLocale);
     line-height: 1.55;
     color: var(--muted);
   }
-  .lead strong {
+  .lead :global(strong) {
     color: var(--ink);
     font-weight: 600;
   }

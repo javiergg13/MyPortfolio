@@ -1,20 +1,8 @@
 {
-  "SEO_TITLE": "Javier Guerrero | Desarrollador Web Full Stack",
-  "SEO_DESCRIPTION": "Portafolio de Javier Guerrero, desarrollador web full stack con más de 3 años de experiencia en aplicaciones web y móviles con React, Angular, Astro y Node.js.",
+  "SEO_TITLE": "Javier Guerrero | Desarrollador Full Stack e IA",
+  "SEO_DESCRIPTION": "Portafolio de Javier Guerrero, desarrollador full stack especializado en IA (servidores MCP y agent skills), con más de 3 años de experiencia en React, Angular, Node.js y Spring Boot.",
   "OG_IMAGE_ALT": "Javier Guerrero, desarrollador web full stack",
   "ABOUT_ME_TITLE_2": "Javier Guerrero",
-  "ABOUT_ME_DESCRIPTION_1": "Desarrollador Web Full Stack",
-  "ABOUT_ME_DESCRIPTION_2": " con ",
-  "ABOUT_ME_DESCRIPTION_3": "+3",
-  "ABOUT_ME_DESCRIPTION_4": " años de experiencia. En mis desarrollos priorizo la ",
-  "ABOUT_ME_DESCRIPTION_5": "experiencia de usuario",
-  "ABOUT_ME_DESCRIPTION_6": ", el ",
-  "ABOUT_ME_DESCRIPTION_7": "diseño",
-  "ABOUT_ME_DESCRIPTION_8": " y el ",
-  "ABOUT_ME_DESCRIPTION_9": "rendimiento",
-  "ABOUT_ME_DESCRIPTION_10": " del sitio. También me gusta crear ",
-  "ABOUT_ME_DESCRIPTION_11": "APIs",
-  "ABOUT_ME_DESCRIPTION_12": " para nutrir de datos estos desarrollos.",
   "ABOUT_ME_CV": "Mi currículum",
   "ABOUT_ME_IMAGE_DESCRIPTION": "Retrato de Javier Guerrero con americana azul marino y camisa celeste",
   "PROJECTS_TITLE": "Proyectos",
@@ -34,37 +22,6 @@
   "HEADER_TITLE_4": "Contacto",
   "FOOTER_DESCRIPTION": "El portafolio de Javier Guerrero hecho con mucho 💖",
   "EXPERIENCIE_TITLE": "Experiencia laboral",
-  "EXPERIENCIE_TITLE_1": "Febrero 2023 - Actualidad",
-  "EXPERIENCIE_SUBTITLE_1": "Grupo CGI (Desarrollador Web)",
-  "EXPERIENCIE_DESCRIPTION_1_1": "Desarrollo y mantengo aplicaciones para uso interno utilizando",
-  "EXPERIENCIE_DESCRIPTION_1_2": " React ",
-  "EXPERIENCIE_DESCRIPTION_1_3": "o",
-  "EXPERIENCIE_DESCRIPTION_1_4": " Angular ",
-  "EXPERIENCIE_DESCRIPTION_1_5": "y",
-  "EXPERIENCIE_DESCRIPTION_1_6": " Spring Boot ",
-  "EXPERIENCIE_DESCRIPTION_1_7": "o",
-  "EXPERIENCIE_DESCRIPTION_1_8": " Node.js ",
-  "EXPERIENCIE_DESCRIPTION_1_9": "según el tipo de aplicación y proyecto.",
-  "EXPERIENCIE_DESCRIPTION_1_10": "Mantengo",
-  "EXPERIENCIE_DESCRIPTION_1_11": " y ",
-  "EXPERIENCIE_DESCRIPTION_1_12": "actualizo",
-  "EXPERIENCIE_DESCRIPTION_1_13": " proyectos ya existentes desarrollados en las tecnologías mencionadas anteriormente.",
-  "EXPERIENCIE_DESCRIPTION_1_14": "Modifico ",
-  "EXPERIENCIE_DESCRIPTION_1_15": "tablas",
-  "EXPERIENCIE_DESCRIPTION_1_16": " en ",
-  "EXPERIENCIE_DESCRIPTION_1_17": "BBDD",
-  "EXPERIENCIE_DESCRIPTION_1_18": " para añadir información que se necesite en distintos proyectos.",
-  "EXPERIENCIE_TITLE_2": "Marzo 2022 - Junio 2022",
-  "EXPERIENCIE_SUBTITLE_2": "Capgemini (Técnico en prácticas)",
-  "EXPERIENCIE_DESCRIPTION_2_1": "Realicé desarrollos utilizando ",
-  "EXPERIENCIE_DESCRIPTION_2_2": "Angular",
-  "EXPERIENCIE_DESCRIPTION_2_3": " para ",
-  "EXPERIENCIE_DESCRIPTION_2_4": "trabajos reales",
-  "EXPERIENCIE_DESCRIPTION_2_5": " de ",
-  "EXPERIENCIE_DESCRIPTION_2_6": "corrección de incidencias",
-  "EXPERIENCIE_DESCRIPTION_2_7": " y ",
-  "EXPERIENCIE_DESCRIPTION_2_8": "nuevos desarrollos",
-  "EXPERIENCIE_DESCRIPTION_2_9": ".",
   "CARD_LINK_TITLE": "Ver código en GitHub",
   "CONTACT_TITLE": "Contacto",
   "CONTACT_ACTIONS_TITLE_1": "Envíame un correo",
@@ -80,5 +37,34 @@
   "CONTACT_PHONE": "Teléfono",
   "CONTACT_LOCATION": "Ubicación",
   "CONTACT_BIRTH": "Fecha de nacimiento",
-  "CONTACT_BIRTH_VALUE": "13 de abril de 2000"
+  "CONTACT_BIRTH_VALUE": "13 de abril de 2000",
+  "ABOUT_ME_ROLE": "Desarrollador full stack especializado en IA",
+  "ABOUT_ME_DESCRIPTION": "<strong>Desarrollador full stack</strong> con más de 3 años de experiencia creando aplicaciones web con React, Angular, Node.js y Spring Boot. Actualmente me especializo en <strong>desarrollo con inteligencia artificial</strong>: construyo servidores MCP y agent skills que conectan los modelos de IA con herramientas y datos reales. Cuido la experiencia de usuario, el diseño y el rendimiento, y automatizo la entrega con GitHub Actions y Docker.",
+  "EXPERIENCE": [
+    {
+      "date": "Marzo 2026 - Actualidad",
+      "title": "Grupo CGI (Desarrollador especializado en IA)",
+      "paragraphs": [
+        "Diseño y desarrollo <strong>servidores MCP</strong> (Model Context Protocol) que permiten a los asistentes de IA consultar datos y ejecutar acciones sobre herramientas internas de forma controlada.",
+        "Creo <strong>agent skills</strong>: instrucciones y scripts reutilizables que enseñan a los agentes de IA a completar tareas concretas de forma fiable y consistente.",
+        "Automatizo pruebas, builds y despliegues con <strong>GitHub Actions</strong> y empaqueto los servicios en contenedores <strong>Docker</strong>."
+      ]
+    },
+    {
+      "date": "Febrero 2023 - Febrero 2026",
+      "title": "Grupo CGI (Desarrollador web full stack)",
+      "paragraphs": [
+        "Desarrollé y mantuve aplicaciones internas de principio a fin, con <strong>React</strong> o <strong>Angular</strong> en el frontend y <strong>Spring Boot</strong> o <strong>Node.js</strong> en el backend, eligiendo la tecnología según las necesidades de cada proyecto.",
+        "Evolucioné aplicaciones existentes con nuevas funcionalidades y mejoras, manteniendo su estabilidad en producción.",
+        "Amplié los modelos de datos de distintos proyectos, modificando tablas de base de datos para dar soporte a nuevos requisitos."
+      ]
+    },
+    {
+      "date": "Marzo 2022 - Junio 2022",
+      "title": "Capgemini (Técnico en prácticas)",
+      "paragraphs": [
+        "Formé parte de un equipo de desarrollo en proyectos reales, trabajando con <strong>Angular</strong> en la corrección de incidencias y en la implementación de nuevas funcionalidades."
+      ]
+    }
+  ]
 }

@@ -9,50 +9,17 @@ const i18n = getI18N({ currentLocale });
 <section id="Experiencia" class="section">
   <h2 class="section-title"><Job /> {i18n.EXPERIENCIE_TITLE}</h2>
   <ol class="timeline">
-    <li>
-      <p class="date">{i18n.EXPERIENCIE_TITLE_1}</p>
-      <div class="entry">
-        <h3>{i18n.EXPERIENCIE_SUBTITLE_1}</h3>
-        <p>
-          {i18n.EXPERIENCIE_DESCRIPTION_1_1}<strong
-            >{i18n.EXPERIENCIE_DESCRIPTION_1_2}</strong
-          >{i18n.EXPERIENCIE_DESCRIPTION_1_3}<strong
-            >{i18n.EXPERIENCIE_DESCRIPTION_1_4}</strong
-          >{i18n.EXPERIENCIE_DESCRIPTION_1_5}<strong
-            >{i18n.EXPERIENCIE_DESCRIPTION_1_6}</strong
-          >{i18n.EXPERIENCIE_DESCRIPTION_1_7}<strong
-            >{i18n.EXPERIENCIE_DESCRIPTION_1_8}</strong
-          >{i18n.EXPERIENCIE_DESCRIPTION_1_9}
-        </p>
-        <p>
-          {i18n.EXPERIENCIE_DESCRIPTION_1_10}{i18n.EXPERIENCIE_DESCRIPTION_1_11}{
-            i18n.EXPERIENCIE_DESCRIPTION_1_12
-          }{i18n.EXPERIENCIE_DESCRIPTION_1_13}
-        </p>
-        <p>
-          {i18n.EXPERIENCIE_DESCRIPTION_1_14}{i18n.EXPERIENCIE_DESCRIPTION_1_15}{
-            i18n.EXPERIENCIE_DESCRIPTION_1_16
-          }{i18n.EXPERIENCIE_DESCRIPTION_1_17}{
-            i18n.EXPERIENCIE_DESCRIPTION_1_18
-          }
-        </p>
-      </div>
-    </li>
-    <li>
-      <p class="date">{i18n.EXPERIENCIE_TITLE_2}</p>
-      <div class="entry">
-        <h3>{i18n.EXPERIENCIE_SUBTITLE_2}</h3>
-        <p>
-          {i18n.EXPERIENCIE_DESCRIPTION_2_1}<strong
-            >{i18n.EXPERIENCIE_DESCRIPTION_2_2}</strong
-          >{i18n.EXPERIENCIE_DESCRIPTION_2_3}{i18n.EXPERIENCIE_DESCRIPTION_2_4}{
-            i18n.EXPERIENCIE_DESCRIPTION_2_5
-          }{i18n.EXPERIENCIE_DESCRIPTION_2_6}{i18n.EXPERIENCIE_DESCRIPTION_2_7}{
-            i18n.EXPERIENCIE_DESCRIPTION_2_8
-          }{i18n.EXPERIENCIE_DESCRIPTION_2_9}
-        </p>
-      </div>
-    </li>
+    {
+      i18n.EXPERIENCE.map((job) => (
+        <li>
+          <p class="date">{job.date}</p>
+          <div class="entry">
+            <h3>{job.title}</h3>
+            {job.paragraphs.map((text) => <p set:html={text} />)}
+          </div>
+        </li>
+      ))
+    }
   </ol>
 </section>
 
@@ -106,7 +73,7 @@ const i18n = getI18N({ currentLocale });
   .entry p + p {
     margin-top: 0.6rem;
   }
-  strong {
+  .entry :global(strong) {
     font-weight: 600;
   }
   @media (max-width: 640px) {
