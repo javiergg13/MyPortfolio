@@ -18,7 +18,7 @@ const other =
   href={other.href}
   hreflang={other.code}
   lang={other.code}
-  aria-label={i18n.LANG_SWITCH_LABEL}><other.Flag /> {other.name}</a
+  aria-label={i18n.LANG_SWITCH_LABEL}><other.Flag /><span class="name">{other.name}</span></a
 >
 
 <style>
@@ -37,5 +37,14 @@ const other =
   }
   a:hover {
     border-color: var(--muted);
+  }
+  /* En pantallas muy estrechas basta con la bandera; aria-label conserva el nombre. */
+  @media (max-width: 400px) {
+    .name {
+      display: none;
+    }
+    a {
+      padding: 0.45rem 0.55rem;
+    }
   }
 </style>

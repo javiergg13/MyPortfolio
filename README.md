@@ -2,8 +2,8 @@
 
 # 💼 Javier Guerrero · Portfolio
 
-Portafolio personal de **Javier Guerrero**, desarrollador web Full Stack.
-Sitio estático, bilingüe (ES / EN), rápido y optimizado para SEO, construido con **Astro** y **Tailwind CSS**.
+Portafolio personal de **Javier Guerrero**, desarrollador Full Stack especializado en IA (servidores MCP y agent skills).
+Sitio estático, bilingüe (ES / EN), con tema claro y oscuro, rápido, accesible y optimizado para SEO, construido con **Astro**.
 
 [![Netlify](https://img.shields.io/badge/Demo-javierguerrero--pf.netlify.app-00C7B7?logo=netlify&logoColor=white)](https://javierguerrero-pf.netlify.app)
 [![Astro](https://img.shields.io/badge/Astro-7-BC52EE?logo=astro&logoColor=white)](https://astro.build)
@@ -23,6 +23,7 @@ Sitio estático, bilingüe (ES / EN), rápido y optimizado para SEO, construido 
 
 - [Sobre el proyecto](#-sobre-el-proyecto)
 - [Características](#-características)
+- [Diseño](#-diseño)
 - [Tecnologías](#️-tecnologías)
 - [Estructura del proyecto](#-estructura-del-proyecto)
 - [Empezar](#-empezar)
@@ -44,23 +45,46 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 
 | Sección            | Descripción                                                          |
 | :----------------- | :------------------------------------------------------------------- |
-| **Sobre mí**       | Presentación, foto y enlace para descargar el currículum.            |
-| **Experiencia**    | Línea temporal con mi trayectoria profesional (Grupo CGI, Capgemini). |
-| **Proyectos**      | Tarjetas con proyectos destacados, tecnologías usadas y enlace a GitHub. |
-| **Contacto**       | Datos de contacto y accesos directos para enviar un correo o llamar. |
+| **Sobre mí**       | Retrato, presentación, enlaces al currículum, LinkedIn y GitHub, e indicador de rendimiento en vivo. |
+| **Experiencia**    | Línea temporal con mi trayectoria: Grupo CGI (IA y full stack) y Capgemini. |
+| **Proyectos**      | Proyectos destacados con captura, descripción, tecnologías y enlace al código. |
+| **Contacto**       | Datos de contacto y botones para enviar un correo o llamar. |
 
 ---
 
 ## ✨ Características
 
-- 🌍 **Bilingüe (ES / EN)** usando el sistema de i18n nativo de Astro, con selector de idioma.
-- ⚡ **Rendimiento**: HTML estático generado en build, imágenes en formato `webp` y JavaScript mínimo.
-- 🎞️ **Transiciones de página** con la View Transitions API (`<ClientRouter />` de Astro).
+- 📊 **Indicador de rendimiento en vivo**: la portada muestra cuánto ha tardado la página en cargar y cuánto ha transferido en la visita real de cada usuario, medido con la Performance API del navegador. En las navegaciones con `ClientRouter` (como el cambio de idioma) solo mide lo descargado en esa navegación.
+- 🌗 **Tema claro y oscuro** automático según la preferencia del sistema (`prefers-color-scheme`), con `theme-color` para cada tema.
+- 🌍 **Bilingüe (ES / EN)** usando el sistema de i18n nativo de Astro, con enlace directo al otro idioma y su bandera.
+- ⚡ **Rendimiento**: HTML estático generado en build, imágenes en formato `webp` y JavaScript mínimo (~84 KB transferidos en la primera visita).
+- 🎞️ **Transiciones de página** con la View Transitions API (`<ClientRouter />` de Astro) y cabecera animada con `animation-timeline: scroll()`.
 - 🔎 **SEO completo**: metaetiquetas Open Graph y Twitter, `canonical`, `hreflang`, datos estructurados JSON-LD (Schema.org), `sitemap.xml` y `robots.txt`.
-- ♿ **Accesibilidad**: HTML semántico, textos alternativos en las imágenes y atributos ARIA.
-- 📱 **Diseño responsive** con Tailwind CSS 4 y la fuente variable *Onest*.
-- 🧩 **Componentes reutilizables** e iconos como componentes `.astro` (SVG en línea).
+- ♿ **Accesibilidad**: HTML semántico (`<ol>` para la experiencia, `<dl>` para el contacto), enlace "Saltar al contenido", foco visible, textos alternativos y respeto a `prefers-reduced-motion`.
+- 📱 **Diseño responsive** sin scroll horizontal hasta 320 px de ancho.
+- 🧩 **Iconos Tabler** como componentes `.astro` (SVG en línea con `currentColor`), que heredan el color del texto que acompañan.
+- 🖼️ **Favicon propio** "JG" en SVG, con `favicon.ico` de respaldo y `apple-touch-icon.png` para iOS.
 - ✅ **Comprobación de tipos** con `astro check` antes de cada build.
+
+---
+
+## 🎨 Diseño
+
+El diseño se basa en un pequeño sistema de tokens definido como variables CSS en `src/styles/global.css`:
+
+| Token       | Claro     | Oscuro    | Uso                                |
+| :---------- | :-------- | :-------- | :--------------------------------- |
+| `--bg`      | `#e9ece9` | `#141a17` | Fondo (gris niebla)                |
+| `--surface` | `#f4f6f4` | `#1b2420` | Superficies (indicador, capturas)  |
+| `--ink`     | `#17201c` | `#e3e8e5` | Texto principal                    |
+| `--muted`   | `#56615b` | `#9aa59f` | Texto secundario                   |
+| `--accent`  | `#1e6a4c` | `#7fc4a3` | Verde bosque: enlaces, botones, foco |
+| `--line`    | `#c9cfcb` | `#2e3a34` | Separadores y bordes               |
+
+- **Tipografía**: una sola familia, *Schibsted Grotesk* (variable, autoalojada con Fontsource). Escala de 14 a 64 px y líneas de texto de unos 68 caracteres como máximo.
+- **Maquetación**: una columna de 760 px alineada a la izquierda, con la misma retícula para todas las secciones (clase `.section`).
+- **Botones**: solo dos variantes, `.button-primary` y `.button-secondary`.
+- **Movimiento**: una única animación automática (el recuento de cifras del indicador de rendimiento), desactivada con `prefers-reduced-motion`.
 
 ---
 
@@ -69,12 +93,14 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 | Tecnología | Uso en el proyecto |
 | :--------- | :----------------- |
 | [Astro 7](https://astro.build) | Framework principal, generación estática, routing, i18n y View Transitions. |
-| [Tailwind CSS 4](https://tailwindcss.com) | Estilos, integrado mediante el plugin de Vite `@tailwindcss/vite`. |
-| [React 18](https://react.dev) | Integración `@astrojs/react` para componentes interactivos (islas). |
+| CSS con variables | Sistema de diseño (tokens de color, tipografía y retícula) en `global.css` y estilos con ámbito en cada componente. |
+| [Tailwind CSS 4](https://tailwindcss.com) | Integrado mediante el plugin de Vite `@tailwindcss/vite` (tema y utilidades, sin preflight). |
+| [React 18](https://react.dev) | Integración `@astrojs/react` disponible para islas interactivas (actualmente no hay componentes React). |
 | [TypeScript 5](https://www.typescriptlang.org) | Tipado de la lógica (i18n, constantes, props de componentes). |
 | [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/) | Generación automática del sitemap con soporte multidioma. |
 | [@astrojs/check](https://docs.astro.build/en/reference/cli-reference/#astro-check) | Diagnóstico y comprobación de tipos de los archivos `.astro`. |
-| [Fontsource · Onest](https://fontsource.org/fonts/onest) | Tipografía variable autoalojada. |
+| [Fontsource · Schibsted Grotesk](https://fontsource.org/fonts/schibsted-grotesk) | Tipografía variable autoalojada. |
+| [Tabler Icons](https://tabler.io/icons) | Iconos de trazo en SVG. |
 | [Netlify](https://www.netlify.com) | Hosting y despliegue continuo. |
 | [pnpm](https://pnpm.io) | Gestor de paquetes. |
 
@@ -85,19 +111,21 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 ```text
 /
 ├── public/                  # Recursos estáticos servidos tal cual
-│   ├── imgs/                # Fotos, capturas de proyectos e imágenes Open Graph
-│   ├── favicon.svg
+│   ├── imgs/                # Retratos, capturas de proyectos e imágenes Open Graph
+│   ├── favicon.svg          # Favicon "JG"
+│   ├── favicon.ico          # Respaldo para navegadores antiguos (16, 32 y 48 px)
+│   ├── apple-touch-icon.png # Icono para la pantalla de inicio de iOS (180 px)
 │   └── robots.txt
 ├── src/
 │   ├── components/          # Secciones y componentes de la página
-│   │   ├── Header.astro           # Navegación principal
-│   │   ├── SobreMi.astro          # Presentación
-│   │   ├── Experiencia.astro      # Experiencia laboral
+│   │   ├── Header.astro           # Navegación fija con avatar que aparece al hacer scroll
+│   │   ├── SobreMi.astro          # Portada e indicador de rendimiento
+│   │   ├── Experiencia.astro      # Línea temporal de experiencia laboral
 │   │   ├── Proyectos.astro        # Listado de proyectos
-│   │   ├── Card.astro             # Tarjeta de proyecto
+│   │   ├── Card.astro             # Proyecto destacado (captura, descripción, stack)
 │   │   ├── Contacto.astro         # Datos de contacto
 │   │   ├── Footer.astro
-│   │   ├── LenguagesSelector.astro # Selector de idioma
+│   │   ├── LenguagesSelector.astro # Enlace al otro idioma con su bandera
 │   │   ├── StructuredData.astro   # JSON-LD para SEO
 │   │   └── App.astro              # Composición de todas las secciones
 │   ├── flags/               # Banderas del selector de idioma (SVG)
@@ -112,7 +140,7 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 │   │   ├── index.astro      # Versión en español  →  /
 │   │   └── en/index.astro   # Versión en inglés   →  /en/
 │   ├── styles/
-│   │   └── global.css       # Tailwind, fuente y estilos globales
+│   │   └── global.css       # Tokens de diseño, tipografía, botones y estilos base
 │   └── consts.ts            # URL del sitio, nombre, autor y redes sociales
 ├── astro.config.mjs
 ├── package.json
@@ -181,6 +209,21 @@ const i18n = getI18N({ currentLocale });
 
 Para añadir o modificar un texto, edita la misma clave en ambos archivos JSON.
 
+Algunos textos son algo más que una cadena simple:
+
+- **`ABOUT_ME_DESCRIPTION`** y los párrafos de la experiencia incluyen etiquetas `<strong>` y se pintan con `set:html`. Son textos propios del sitio, nunca contenido de usuarios.
+- **`EXPERIENCE`** es una lista de puestos. Para añadir uno, añade un objeto al principio de la lista en los dos idiomas:
+
+```json
+{
+  "date": "Marzo 2026 - Actualidad",
+  "title": "Grupo CGI (Desarrollador especializado en IA)",
+  "paragraphs": ["Diseño y desarrollo <strong>servidores MCP</strong>…"]
+}
+```
+
+- **`PERF_TEXT`** y **`PERF_TEXT_CACHED`** son las frases del indicador de rendimiento. Usan los marcadores `{time}` y `{size}`.
+
 ---
 
 ## 🔎 SEO
@@ -216,7 +259,7 @@ Configuración de build:
 
 ## 📬 Contacto
 
-**Javier Guerrero Gallo** — Desarrollador Web Full Stack
+**Javier Guerrero Gallo**, desarrollador Full Stack especializado en IA
 
 - 🌐 Portafolio: [javierguerrero-pf.netlify.app](https://javierguerrero-pf.netlify.app)
 - 💼 LinkedIn: [javier-guerrero-gallo](https://www.linkedin.com/in/javier-guerrero-gallo-3989b9228/)
