@@ -15,6 +15,7 @@ const other =
 ---
 
 <a
+  class="lang-switch"
   href={other.href}
   hreflang={other.code}
   lang={other.code}
@@ -48,3 +49,72 @@ const other =
     }
   }
 </style>
+
+<script>
+  // Al cambiar de idioma se mantiene la posición de lectura. Los textos no
+  // miden lo mismo en los dos idiomas, así que no se guardan píxeles sino la
+  // sección visible y cuánto se ha avanzado dentro de ella.
+  type Position =
+    | { kind: "bottom" }
+    | { kind: "section"; id: string; progress: number };
+
+  let saved: Position | null = null;
+
+  const sections = () =>
+    [...document.querySelectorAll<HTMLElement>("main section[id]")];
+
+  // Línea de referencia: justo debajo de la cabecera fija.
+  const referenceLine = () =>
+    document.querySelector("header")?.getBoundingClientRect().bottom ?? 0;
+
+  const capture = (): Position | null => {
+    const doc = document.documentElement;
+    if (window.scrollY <= 0) return null;
+    if (window.scrollY + window.innerHeight >= doc.scrollHeight - 2) {
+      return { kind: "bottom" };
+    }
+    const line = referenceLine();
+    const list = sections();
+    const current =
+      list.find((section) => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= line && rect.bottom > line;
+      }) ?? list.filter((s) => s.getBoundingClientRect().top <= line).at(-1);
+    if (!current) return null;
+    const rect = current.getBoundingClientRect();
+    return {
+      kind: "section",
+      id: current.id,
+      progress: Math.min(Math.max((line - rect.top) / rect.height, 0), 1),
+    };
+  };
+
+  const restore = (position: Position) => {
+    const doc = document.documentElement;
+    let top = 0;
+    if (position.kind === "bottom") {
+      top = doc.scrollHeight;
+    } else {
+      const section = document.getElementById(position.id);
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      top =
+        window.scrollY +
+        rect.top +
+        rect.height * position.progress -
+        referenceLine();
+    }
+    window.scrollTo({ top, behavior: "instant" });
+  };
+
+  document.addEventListener("click", (event) => {
+    if ((event.target as Element).closest(".lang-switch")) saved = capture();
+  });
+
+  document.addEventListener("astro:after-swap", () => {
+    if (!saved) return;
+    const position = saved;
+    saved = null;
+    restore(position);
+  });
+</script>

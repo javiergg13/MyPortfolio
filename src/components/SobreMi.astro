@@ -7,6 +7,13 @@ import { getI18N, getLocale } from "../i18n/index";
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 const locale = getLocale(currentLocale);
+
+// Texto provisional con la misma longitud que el real: reserva el hueco del
+// indicador desde el primer pintado y evita saltos de contenido (CLS).
+const placeholder = i18n.PERF_TEXT.replace("{time}", "<b>000 ms</b>").replace(
+  "{size}",
+  "<b>00 KB</b>"
+);
 ---
 
 <section id="SobreMi" class="hero">
@@ -50,12 +57,12 @@ const locale = getLocale(currentLocale);
   <!-- Rendimiento real de esta visita, medido con la Performance API. -->
   <p
     class="perf"
-    hidden
+    aria-hidden="true"
     data-locale={locale}
     data-text={i18n.PERF_TEXT}
     data-text-cached={i18n.PERF_TEXT_CACHED}
-  >
-  </p>
+    set:html={placeholder}
+  />
 </section>
 
 <style>
@@ -101,6 +108,7 @@ const locale = getLocale(currentLocale);
 
   /* El elemento distintivo: el comprobante de esta visita. */
   .perf {
+    visibility: hidden;
     grid-column: 1 / -1;
     max-width: none;
     padding: 0.9rem 1.1rem;
@@ -109,6 +117,9 @@ const locale = getLocale(currentLocale);
     border-radius: 0 6px 6px 0;
     font-size: 0.9375rem;
     color: var(--muted);
+  }
+  .perf[data-ready] {
+    visibility: visible;
   }
   .perf :global(b) {
     color: var(--ink);
@@ -165,7 +176,8 @@ const locale = getLocale(currentLocale);
     const cached = bytes < 1024;
     const template = (cached ? el.dataset.textCached : el.dataset.text) ?? "";
 
-    el.hidden = false;
+    el.dataset.ready = "";
+    el.removeAttribute("aria-hidden");
 
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
