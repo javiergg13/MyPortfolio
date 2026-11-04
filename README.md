@@ -55,7 +55,7 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 ## ✨ Características
 
 - 📊 **Indicador de rendimiento en vivo**: la portada muestra cuánto ha tardado la página en cargar y cuánto ha transferido en la visita real de cada usuario, medido con la Performance API del navegador. En las navegaciones con `ClientRouter` (como el cambio de idioma) solo mide lo descargado en esa navegación.
-- 🌗 **Tema claro y oscuro** automático según la preferencia del sistema (`prefers-color-scheme`), con `theme-color` para cada tema.
+- 🌗 **Tema oscuro por defecto y tema claro opcional** con un botón en la cabecera. La elección se guarda en `localStorage`, se aplica antes de pintar la página (sin parpadeo) y se mantiene al cambiar de idioma. También actualiza el `theme-color` del navegador.
 - 🌍 **Bilingüe (ES / EN)** usando el sistema de i18n nativo de Astro, con enlace directo al otro idioma y su bandera.
 - ⚡ **Rendimiento**: HTML estático generado en build, imágenes en formato `webp` y JavaScript mínimo (~84 KB transferidos en la primera visita).
 - 🎞️ **Transiciones de página** con la View Transitions API (`<ClientRouter />` de Astro) y cabecera animada con `animation-timeline: scroll()`.
@@ -72,7 +72,7 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 
 El diseño se basa en un pequeño sistema de tokens definido como variables CSS en `src/styles/global.css`:
 
-| Token       | Claro     | Oscuro    | Uso                                |
+| Token       | Claro     | Oscuro (por defecto) | Uso                     |
 | :---------- | :-------- | :-------- | :--------------------------------- |
 | `--bg`      | `#e9ece9` | `#141a17` | Fondo (gris niebla)                |
 | `--surface` | `#f4f6f4` | `#1b2420` | Superficies (indicador, capturas)  |
@@ -126,6 +126,7 @@ El diseño se basa en un pequeño sistema de tokens definido como variables CSS 
 │   │   ├── Contacto.astro         # Datos de contacto
 │   │   ├── Footer.astro
 │   │   ├── LenguagesSelector.astro # Enlace al otro idioma con su bandera
+│   │   ├── ThemeToggle.astro      # Botón para cambiar entre tema oscuro y claro
 │   │   ├── StructuredData.astro   # JSON-LD para SEO
 │   │   └── App.astro              # Composición de todas las secciones
 │   ├── flags/               # Banderas del selector de idioma (SVG)

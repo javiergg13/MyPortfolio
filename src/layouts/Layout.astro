@@ -53,8 +53,28 @@ const ogLocaleAlternate = locale === "en" ? "es_ES" : "en_US"
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#e9ece9" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#141a17" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#141a17" />
+    <!-- Aplica el tema guardado antes de pintar, para evitar el parpadeo.
+         Se repite tras cada navegación de ClientRouter, que reemplaza <html>. -->
+    <script is:inline>
+      (() => {
+        const apply = () => {
+          let theme = "dark";
+          try {
+            if (localStorage.getItem("theme") === "light") theme = "light";
+          } catch {}
+          document.documentElement.dataset.theme = theme;
+          document
+            .querySelector("meta[name=theme-color]")
+            ?.setAttribute("content", theme === "light" ? "#e9ece9" : "#141a17");
+        };
+        apply();
+        if (!window.__themeListener) {
+          window.__themeListener = true;
+          document.addEventListener("astro:after-swap", apply);
+        }
+      })();
+    </script>
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE_NAME} />

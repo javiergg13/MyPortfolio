@@ -66,5 +66,7 @@
         "Formé parte de un equipo de desarrollo en proyectos reales, trabajando con <strong>Angular</strong> en la corrección de incidencias y en la implementación de nuevas funcionalidades."
       ]
     }
-  ]
+  ],
+  "THEME_TO_LIGHT": "Cambiar a tema claro",
+  "THEME_TO_DARK": "Cambiar a tema oscuro"
 }

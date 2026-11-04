@@ -15,7 +15,27 @@
 @custom-variant xs (@media (max-width: 654px));
 
 /* ---------- Tokens ---------- */
+/* El tema oscuro es el predeterminado; el claro se activa con
+   data-theme="light" en <html> desde el botón de la cabecera. */
 :root {
+  --bg: #141a17;
+  --surface: #1b2420;
+  --ink: #e3e8e5;
+  --muted: #9aa59f;
+  --accent: #7fc4a3;
+  --accent-ink: #10231a;
+  --line: #2e3a34;
+
+  --font: "Schibsted Grotesk Variable", system-ui, sans-serif;
+  --measure: 68ch;
+  --page: 760px;
+  --gutter: 1.25rem;
+  --header-h: 60px;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
   --bg: #e9ece9;
   --surface: #f4f6f4;
   --ink: #17201c;
@@ -24,27 +44,7 @@
   --accent-ink: #f4f6f4;
   --line: #c9cfcb;
 
-  --font: "Schibsted Grotesk Variable", system-ui, sans-serif;
-  --measure: 68ch;
-  --page: 760px;
-  --gutter: 1.25rem;
-  --header-h: 60px;
-
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #141a17;
-    --surface: #1b2420;
-    --ink: #e3e8e5;
-    --muted: #9aa59f;
-    --accent: #7fc4a3;
-    --accent-ink: #10231a;
-    --line: #2e3a34;
-
-    color-scheme: dark;
-  }
 }
 
 /* ---------- Base ---------- */

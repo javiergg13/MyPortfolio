@@ -1,0 +1,85 @@
+---
+import Sun from "../icons/Sun.astro";
+import Moon from "../icons/Moon.astro";
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<!-- Muestra el icono del tema al que se cambia: sol en oscuro, luna en claro. -->
+<button
+  type="button"
+  class="theme-toggle"
+  data-label-light={i18n.THEME_TO_LIGHT}
+  data-label-dark={i18n.THEME_TO_DARK}
+  aria-label={i18n.THEME_TO_LIGHT}
+  title={i18n.THEME_TO_LIGHT}
+>
+  <span class="sun"><Sun /></span>
+  <span class="moon"><Moon /></span>
+</button>
+
+<style>
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .theme-toggle:hover {
+    border-color: var(--muted);
+  }
+  .theme-toggle span {
+    display: grid;
+  }
+  .moon {
+    display: none !important;
+  }
+  :global([data-theme="light"]) .moon {
+    display: grid !important;
+  }
+  :global([data-theme="light"]) .sun {
+    display: none !important;
+  }
+</style>
+
+<script>
+  const sync = () => {
+    const button = document.querySelector<HTMLButtonElement>(".theme-toggle");
+    if (!button) return;
+    const isLight = document.documentElement.dataset.theme === "light";
+    const label = isLight
+      ? button.dataset.labelDark
+      : button.dataset.labelLight;
+    button.setAttribute("aria-label", label ?? "");
+    button.title = label ?? "";
+  };
+
+  const toggle = () => {
+    const next =
+      document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next);
+    } catch {}
+    document
+      .querySelector("meta[name=theme-color]")
+      ?.setAttribute("content", next === "light" ? "#e9ece9" : "#141a17");
+    sync();
+  };
+
+  // El listener va en document para sobrevivir a las navegaciones de ClientRouter.
+  document.addEventListener("click", (event) => {
+    if ((event.target as Element).closest(".theme-toggle")) toggle();
+  });
+  document.addEventListener("astro:page-load", sync);
+  sync();
+</script>
