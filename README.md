@@ -63,6 +63,7 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 - 📱 **Diseño responsive** sin scroll horizontal hasta 320 px de ancho.
 - 🧩 **Iconos Tabler** como componentes `.astro` (SVG en línea con `currentColor`), que heredan el color del texto que acompañan.
 - 🖼️ **Favicon propio** "JG" en SVG, con `favicon.ico` de respaldo y `apple-touch-icon.png` para iOS.
+- 🗄️ **Caché y cabeceras HTTP** en `public/_headers`: el CSS, el JS y las fuentes de `/_astro/` (con hash en el nombre) se guardan en caché un año como inmutables, y todas las respuestas llevan cabeceras de seguridad básicas.
 - 🚫 **Página 404 propia** en español e inglés, fuera del índice de buscadores (`noindex`).
 - ✅ **Comprobación de tipos** con `astro check` antes de cada build.
 
@@ -113,6 +114,7 @@ El diseño se basa en un pequeño sistema de tokens definido como variables CSS 
 │   ├── favicon.svg          # Favicon "JG"
 │   ├── favicon.ico          # Respaldo para navegadores antiguos (16, 32 y 48 px)
 │   ├── apple-touch-icon.png # Icono para la pantalla de inicio de iOS (180 px)
+│   ├── _headers             # Caché y cabeceras HTTP de Netlify
 │   └── robots.txt
 ├── src/
 │   ├── components/          # Secciones y componentes de la página
