@@ -82,6 +82,10 @@ const placeholder = i18n.PERF_TEXT.replace("{time}", "<b>000 ms</b>").replace(
     border-radius: 50%;
     object-fit: cover;
     background: var(--line);
+    /* Aro en el color de acento, separado de la foto por un hueco del fondo.
+       outline no ocupa espacio, así que la rejilla no se mueve. */
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
   }
   h1 {
     font-size: clamp(2.75rem, 7vw, 4rem); /* 44–64px */

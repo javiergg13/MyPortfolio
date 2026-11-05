@@ -86,9 +86,25 @@ const i18n = getI18N({ currentLocale });
     border-radius: 50%;
   }
   nav {
+    --nav-fs: 0.9375rem;
+    --nav-fs-to: 1.0625rem;
     display: flex;
     gap: 1.25rem;
-    font-size: 0.9375rem;
+    font-size: var(--nav-fs);
+  }
+  /* Los enlaces crecen a la vez que aparece el avatar. Al estar el nav pegado
+     a las herramientas, gana ancho hacia la izquierda; la altura del header
+     es fija, así que no cambia. Sin soporte de scroll timelines, se queda
+     en el tamaño normal. */
+  @supports (animation-timeline: scroll()) {
+    nav {
+      animation-name: grow-nav;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root);
+      animation-range: 200px 360px;
+    }
   }
   .tools {
     display: flex;
@@ -105,6 +121,14 @@ const i18n = getI18N({ currentLocale });
   @keyframes reveal-line {
     to {
       border-bottom-color: var(--line);
+    }
+  }
+  @keyframes grow-nav {
+    from {
+      font-size: var(--nav-fs);
+    }
+    to {
+      font-size: var(--nav-fs-to);
     }
   }
   @keyframes appear {
@@ -125,17 +149,21 @@ const i18n = getI18N({ currentLocale });
       display: none;
     }
     nav {
+      --nav-fs: 0.875rem;
+      --nav-fs-to: 0.9375rem;
       gap: 0.9rem;
-      font-size: 0.875rem;
     }
   }
   @media (max-width: 460px) {
     .home {
       display: none;
     }
+    /* Sin avatar a la izquierda el nav está pegado al borde: no hay hueco
+       hacia el que crecer, así que mantiene su tamaño. */
     nav {
+      --nav-fs: 0.8125rem;
+      --nav-fs-to: 0.8125rem;
       gap: 0.65rem;
-      font-size: 0.8125rem;
     }
     .tools {
       gap: 0.35rem;
@@ -146,7 +174,8 @@ const i18n = getI18N({ currentLocale });
   }
   @media (prefers-reduced-motion: reduce) {
     .home img,
-    .home span {
+    .home span,
+    nav {
       animation: none;
     }
   }
