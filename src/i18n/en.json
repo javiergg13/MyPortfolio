@@ -60,6 +60,76 @@
       ]
     }
   ],
+  "SKILLS_TITLE": "Skills",
+  "SKILLS_CAROUSEL_LABEL": "Technical skills",
+  "SKILLS_CAROUSEL_ROLE": "carousel",
+  "SKILLS_SLIDE_ROLE": "slide",
+  "SKILLS_PREV": "Show previous group",
+  "SKILLS_NEXT": "Show next group",
+  "SKILLS_PAUSE": "Pause the carousel",
+  "SKILLS_PLAY": "Play the carousel",
+  "SKILLS_SLIDE": "{n} of {total}",
+  "SKILLS": [
+    {
+      "icon": "code",
+      "title": "Languages",
+      "items": [
+        "Java",
+        "TypeScript",
+        "JavaScript",
+        "SQL",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "icon": "ai",
+      "title": "Artificial intelligence",
+      "items": [
+        "MCP servers",
+        "Agent skills",
+        "Model Context Protocol"
+      ]
+    },
+    {
+      "icon": "frontend",
+      "title": "Frontend",
+      "items": [
+        "React",
+        "Angular",
+        "Astro",
+        "Svelte",
+        "Tailwind CSS"
+      ]
+    },
+    {
+      "icon": "backend",
+      "title": "Backend",
+      "items": [
+        "Node.js",
+        "Spring Boot",
+        "REST APIs",
+        "Relational databases"
+      ]
+    },
+    {
+      "icon": "devops",
+      "title": "DevOps",
+      "items": [
+        "GitHub Actions",
+        "Docker",
+        "Git"
+      ]
+    },
+    {
+      "icon": "languages",
+      "title": "Spoken languages",
+      "items": [
+        "Spanish · native",
+        "English · B2"
+      ]
+    }
+  ],
   "THEME_TO_LIGHT": "Switch to light theme",
   "THEME_TO_DARK": "Switch to dark theme",
   "FOOTER_LINKS": "Contact and social links",

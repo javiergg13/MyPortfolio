@@ -1,0 +1,414 @@
+---
+import Browser from "../icons/Browser.astro";
+import ChevronLeft from "../icons/ChevronLeft.astro";
+import ChevronRight from "../icons/ChevronRight.astro";
+import Code from "../icons/Code.astro";
+import InfinityLoop from "../icons/InfinityLoop.astro";
+import Language from "../icons/Language.astro";
+import PlayerPause from "../icons/PlayerPause.astro";
+import PlayerPlay from "../icons/PlayerPlay.astro";
+import Server from "../icons/Server.astro";
+import Sparkles from "../icons/Sparkles.astro";
+import Stack from "../icons/Stack.astro";
+import { getI18N } from "../i18n/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+const ICONS = {
+  code: Code,
+  ai: Sparkles,
+  frontend: Browser,
+  backend: Server,
+  devops: InfinityLoop,
+  languages: Language,
+} as const;
+
+const total = i18n.SKILLS.length;
+---
+
+<section id="Competencias" class="section">
+  <div class="head">
+    <h2 class="section-title"><Stack /> {i18n.SKILLS_TITLE}</h2>
+    <div class="controls">
+      <!-- Pausa/reanuda el avance automático (WCAG 2.2.2). -->
+      <button
+        type="button"
+        class="nav play"
+        aria-label={i18n.SKILLS_PAUSE}
+        data-label-pause={i18n.SKILLS_PAUSE}
+        data-label-play={i18n.SKILLS_PLAY}
+      >
+        <span class="icon-pause"><PlayerPause /></span>
+        <span class="icon-play"><PlayerPlay /></span>
+      </button>
+      <button type="button" class="nav" data-dir="-1" aria-label={i18n.SKILLS_PREV} disabled>
+        <ChevronLeft />
+      </button>
+      <button type="button" class="nav" data-dir="1" aria-label={i18n.SKILLS_NEXT}>
+        <ChevronRight />
+      </button>
+    </div>
+  </div>
+
+  <!-- Carrusel con scroll nativo: avanza solo y también se desliza con el
+       dedo, el trackpad, el teclado (al recibir el foco) o con las flechas. -->
+  <div
+    class="track"
+    role="region"
+    aria-roledescription={i18n.SKILLS_CAROUSEL_ROLE}
+    aria-label={i18n.SKILLS_CAROUSEL_LABEL}
+    tabindex="0"
+    data-at-start
+  >
+    <div class="cards" aria-live="off">
+      {
+        i18n.SKILLS.map((group, index) => {
+          const Icon = ICONS[group.icon as keyof typeof ICONS] ?? Code;
+          return (
+            <div
+              class="card"
+              role="group"
+              aria-roledescription={i18n.SKILLS_SLIDE_ROLE}
+              aria-label={i18n.SKILLS_SLIDE.replace("{n}", String(index + 1)).replace(
+                "{total}",
+                String(total)
+              )}
+            >
+              <div class="panel">
+                <span class="badge">
+                  <Icon />
+                </span>
+                <h3>{group.title}</h3>
+                <ul class="chips">
+                  {group.items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .head {
+    position: relative;
+  }
+  .head .section-title {
+    padding-right: 8.5rem;
+  }
+  .play span {
+    display: grid;
+  }
+  .play .icon-play,
+  .play[data-paused] .icon-pause {
+    display: none;
+  }
+  .play[data-paused] .icon-play {
+    display: grid;
+  }
+  .controls {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .nav {
+    display: inline-grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.15s, opacity 0.15s;
+  }
+  .nav:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .nav:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .track {
+    --gap: 1rem;
+    --fade: 2.5rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Difumina el borde por el que queda contenido, como pista de que sigue. */
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent
+    );
+  }
+  .track[data-at-start] {
+    mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
+  }
+  .track[data-at-end] {
+    mask-image: linear-gradient(to right, transparent, #000 var(--fade));
+  }
+  .track[data-at-start][data-at-end] {
+    mask-image: none;
+  }
+  .track::-webkit-scrollbar {
+    display: none;
+  }
+  .track:focus-visible {
+    outline-offset: 4px;
+  }
+  .cards {
+    padding: 0.25rem 0;
+    display: grid;
+    grid-auto-flow: column;
+    /* Dos tarjetas y media a la vista: la que asoma invita a deslizar. */
+    grid-auto-columns: calc((100% - 2 * var(--gap)) / 2.35);
+    gap: var(--gap);
+  }
+
+  /* .card es el punto de ajuste del scroll y .panel lo que se ve. El efecto
+     de escala va en .panel: si fuera en .card, el navegador calcularía el
+     ajuste con la tarjeta encogida y el carrusel se descuadraría. */
+  .card {
+    scroll-snap-align: start;
+    display: grid;
+  }
+  .panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.4rem 1.25rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .badge {
+    display: inline-grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+  h3 {
+    font-size: 1.125rem;
+  }
+  .chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .chips li {
+    padding: 0.25rem 0.65rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+  }
+
+  /* Efecto carrusel: las tarjetas crecen y ganan nitidez al entrar en la
+     vista del carrusel y se encogen al salir por el otro lado. */
+  @supports (animation-timeline: view()) {
+    .panel {
+      animation-name: card-in, card-out;
+      animation-duration: auto;
+      animation-timing-function: ease-out, ease-in;
+      animation-fill-mode: both;
+      animation-timeline: view(inline);
+      animation-range: entry 0% entry 100%, exit 0% exit 100%;
+    }
+  }
+  @keyframes card-in {
+    from {
+      opacity: 0.35;
+      scale: 0.9;
+    }
+  }
+  @keyframes card-out {
+    to {
+      opacity: 0.35;
+      scale: 0.9;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cards {
+      grid-auto-columns: 78%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .track {
+      scroll-behavior: auto;
+    }
+    .panel {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  // Flechas y estado de los bordes. Se reengancha tras cada navegación de
+  // ClientRouter (cambio de idioma), que reemplaza el DOM de la sección.
+  const setup = () => {
+    const section = document.getElementById("Competencias");
+    const track = section?.querySelector<HTMLElement>(".track");
+    if (!section || !track || track.dataset.ready) return;
+    track.dataset.ready = "";
+
+    const prev = section.querySelector<HTMLButtonElement>('.nav[data-dir="-1"]')!;
+    const next = section.querySelector<HTMLButtonElement>('.nav[data-dir="1"]')!;
+    const play = section.querySelector<HTMLButtonElement>(".play")!;
+    const cards = track.querySelector<HTMLElement>(".cards")!;
+
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      const atStart = track.scrollLeft <= 2;
+      const atEnd = track.scrollLeft >= max - 2;
+      track.toggleAttribute("data-at-start", atStart);
+      track.toggleAttribute("data-at-end", atEnd);
+      prev.disabled = atStart;
+      next.disabled = atEnd;
+    };
+
+    // Avanza una tarjeta (ancho de tarjeta más el hueco entre ellas).
+    const step = () => {
+      const card = track.querySelector<HTMLElement>(".card");
+      const gap = parseFloat(getComputedStyle(track.firstElementChild!).columnGap) || 0;
+      return (card?.offsetWidth ?? track.clientWidth) + gap;
+    };
+
+    [prev, next].forEach((button) => {
+      button.addEventListener("click", () => {
+        track.scrollBy({ left: Number(button.dataset.dir) * step() });
+        schedule();
+      });
+    });
+
+    // ---------- Avance automático ----------
+    // Avanza una tarjeta cada DELAY ms y al final vuelve al principio. Solo
+    // corre si la sección está a la vista, la pestaña está activa y nadie
+    // está interactuando (ratón encima o foco de teclado dentro). Con
+    // "reducir movimiento" empieza en pausa.
+    const DELAY = 4000;
+    let timer = 0;
+    let userPaused = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let hovering = false;
+    let keyboardFocus = false;
+    let inView = false;
+
+    const canPlay = () =>
+      !userPaused && !hovering && !keyboardFocus && inView && !document.hidden;
+
+    const advance = () => {
+      const atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+      if (atEnd) track.scrollTo({ left: 0 });
+      else track.scrollBy({ left: step() });
+      schedule();
+    };
+
+    // Reinicia la cuenta atrás: cada interacción da otros DELAY ms de margen.
+    function schedule() {
+      clearTimeout(timer);
+      // Mientras avanza solo, los lectores de pantalla no anuncian cada cambio.
+      cards.setAttribute("aria-live", canPlay() ? "off" : "polite");
+      if (canPlay()) timer = window.setTimeout(advance, DELAY);
+    }
+
+    const syncPlayButton = () => {
+      play.toggleAttribute("data-paused", userPaused);
+      play.setAttribute(
+        "aria-label",
+        (userPaused ? play.dataset.labelPlay : play.dataset.labelPause) ?? ""
+      );
+    };
+
+    play.addEventListener("click", () => {
+      userPaused = !userPaused;
+      syncPlayButton();
+      schedule();
+    });
+
+    section.addEventListener("mouseenter", () => {
+      hovering = true;
+      schedule();
+    });
+    section.addEventListener("mouseleave", () => {
+      hovering = false;
+      schedule();
+    });
+    section.addEventListener("focusin", (event) => {
+      keyboardFocus = (event.target as Element).matches(":focus-visible");
+      schedule();
+    });
+    section.addEventListener("focusout", (event) => {
+      if (!section.contains(event.relatedTarget as Node)) keyboardFocus = false;
+      schedule();
+    });
+    // Al deslizar con el dedo o la rueda, se da tiempo a leer antes de seguir.
+    track.addEventListener("pointerdown", schedule, { passive: true });
+    track.addEventListener("wheel", schedule, { passive: true });
+    track.addEventListener("touchstart", schedule, { passive: true });
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        schedule();
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(track);
+    document.addEventListener("visibilitychange", schedule);
+
+    // ClientRouter reemplaza la sección al cambiar de idioma: se limpia todo.
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        clearTimeout(timer);
+        observer.disconnect();
+        document.removeEventListener("visibilitychange", schedule);
+      },
+      { once: true }
+    );
+
+    syncPlayButton();
+
+    let frame = 0;
+    track.addEventListener(
+      "scroll",
+      () => {
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(update);
+      },
+      { passive: true }
+    );
+    new ResizeObserver(update).observe(track);
+    update();
+  };
+
+  document.addEventListener("astro:page-load", setup);
+  setup();
+</script>

@@ -46,6 +46,7 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 | **Sobre mí**       | Retrato, presentación, enlaces al currículum, LinkedIn y GitHub, e indicador de rendimiento en vivo. |
 | **Experiencia**    | Línea temporal con mi trayectoria (puesto, empresa y fechas): Grupo CGI (IA y full stack) y Capgemini. |
 | **Proyectos**      | Proyectos destacados con captura, descripción, tecnologías y enlace al código. |
+| **Competencias**   | Carrusel con mis tecnologías agrupadas (lenguajes, IA, frontend, backend, DevOps e idiomas). |
 | **Contacto**       | Datos de contacto y botones para enviar un correo o llamar. |
 | **Pie**            | Enlaces directos a email, LinkedIn y GitHub. |
 
@@ -64,6 +65,7 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 - 🧩 **Iconos Tabler** como componentes `.astro` (SVG en línea con `currentColor`), que heredan el color del texto que acompañan.
 - 🖼️ **Favicon propio** "JG" en SVG, con `favicon.ico` de respaldo y `apple-touch-icon.png` para iOS.
 - 🗄️ **Caché y cabeceras HTTP** en `public/_headers`: el CSS, el JS y las fuentes de `/_astro/` (con hash en el nombre) se guardan en caché un año como inmutables, y todas las respuestas llevan cabeceras de seguridad básicas.
+- 🎠 **Carrusel de competencias** con scroll nativo y `scroll-snap`: avanza solo cada 4 segundos y vuelve al principio al llegar al final, y también se desliza con el dedo, el trackpad, el teclado o las flechas. Las tarjetas se encogen y desvanecen al salir por los bordes con `animation-timeline: view()`. Accesible: botón de pausa (WCAG 2.2.2), se detiene con el ratón encima o con el foco de teclado dentro, solo avanza si está a la vista y la pestaña activa, empieza en pausa con `prefers-reduced-motion` y anuncia cada tarjeta como "1 de 6".
 - 🚫 **Página 404 propia** en español e inglés, fuera del índice de buscadores (`noindex`).
 - ✅ **Comprobación de tipos** con `astro check` antes de cada build.
 
@@ -123,6 +125,7 @@ El diseño se basa en un pequeño sistema de tokens definido como variables CSS 
 │   │   ├── Experiencia.astro      # Línea temporal de experiencia laboral
 │   │   ├── Proyectos.astro        # Listado de proyectos
 │   │   ├── Card.astro             # Proyecto destacado (captura, descripción, stack)
+│   │   ├── Competencias.astro     # Carrusel de competencias por grupos
 │   │   ├── Contacto.astro         # Datos de contacto
 │   │   ├── Footer.astro           # Pie con enlaces de contacto y redes
 │   │   ├── LanguageSelector.astro # Enlace al otro idioma con su bandera
