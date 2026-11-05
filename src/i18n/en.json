@@ -1,6 +1,6 @@
 {
   "SEO_TITLE": "Javier Guerrero | Full Stack & AI Developer",
-  "SEO_DESCRIPTION": "Javier Guerrero's portfolio. Full stack developer specializing in AI (MCP servers and agent skills), with 3+ years of experience in React, Angular, Node.js and Spring Boot.",
+  "SEO_DESCRIPTION": "Javier Guerrero's portfolio. Full stack developer specializing in AI (MCP servers and agent skills), with 4+ years of experience in React, Angular, Node.js and Spring Boot.",
   "OG_IMAGE_ALT": "Javier Guerrero, full stack web developer",
   "ABOUT_ME_TITLE_2": "Javier Guerrero",
   "ABOUT_ME_CV": "My resume",
@@ -39,7 +39,7 @@
   "CONTACT_BIRTH": "Date of birth",
   "CONTACT_BIRTH_VALUE": "April 13, 2000",
   "ABOUT_ME_ROLE": "Full stack developer specializing in AI",
-  "ABOUT_ME_DESCRIPTION": "<strong>Full stack developer</strong> with 3+ years of experience building web applications with React, Angular, Node.js and Spring Boot. I currently specialize in <strong>AI development</strong>: I build MCP servers and agent skills that connect AI models to real tools and data. I care about user experience, design and performance, and I automate delivery with GitHub Actions and Docker.",
+  "ABOUT_ME_DESCRIPTION": "<strong>Full stack developer</strong> with 4+ years of experience building web applications with React, Angular, Node.js and Spring Boot. I currently specialize in <strong>AI development</strong>: I build MCP servers and agent skills that connect AI models to real tools and data. I care about user experience, design and performance, and I automate delivery with GitHub Actions and Docker.",
   "EXPERIENCE": [
     {
       "date": "March 2026 - Present",
