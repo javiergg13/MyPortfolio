@@ -6,7 +6,7 @@ interface Props {
   title: string;
   description: string;
   gitHubUrl?: string;
-  tecnologies?: string[];
+  technologies?: string[];
   image: string;
   imageAlt?: string;
   imageWidth?: number;
@@ -17,7 +17,7 @@ const {
   title,
   description,
   gitHubUrl = "https://github.com/javiergg13",
-  tecnologies = [],
+  technologies = [],
   image,
   imageAlt = title,
   imageWidth = 800,
@@ -28,7 +28,7 @@ const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 const stack = new Intl.ListFormat(getLocale(currentLocale), {
   type: "conjunction",
-}).format(tecnologies);
+}).format(technologies);
 ---
 
 <article class="project">

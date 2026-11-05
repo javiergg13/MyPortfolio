@@ -1,15 +1,31 @@
 ---
-const currentYear = new Date().getFullYear();
-
+import GitHub from "../icons/GitHub.astro";
+import LinkedIn from "../icons/LinkedIn.astro";
+import Mail from "../icons/Mail.astro";
 import { getI18N } from "../i18n/index";
+
+const currentYear = new Date().getFullYear();
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
 <footer>
-  <p>{i18n.FOOTER_DESCRIPTION}</p>
-  <p>© {currentYear}</p>
+  <div class="about">
+    <p>{i18n.FOOTER_DESCRIPTION}</p>
+    <p>© {currentYear}</p>
+  </div>
+  <nav aria-label={i18n.FOOTER_LINKS}>
+    <a href="mailto:guerrerogallojavier@gmail.com"><Mail /> Email</a>
+    <a
+      href="https://www.linkedin.com/in/javier-guerrero-gallo-3989b9228/"
+      target="_blank"
+      rel="noopener noreferrer"><LinkedIn /> LinkedIn</a
+    >
+    <a href="https://github.com/javiergg13" target="_blank" rel="noopener noreferrer"
+      ><GitHub /> GitHub</a
+    >
+  </nav>
 </footer>
 
 <style>
@@ -23,6 +39,27 @@ const i18n = getI18N({ currentLocale });
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 0.5rem 2rem;
+    align-items: center;
+    gap: 1rem 2rem;
+  }
+  .about {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  nav a:hover {
+    color: var(--ink);
   }
 </style>

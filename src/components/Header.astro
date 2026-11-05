@@ -1,6 +1,6 @@
 ---
 import { getI18N } from "../i18n/index";
-import LenguagesSelector from "./LenguagesSelector.astro";
+import LanguageSelector from "./LanguageSelector.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const { currentLocale } = Astro;
@@ -27,7 +27,7 @@ const i18n = getI18N({ currentLocale });
     </nav>
     <div class="tools">
       <ThemeToggle />
-      <LenguagesSelector />
+      <LanguageSelector />
     </div>
   </div>
 </header>

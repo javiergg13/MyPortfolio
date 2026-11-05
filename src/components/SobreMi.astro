@@ -1,19 +1,19 @@
 ---
-import Drive from "../icons/Drive.astro";
-import GitHub from "../icons/GitHub.astro";
-import LinkedIn from "../icons/LinkedIn.astro";
-import { getI18N, getLocale } from "../i18n/index";
+import Drive from "../icons/Drive.astro"
+import GitHub from "../icons/GitHub.astro"
+import LinkedIn from "../icons/LinkedIn.astro"
+import { getI18N, getLocale } from "../i18n/index"
 
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
-const locale = getLocale(currentLocale);
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+const locale = getLocale(currentLocale)
 
 // Texto provisional con la misma longitud que el real: reserva el hueco del
 // indicador desde el primer pintado y evita saltos de contenido (CLS).
 const placeholder = i18n.PERF_TEXT.replace("{time}", "<b>000 ms</b>").replace(
   "{size}",
-  "<b>00 KB</b>"
-);
+  "<b>00 KB</b>",
+)
 ---
 
 <section id="SobreMi" class="hero">
@@ -35,7 +35,7 @@ const placeholder = i18n.PERF_TEXT.replace("{time}", "<b>000 ms</b>").replace(
         class="button button-primary"
         target="_blank"
         rel="noopener noreferrer"
-        href="https://drive.google.com/file/d/1-dL63MY1Hp_ZtjR8aTFoV46pqRCNB3lw/view?usp=sharing"
+        href="https://drive.google.com/file/d/1nB7Im1Lzifh01r8dKxAk7xJcd_S6DPzA/view?usp=sharing"
         ><Drive /> {i18n.ABOUT_ME_CV}</a
       >
       <a
@@ -151,89 +151,99 @@ const placeholder = i18n.PERF_TEXT.replace("{time}", "<b>000 ms</b>").replace(
   const formatTime = (ms: number, locale: string) =>
     ms < 1000
       ? `${Math.round(ms)} ms`
-      : `${new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(ms / 1000)} s`;
+      : `${new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(ms / 1000)} s`
 
   const formatSize = (bytes: number, locale: string) =>
-    `${new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(bytes / 1024)} KB`;
+    `${new Intl.NumberFormat(locale, { maximumFractionDigits: 0 }).format(bytes / 1024)} KB`
 
-  const render = (el: HTMLElement, template: string, time: string, size = "") => {
+  const render = (
+    el: HTMLElement,
+    template: string,
+    time: string,
+    size = "",
+  ) => {
     el.innerHTML = template
       .replace("{time}", `<b>${time}</b>`)
-      .replace("{size}", `<b>${size}</b>`);
-  };
+      .replace("{size}", `<b>${size}</b>`)
+  }
 
   // Bytes transferidos por los recursos que empezaron a descargarse desde `from`.
   const bytesSince = (from: number) =>
     (performance.getEntriesByType("resource") as PerformanceResourceTiming[])
       .filter((r) => r.startTime >= from)
-      .reduce((sum, r) => sum + (r.transferSize ?? 0), 0);
+      .reduce((sum, r) => sum + (r.transferSize ?? 0), 0)
 
-  let frame = 0;
+  let frame = 0
 
   const show = (loadMs: number, bytes: number) => {
-    const el = document.querySelector<HTMLElement>(".perf");
-    if (!el) return;
-    cancelAnimationFrame(frame);
+    const el = document.querySelector<HTMLElement>(".perf")
+    if (!el) return
+    cancelAnimationFrame(frame)
 
-    const locale = el.dataset.locale ?? "es";
+    const locale = el.dataset.locale ?? "es"
     // Por debajo de 1 KB solo viajan cabeceras: el contenido salió de la caché.
-    const cached = bytes < 1024;
-    const template = (cached ? el.dataset.textCached : el.dataset.text) ?? "";
+    const cached = bytes < 1024
+    const template = (cached ? el.dataset.textCached : el.dataset.text) ?? ""
 
-    el.dataset.ready = "";
-    el.removeAttribute("aria-hidden");
+    el.dataset.ready = ""
+    el.removeAttribute("aria-hidden")
 
     const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+      "(prefers-reduced-motion: reduce)",
+    ).matches
     if (reduceMotion) {
-      render(el, template, formatTime(loadMs, locale), formatSize(bytes, locale));
-      return;
+      render(
+        el,
+        template,
+        formatTime(loadMs, locale),
+        formatSize(bytes, locale),
+      )
+      return
     }
 
     // Una única animación en la página: las cifras cuentan hasta su valor.
-    const duration = 700;
-    const start = performance.now();
+    const duration = 700
+    const start = performance.now()
     const tick = (now: number) => {
-      const t = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
+      const t = Math.min((now - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - t, 3)
       render(
         el,
         template,
         formatTime(loadMs * eased, locale),
-        formatSize(bytes * eased, locale)
-      );
-      if (t < 1) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-  };
+        formatSize(bytes * eased, locale),
+      )
+      if (t < 1) frame = requestAnimationFrame(tick)
+    }
+    frame = requestAnimationFrame(tick)
+  }
 
   // Carga completa: el documento más los recursos de esta carga.
   // loadEventEnd solo existe cuando el evento load ha terminado.
   const measureFullLoad = () => {
     const [nav] = performance.getEntriesByType(
-      "navigation"
-    ) as PerformanceNavigationTiming[];
-    if (!nav || nav.loadEventEnd <= 0) return;
-    show(nav.loadEventEnd, (nav.transferSize ?? 0) + bytesSince(0));
-  };
+      "navigation",
+    ) as PerformanceNavigationTiming[]
+    if (!nav || nav.loadEventEnd <= 0) return
+    show(nav.loadEventEnd, (nav.transferSize ?? 0) + bytesSince(0))
+  }
 
-  if (document.readyState === "complete") setTimeout(measureFullLoad, 0);
+  if (document.readyState === "complete") setTimeout(measureFullLoad, 0)
   else
     window.addEventListener("load", () => setTimeout(measureFullLoad, 0), {
       once: true,
-    });
+    })
 
   // Navegaciones de ClientRouter (p. ej. cambiar de idioma): la página no se
   // recarga, así que solo se mide lo descargado desde que empezó la navegación.
-  let softStart: number | null = null;
+  let softStart: number | null = null
   document.addEventListener("astro:before-preparation", () => {
-    softStart = performance.now();
-  });
+    softStart = performance.now()
+  })
   document.addEventListener("astro:page-load", () => {
-    if (softStart === null) return;
-    const from = softStart;
-    softStart = null;
-    show(performance.now() - from, bytesSince(from));
-  });
+    if (softStart === null) return
+    const from = softStart
+    softStart = null
+    show(performance.now() - from, bytesSince(from))
+  })
 </script>

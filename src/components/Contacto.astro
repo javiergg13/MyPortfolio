@@ -27,10 +27,6 @@ const i18n = getI18N({ currentLocale });
       <dt>{i18n.CONTACT_LOCATION}</dt>
       <dd>Pola de Laviana, Asturias</dd>
     </div>
-    <div>
-      <dt>{i18n.CONTACT_BIRTH}</dt>
-      <dd>{i18n.CONTACT_BIRTH_VALUE}</dd>
-    </div>
   </dl>
   <div class="actions">
     <a class="button button-primary" href="mailto:guerrerogallojavier@gmail.com"
@@ -46,8 +42,12 @@ const i18n = getI18N({ currentLocale });
   dl {
     margin: 0;
     display: grid;
+    /* Email ocupa la fila entera; teléfono y ubicación comparten la segunda. */
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem 2rem;
+  }
+  dl > div:first-child {
+    grid-column: 1 / -1;
   }
   dt {
     font-size: 0.875rem;

@@ -9,19 +9,11 @@
   "MY_PROJECTS_TITLE_1": "Clon de Spotify",
   "MY_PROJECTS_DESCRIPTION_1": "Un clon de la página web de Spotify, creado con Astro, React y Svelte para la interactividad, Tailwind para los estilos y la API de View Transitions.",
   "MY_PROJECTS_IMAGE_ALT_1": "Captura del clon de Spotify con la playlist Chill Lo-Fi Music",
-  "MY_PROJECTS_TITLE_2": "Title 2",
-  "MY_PROJECTS_DESCRIPTION_2": "Description",
-  "MY_PROJECTS_TITLE_3": "Title 3",
-  "MY_PROJECTS_DESCRIPTION_3": "Description",
-  "MY_PROJECTS_TITLE_4": "Title 4",
-  "MY_PROJECTS_DESCRIPTION_4": "Description",
-  "MY_PROJECTS_TITLE_5": "Title 5",
-  "MY_PROJECTS_DESCRIPTION_5": "Description",
   "HEADER_TITLE_2": "Experiencia",
   "HEADER_TITLE_3": "Proyectos",
   "HEADER_TITLE_4": "Contacto",
   "FOOTER_DESCRIPTION": "El portafolio de Javier Guerrero hecho con mucho 💖",
-  "EXPERIENCIE_TITLE": "Experiencia laboral",
+  "EXPERIENCE_TITLE": "Experiencia laboral",
   "CARD_LINK_TITLE": "Ver código en GitHub",
   "CONTACT_TITLE": "Contacto",
   "CONTACT_ACTIONS_TITLE_1": "Envíame un correo",
@@ -36,14 +28,13 @@
   "CONTACT_EMAIL": "Email",
   "CONTACT_PHONE": "Teléfono",
   "CONTACT_LOCATION": "Ubicación",
-  "CONTACT_BIRTH": "Fecha de nacimiento",
-  "CONTACT_BIRTH_VALUE": "13 de abril de 2000",
   "ABOUT_ME_ROLE": "Desarrollador full stack especializado en IA",
-  "ABOUT_ME_DESCRIPTION": "<strong>Desarrollador full stack</strong> con más de 4 años de experiencia creando aplicaciones web con React, Angular, Node.js y Spring Boot. Actualmente me especializo en <strong>desarrollo con inteligencia artificial</strong>: construyo servidores MCP y agent skills que conectan los modelos de IA con herramientas y datos reales. Cuido la experiencia de usuario, el diseño y el rendimiento, y automatizo la entrega con GitHub Actions y Docker.",
+  "ABOUT_ME_DESCRIPTION": "<strong>Desarrollador full stack</strong> con <strong>más de 4 años</strong> de experiencia creando aplicaciones web con <strong>React</strong>, <strong>Angular</strong>, <strong>Node.js</strong> y <strong>Spring Boot</strong>. Actualmente me especializo en <strong>desarrollo con inteligencia artificial</strong>: construyo <strong>servidores MCP</strong> y <strong>agent skills</strong> que conectan los modelos de IA con herramientas y datos reales. Cuido la experiencia de usuario, el diseño y el rendimiento, y automatizo la entrega con <strong>GitHub Actions</strong> y <strong>Docker</strong>.",
   "EXPERIENCE": [
     {
       "date": "Marzo 2026 - Actualidad",
-      "title": "Grupo CGI (Desarrollador especializado en IA)",
+      "role": "Desarrollador especializado en IA",
+      "company": "Grupo CGI",
       "paragraphs": [
         "Diseño y desarrollo <strong>servidores MCP</strong> (Model Context Protocol) que permiten a los asistentes de IA consultar datos y ejecutar acciones sobre herramientas internas de forma controlada.",
         "Creo <strong>agent skills</strong>: instrucciones y scripts reutilizables que enseñan a los agentes de IA a completar tareas concretas de forma fiable y consistente.",
@@ -52,7 +43,8 @@
     },
     {
       "date": "Febrero 2023 - Febrero 2026",
-      "title": "Grupo CGI (Desarrollador web full stack)",
+      "role": "Desarrollador web full stack",
+      "company": "Grupo CGI",
       "paragraphs": [
         "Desarrollé y mantuve aplicaciones internas de principio a fin, con <strong>React</strong> o <strong>Angular</strong> en el frontend y <strong>Spring Boot</strong> o <strong>Node.js</strong> en el backend, eligiendo la tecnología según las necesidades de cada proyecto.",
         "Evolucioné aplicaciones existentes con nuevas funcionalidades y mejoras, manteniendo su estabilidad en producción.",
@@ -61,12 +53,18 @@
     },
     {
       "date": "Marzo 2022 - Junio 2022",
-      "title": "Capgemini (Técnico en prácticas)",
+      "role": "Técnico en prácticas",
+      "company": "Capgemini",
       "paragraphs": [
         "Formé parte de un equipo de desarrollo en proyectos reales, trabajando con <strong>Angular</strong> en la corrección de incidencias y en la implementación de nuevas funcionalidades."
       ]
     }
   ],
   "THEME_TO_LIGHT": "Cambiar a tema claro",
-  "THEME_TO_DARK": "Cambiar a tema oscuro"
+  "THEME_TO_DARK": "Cambiar a tema oscuro",
+  "FOOTER_LINKS": "Contacto y redes",
+  "NOT_FOUND_SEO_TITLE": "Página no encontrada | Javier Guerrero",
+  "NOT_FOUND_TITLE": "Esta página no existe",
+  "NOT_FOUND_TEXT": "Puede que el enlace esté mal escrito o que la página se haya movido.",
+  "NOT_FOUND_HOME": "Volver al inicio"
 }
