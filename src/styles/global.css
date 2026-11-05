@@ -1,18 +1,4 @@
-/*
- * Tailwind 4 se carga sin el preflight para conservar los estilos base
- * que ya definen los componentes del portfolio.
- */
-@layer theme, base, components, utilities;
-
 @import "@fontsource-variable/schibsted-grotesk";
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
-
-/* No analizar la documentación de las skills en busca de clases. */
-@source not "../../.agents";
-
-/* Variante personalizada que sustituye al breakpoint "xs" de Tailwind 3. */
-@custom-variant xs (@media (max-width: 654px));
 
 /* ---------- Tokens ---------- */
 /* El tema oscuro es el predeterminado; el claro se activa con
