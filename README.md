@@ -7,8 +7,6 @@ Sitio estático, bilingüe (ES / EN), con tema claro y oscuro, rápido, accesibl
 
 [![Netlify](https://img.shields.io/badge/Demo-javierguerrero--pf.netlify.app-00C7B7?logo=netlify&logoColor=white)](https://javierguerrero-pf.netlify.app)
 [![Astro](https://img.shields.io/badge/Astro-7-BC52EE?logo=astro&logoColor=white)](https://astro.build)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
 🔗 **[Ver el portafolio en vivo](https://javierguerrero-pf.netlify.app)**
@@ -46,16 +44,17 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 | Sección            | Descripción                                                          |
 | :----------------- | :------------------------------------------------------------------- |
 | **Sobre mí**       | Retrato, presentación, enlaces al currículum, LinkedIn y GitHub, e indicador de rendimiento en vivo. |
-| **Experiencia**    | Línea temporal con mi trayectoria: Grupo CGI (IA y full stack) y Capgemini. |
+| **Experiencia**    | Línea temporal con mi trayectoria (puesto, empresa y fechas): Grupo CGI (IA y full stack) y Capgemini. |
 | **Proyectos**      | Proyectos destacados con captura, descripción, tecnologías y enlace al código. |
 | **Contacto**       | Datos de contacto y botones para enviar un correo o llamar. |
+| **Pie**            | Enlaces directos a email, LinkedIn y GitHub. |
 
 ---
 
 ## ✨ Características
 
 - 📊 **Indicador de rendimiento en vivo**: la portada muestra cuánto ha tardado la página en cargar y cuánto ha transferido en la visita real de cada usuario, medido con la Performance API del navegador. En las navegaciones con `ClientRouter` (como el cambio de idioma) solo mide lo descargado en esa navegación.
-- 🌗 **Tema oscuro por defecto y tema claro opcional** con un botón en la cabecera. La elección se guarda en `localStorage`, se aplica antes de pintar la página (sin parpadeo) y se mantiene al cambiar de idioma. También actualiza el `theme-color` del navegador.
+- 🌗 **Tema claro y oscuro**: en la primera visita sigue el tema del sistema (`prefers-color-scheme`) y se puede cambiar con un botón en la cabecera. La elección se guarda en `localStorage`, se aplica antes de pintar la página (sin parpadeo) y se mantiene al cambiar de idioma. También actualiza el `theme-color` del navegador.
 - 🌍 **Bilingüe (ES / EN)** usando el sistema de i18n nativo de Astro, con enlace directo al otro idioma y su bandera.
 - ⚡ **Rendimiento**: HTML estático generado en build, imágenes en formato `webp` y JavaScript mínimo (~84 KB transferidos en la primera visita).
 - 🎞️ **Transiciones de página** con la View Transitions API (`<ClientRouter />` de Astro) y cabecera animada con `animation-timeline: scroll()`.
@@ -64,6 +63,7 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 - 📱 **Diseño responsive** sin scroll horizontal hasta 320 px de ancho.
 - 🧩 **Iconos Tabler** como componentes `.astro` (SVG en línea con `currentColor`), que heredan el color del texto que acompañan.
 - 🖼️ **Favicon propio** "JG" en SVG, con `favicon.ico` de respaldo y `apple-touch-icon.png` para iOS.
+- 🚫 **Página 404 propia** en español e inglés, fuera del índice de buscadores (`noindex`).
 - ✅ **Comprobación de tipos** con `astro check` antes de cada build.
 
 ---
@@ -72,7 +72,7 @@ El objetivo es tener un sitio **ligero, accesible y fácil de mantener**, que ca
 
 El diseño se basa en un pequeño sistema de tokens definido como variables CSS en `src/styles/global.css`:
 
-| Token       | Claro     | Oscuro (por defecto) | Uso                     |
+| Token       | Claro     | Oscuro    | Uso                     |
 | :---------- | :-------- | :-------- | :--------------------------------- |
 | `--bg`      | `#e9ece9` | `#141a17` | Fondo (gris niebla)                |
 | `--surface` | `#f4f6f4` | `#1b2420` | Superficies (indicador, capturas)  |
@@ -94,8 +94,6 @@ El diseño se basa en un pequeño sistema de tokens definido como variables CSS 
 | :--------- | :----------------- |
 | [Astro 7](https://astro.build) | Framework principal, generación estática, routing, i18n y View Transitions. |
 | CSS con variables | Sistema de diseño (tokens de color, tipografía y retícula) en `global.css` y estilos con ámbito en cada componente. |
-| [Tailwind CSS 4](https://tailwindcss.com) | Integrado mediante el plugin de Vite `@tailwindcss/vite` (tema y utilidades, sin preflight). |
-| [React 18](https://react.dev) | Integración `@astrojs/react` disponible para islas interactivas (actualmente no hay componentes React). |
 | [TypeScript 5](https://www.typescriptlang.org) | Tipado de la lógica (i18n, constantes, props de componentes). |
 | [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/) | Generación automática del sitemap con soporte multidioma. |
 | [@astrojs/check](https://docs.astro.build/en/reference/cli-reference/#astro-check) | Diagnóstico y comprobación de tipos de los archivos `.astro`. |
@@ -124,8 +122,8 @@ El diseño se basa en un pequeño sistema de tokens definido como variables CSS 
 │   │   ├── Proyectos.astro        # Listado de proyectos
 │   │   ├── Card.astro             # Proyecto destacado (captura, descripción, stack)
 │   │   ├── Contacto.astro         # Datos de contacto
-│   │   ├── Footer.astro
-│   │   ├── LenguagesSelector.astro # Enlace al otro idioma con su bandera
+│   │   ├── Footer.astro           # Pie con enlaces de contacto y redes
+│   │   ├── LanguageSelector.astro # Enlace al otro idioma con su bandera
 │   │   ├── ThemeToggle.astro      # Botón para cambiar entre tema oscuro y claro
 │   │   ├── StructuredData.astro   # JSON-LD para SEO
 │   │   └── App.astro              # Composición de todas las secciones
@@ -139,7 +137,8 @@ El diseño se basa en un pequeño sistema de tokens definido como variables CSS 
 │   │   └── Layout.astro     # <head>, metaetiquetas SEO y estructura base
 │   ├── pages/
 │   │   ├── index.astro      # Versión en español  →  /
-│   │   └── en/index.astro   # Versión en inglés   →  /en/
+│   │   ├── en/index.astro   # Versión en inglés   →  /en/
+│   │   └── 404.astro        # Página de error bilingüe
 │   ├── styles/
 │   │   └── global.css       # Tokens de diseño, tipografía, botones y estilos base
 │   └── consts.ts            # URL del sitio, nombre, autor y redes sociales
